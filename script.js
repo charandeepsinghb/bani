@@ -20,19 +20,21 @@ function changeFontColor(value) {
 }
 
 function increaseFontSize() {
-    numberFontSize = numberFontSize + 0.2;
+    let newNumberFontSize = numberFontSize + 0.2;
     if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
         return;
     }
+    numberFontSize = newNumberFontSize;
     setFontSize(numberFontSize);
     baniSection.style.fontSize = numberFontSize + "px"
 }
 
 function decreaseFontSize() {
-    numberFontSize = numberFontSize - 0.2;
+    let newNumberFontSize = numberFontSize - 0.2;
     if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
         return;
     }
+    numberFontSize = newNumberFontSize;
     setFontSize(numberFontSize);
     baniSection.style.fontSize = numberFontSize + "px";
 }

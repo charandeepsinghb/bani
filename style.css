@@ -1,3 +1,10 @@
 .configSection {
     margin-bottom: 10px;
 }
+
+button {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
