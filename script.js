@@ -8,6 +8,8 @@ setTimeout(() => {
     setFontSize(numberFontSize);
 }, 100);
 
+const MIN_FONT_SIZE = 1;
+const MAX_FONT_SIZE = 200;
 
 function changeBackgroundColor(value) {
     document.body.style.backgroundColor = value;
@@ -19,12 +21,18 @@ function changeFontColor(value) {
 
 function increaseFontSize() {
     numberFontSize = numberFontSize + 0.2;
+    if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
+        return;
+    }
     setFontSize(numberFontSize);
     baniSection.style.fontSize = numberFontSize + "px"
 }
 
 function decreaseFontSize() {
     numberFontSize = numberFontSize - 0.2;
+    if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
+        return;
+    }
     setFontSize(numberFontSize);
     baniSection.style.fontSize = numberFontSize + "px";
 }
@@ -34,6 +42,9 @@ function setFontSize(value) {
 }
 
 function changeFontSize(size) {
+    if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, size)) {
+        return;
+    }
     numberFontSize = Number(size);
     baniSection.style.fontSize = size + 'px';
 }
@@ -57,4 +68,10 @@ function continuousEmitterStart(func) {
 
 function continuousEmitterStop() {
     clearInterval(emitterInterv);
+}
+
+function isBetween(first, second, num) {
+    if (num >= first && num <= second) {
+        return true;
+    }
 }
