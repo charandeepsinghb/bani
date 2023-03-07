@@ -8,3 +8,15 @@ button {
     user-select: none;
 }
 
+#overlayButtonsSection {
+    position: fixed;
+    top: 132px;
+    width: 99%;
+    height: 156%;
+    display: flex;
+}
+
+#overlayButtonsSection > * {
+    width: 49%;
+    height: 100%;
+}

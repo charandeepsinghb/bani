@@ -55,10 +55,10 @@ function darkMode(isOn) {
     if (isOn) {
         document.body.style.backgroundColor = "#000000"
         document.body.style.color = "#ffffff";
-    } else {
-        document.body.style.backgroundColor = "#ffffff"
-        document.body.style.color = "#000000";
+        return;
     }
+    document.body.style.backgroundColor = "#ffffff"
+    document.body.style.color = "#000000";
 }
 
 let emitterInterv;
@@ -76,4 +76,20 @@ function isBetween(first, second, num) {
     if (num >= first && num <= second) {
         return true;
     }
+}
+
+function slideUP() {
+    window.scrollBy(0, -window.innerHeight + numberFontSize);
+}
+
+function slideDown() {
+    window.scrollBy(0, window.innerHeight - numberFontSize);
+}
+
+function hideShowOverlayButtons(isOn) {
+    if (!isOn) {
+        document.getElementById("overlayButtonsSection").style.display = "none";
+        return;
+    }
+    document.getElementById("overlayButtonsSection").style.display = "flex";
 }
