@@ -24,8 +24,8 @@
             </div>
             <div>
                 <label>Font size:</label>
-                <button onpointerdown="continuousEmitterStart(decreaseFontSize)" onpointerup="continuousEmitterStop(decreaseFontSize)">Small</button>
-                <button onpointerdown="continuousEmitterStart(increaseFontSize)" onpointerup="continuousEmitterStop(increaseFontSize)">Large</button>
+                <button onpointerdown="continuousEmitterStart(decreaseFontSize)" onpointerup="continuousEmitterStop(decreaseFontSize)" onpointerleave="continuousEmitterStop(decreaseFontSize)">Small</button>
+                <button onpointerdown="continuousEmitterStart(increaseFontSize)" onpointerup="continuousEmitterStop(increaseFontSize)" onpointerleave="continuousEmitterStop(increaseFontSize)">Large</button>
                 <input id="currentFontSize" min="1" max="200" type="number" onchange="changeFontSize(event.target.value)">
             </div>
             <div>
