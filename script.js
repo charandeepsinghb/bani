@@ -1,15 +1,25 @@
+const MIN_FONT_SIZE = 1;
+const MAX_FONT_SIZE = 200;
+
+
+let savedFontSize = localStorage.getItem('savedFontSize');
+
 let currentFontSize;
 let numberFontSize;
 let baniSection;
+
+// Get current font size of bani section
 setTimeout(() => {
     baniSection = document.getElementById("bani");
     currentFontSize = window.getComputedStyle(baniSection).getPropertyValue('font-size');
     numberFontSize = Number(currentFontSize.substring(0, currentFontSize.length - 2));
     setFontSize(numberFontSize);
-}, 100);
+    if (savedFontSize) {
+        changeFontSize(savedFontSize);
+        setFontSize(savedFontSize);
+    }
+}, 10);
 
-const MIN_FONT_SIZE = 1;
-const MAX_FONT_SIZE = 200;
 
 function changeBackgroundColor(value) {
     document.body.style.backgroundColor = value;
@@ -20,27 +30,27 @@ function changeFontColor(value) {
 }
 
 function increaseFontSize() {
-    let newNumberFontSize = numberFontSize + 0.2;
-    if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
-        return;
-    }
-    numberFontSize = newNumberFontSize;
-    setFontSize(numberFontSize);
-    baniSection.style.fontSize = numberFontSize + "px"
+    increaesDecreaseFontSize(0.2);
 }
 
 function decreaseFontSize() {
-    let newNumberFontSize = numberFontSize - 0.2;
+    increaesDecreaseFontSize(-0.2);
+}
+
+function increaesDecreaseFontSize(increaseDecreaseValue) {
+    let newNumberFontSize = numberFontSize + increaseDecreaseValue;
     if (!isBetween(MIN_FONT_SIZE, MAX_FONT_SIZE, numberFontSize)) {
         return;
     }
     numberFontSize = newNumberFontSize;
     setFontSize(numberFontSize);
     baniSection.style.fontSize = numberFontSize + "px";
+    saveFontSizeInStorage(numberFontSize);
 }
 
+// Change font size in input field
 function setFontSize(value) {
-    document.getElementById("currentFontSize").value = value.toFixed(1);
+    document.getElementById("currentFontSize").value = Number(value).toFixed(1);
 }
 
 function changeFontSize(size) {
@@ -61,6 +71,7 @@ function darkMode(isOn) {
     document.body.style.color = "#000000";
 }
 
+// Emit multiple events when called continuously
 let emitterInterv;
 function continuousEmitterStart(func) {
     emitterInterv = setInterval(() => {
@@ -68,6 +79,7 @@ function continuousEmitterStart(func) {
     }, 1);
 }
 
+// Stops event emitting when called
 function continuousEmitterStop() {
     clearInterval(emitterInterv);
 }
@@ -92,4 +104,8 @@ function hideShowOverlayButtons(isOn) {
         return;
     }
     document.getElementById("overlayButtonsSection").style.display = "flex";
+}
+
+function saveFontSizeInStorage(size) {
+    localStorage.setItem('savedFontSize', size);
 }
