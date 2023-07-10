@@ -9,17 +9,14 @@ let numberFontSize;
 let baniSection;
 
 // Get current font size of bani section
-setTimeout(() => {
-    baniSection = document.getElementById("bani");
-    currentFontSize = window.getComputedStyle(baniSection).getPropertyValue('font-size');
-    numberFontSize = Number(currentFontSize.substring(0, currentFontSize.length - 2));
-    setFontSize(numberFontSize);
-    if (savedFontSize) {
-        changeFontSize(savedFontSize);
-        setFontSize(savedFontSize);
-    }
-}, 10);
-
+baniSection = document.getElementById("bani");
+currentFontSize = window.getComputedStyle(baniSection).getPropertyValue('font-size');
+numberFontSize = Number(currentFontSize.substring(0, currentFontSize.length - 2));
+setFontSize(numberFontSize);
+if (savedFontSize) {
+    changeFontSize(savedFontSize);
+    setFontSize(savedFontSize);
+}
 
 function changeBackgroundColor(value) {
     document.body.style.backgroundColor = value;
