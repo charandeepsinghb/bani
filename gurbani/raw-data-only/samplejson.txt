@@ -1,0 +1,22 @@
+{
+    "en": {
+      "bdb": "One Universal Creator God. The Name Is Truth. Creative Being Personified. No Fear. No Hatred. Image Of The Undying, Beyond Birth, Self-Existent. By Guru's Grace ~",
+      "ms": "There is but one God. True is His Name, creative His personality and immortal His form. He is without fear sans enmity, unborn and self-illumined. By the Guru's grace He is obtained.",
+      "ssk": "One Universal Creator God. The Name Is Truth. Creative Being Personified. No Fear. No Hatred. Image Of The Undying, Beyond Birth, Self-Existent. By Guru's Grace ~"
+    },
+    "pu": {
+      "ss": "Akwl purK ie`k hY, ijs dw nwm 'hoNd vwlw' hY jo isRStI dw rcnhwr hY, jo sB ivc ivAwpk hY, BY qoN rihq hY, vYr-rihq hY, ijs dw srUp kwl qoN pry hY, (Bwv, ijs dw srIr nws-rihq hY), jo jUnW ivc nhIN AwauNdw, ijs dw pRkwS Awpxy Awp qoN hoieAw hY Aqy  jo siqgurU dI ikrpw nwl imldw hY[",
+      "ft": "byd sUpu aupdys my 'EN' ky Awid my 'eyk' AMgu nhIN khw, eIhW khw hY[ iqs kw eyih qwqprXu hY, so sB ko pRqIq ho jwvy, jo isDWq vsqU AdÍYq hY, dÍYq nhIN[ XW qy jIv eIs eyk rUpu hYN, Byd vwdIXoN ky mq vq do nhIN[ kyeI ik eyk AMgu Awid my kihny kw eyih hyqU khqy hYN, jo eyih aupdysu purK iesqRI mwqR ko sWJw hY[ Aru vyd my qIn vrxoN ky purKoN ibnW inKl vrxoN kI iesqRIAW Ar purKoN ko 'EN' ky muK sy aucwrn krn kI AwgÎw nhIN[ XW qy sWJw aupdysu BI krnw AOr pUrb vyd my khI hUeI ApnI AwgÎw BI shI rKnI, eyh ivcwr ky pRmysÍr ny 'EN' ky Awid mY pVdw rK dIAw hY, jo pVdy sy sBI bolyN[ pVdy sy bolxy my doSu nhIN[ eyhI bwq smJ ky bwlmIk ko irKIXoN ny 'rwm' mMqR kw aultw, 'mrw' aupdysu kIAw Qw[ pVdy kw ArQu eyih hY, jo pihly pwT sy AOr rIiq kw pwTu kr dyxw[ ArQu ies p`K mY BI 'eyk' kw vhI hY, jo pICy khw hY[ 'EN' kw ArQu vÎwkrx vwly nwmu lyny mwqR sy, 'r`KÎw krny vwlw' prmysÍru khqy hYN[ 'Av' Dwqu sy bnwvqy hYN 'Av' kw ArQu 'rKXw' hY[ XW qy rKXw krny vwly kw nwm 'EN' khy hYN[ AOr gRMQoN vwly 'A'+'au'+'m' ien qIn m",
+      "bdb": "Akwl purK ie`k hY, ijs dw nwm 'hoNd vwlw' hY jo isRStI dw rcnhwr hY, jo sB ivc ivAwpk hY, BY qoN rihq hY, vYr-rihq hY, ijs dw srUp kwl qoN pry hY, (Bwv, ijs dw srIr nws-rihq hY), jo jUnW ivc nhIN AwauNdw, ijs dw pRkwS Awpxy Awp qoN hoieAw hY Aqy  jo siqgurU dI ikrpw nwl imldw hY[",
+      "ms": "vwihgurU kyvl iek hY[ s`cw hY aus dw nwm, rcnhwr aus dI ivAkqI Aqy Amr aus dw srUp[ auh infr, kInw-rihq, Ajnmw qy svY-pRkwSvwn hY[ gurW dI dXw duAwrw auh prwpq huMdw hY["
+    },
+    "puu": {
+      "ss": "ਅਕਾਲ ਪੁਰਖ ਇੱਕ ਹੈ, ਜਿਸ ਦਾ ਨਾਮ 'ਹੋਂਦ ਵਾਲਾ' ਹੈ ਜੋ ਸ੍ਰਿਸ਼ਟੀ ਦਾ ਰਚਨਹਾਰ ਹੈ, ਜੋ ਸਭ ਵਿਚ ਵਿਆਪਕ ਹੈ, ਭੈ ਤੋਂ ਰਹਿਤ ਹੈ, ਵੈਰ-ਰਹਿਤ ਹੈ, ਜਿਸ ਦਾ ਸਰੂਪ ਕਾਲ ਤੋਂ ਪਰੇ ਹੈ, (ਭਾਵ, ਜਿਸ ਦਾ ਸਰੀਰ ਨਾਸ-ਰਹਿਤ ਹੈ), ਜੋ ਜੂਨਾਂ ਵਿਚ ਨਹੀਂ ਆਉਂਦਾ, ਜਿਸ ਦਾ ਪ੍ਰਕਾਸ਼ ਆਪਣੇ ਆਪ ਤੋਂ ਹੋਇਆ ਹੈ ਅਤੇ  ਜੋ ਸਤਿਗੁਰੂ ਦੀ ਕਿਰਪਾ ਨਾਲ ਮਿਲਦਾ ਹੈ।",
+      "ft": "ਬੇਦ ਸੂਪੁ ਉਪਦੇਸ ਮੇ 'ਓਂ' ਕੇ ਆਦਿ ਮੇ 'ਏਕ' ਅੰਗੁ ਨਹੀਂ ਕਹਾ, ਈਹਾਂ ਕਹਾ ਹੈ। ਤਿਸ ਕਾ ਏਹਿ ਤਾਤਪਰਯੁ ਹੈ, ਸੋ ਸਭ ਕੋ ਪ੍ਰਤੀਤ ਹੋ ਜਾਵੇ, ਜੋ ਸਿਧਾਂਤ ਵਸਤੂ ਅਦ੍ਵੈਤ ਹੈ, ਦ੍ਵੈਤ ਨਹੀਂ। ਯਾਂ ਤੇ ਜੀਵ ਈਸ ਏਕ ਰੂਪੁ ਹੈਂ, ਭੇਦ ਵਾਦੀਯੋਂ ਕੇ ਮਤ ਵਤ ਦੋ ਨਹੀਂ। ਕੇਈ ਕਿ ਏਕ ਅੰਗੁ ਆਦਿ ਮੇ ਕਹਿਨੇ ਕਾ ਏਹਿ ਹੇਤੂ ਕਹਤੇ ਹੈਂ, ਜੋ ਏਹਿ ਉਪਦੇਸੁ ਪੁਰਖ ਇਸਤ੍ਰੀ ਮਾਤ੍ਰ ਕੋ ਸਾਂਝਾ ਹੈ। ਅਰੁ ਵੇਦ ਮੇ ਤੀਨ ਵਰਣੋਂ ਕੇ ਪੁਰਖੋਂ ਬਿਨਾਂ ਨਿਖਲ ਵਰਣੋਂ ਕੀ ਇਸਤ੍ਰੀਆਂ ਅਰ ਪੁਰਖੋਂ ਕੋ 'ਓਂ' ਕੇ ਮੁਖ ਸੇ ਉਚਾਰਨ ਕਰਨ ਕੀ ਆਗ੍ਯਾ ਨਹੀਂ। ਯਾਂ ਤੇ ਸਾਂਝਾ ਉਪਦੇਸੁ ਭੀ ਕਰਨਾ ਔਰ ਪੂਰਬ ਵੇਦ ਮੇ ਕਹੀ ਹੂਈ ਅਪਨੀ ਆਗ੍ਯਾ ਭੀ ਸਹੀ ਰਖਨੀ, ਏਹ ਵਿਚਾਰ ਕੇ ਪ੍ਰਮੇਸ੍ਵਰ ਨੇ 'ਓਂ' ਕੇ ਆਦਿ ਮੈ ਪੜਦਾ ਰਖ ਦੀਆ ਹੈ, ਜੋ ਪੜਦੇ ਸੇ ਸਭੀ ਬੋਲੇਂ। ਪੜਦੇ ਸੇ ਬੋਲਣੇ ਮੇ ਦੋਸ਼ੁ ਨਹੀਂ। ਏਹੀ ਬਾਤ ਸਮਝ ਕੇ ਬਾਲਮੀਕ ਕੋ ਰਿਖੀਯੋਂ ਨੇ 'ਰਾਮ' ਮੰਤ੍ਰ ਕਾ ਉਲਟਾ, 'ਮਰਾ' ਉਪਦੇਸੁ ਕੀਆ ਥਾ। ਪੜਦੇ ਕਾ ਅਰਥੁ ਏਹਿ ਹੈ, ਜੋ ਪਹਿਲੇ ਪਾਠ ਸੇ ਔਰ ਰੀਤਿ ਕਾ ਪਾਠੁ ਕਰ ਦੇਣਾ। ਅਰਥੁ ਇਸ ਪੱਖ ਮੈ ਭੀ 'ਏਕ' ਕਾ ਵਹੀ ਹੈ, ਜੋ ਪੀਛੇ ਕਹਾ ਹੈ। 'ਓਂ' ਕਾ ਅਰਥੁ ਵ੍ਯਾਕਰਣ ਵਾਲੇ ਨਾਮੁ ਲੇਨੇ ਮਾਤ੍ਰ ਸੇ, 'ਰੱਖ੍ਯਾ ਕਰਨੇ ਵਾਲਾ' ਪਰਮੇਸ੍ਵਰੁ ਕਹਤੇ ਹੈਂ। 'ਅਵ' ਧਾਤੁ ਸੇ ਬਨਾਵਤੇ ਹੈਂ 'ਅਵ' ਕਾ ਅਰਥੁ 'ਰਖਯਾ' ਹੈ। ਯਾਂ ਤੇ ਰਖਯਾ ਕਰਨੇ ਵਾਲੇ ਕਾ ਨਾਮ 'ਓਂ' ਕਹੇ ਹੈਂ। ਔਰ ਗ੍ਰੰਥੋਂ ਵਾਲੇ 'ਅ'+'ਉ'+'ਮ' ਇਨ ਤੀਨ ਮ",
+      "bdb": "ਅਕਾਲ ਪੁਰਖ ਇੱਕ ਹੈ, ਜਿਸ ਦਾ ਨਾਮ 'ਹੋਂਦ ਵਾਲਾ' ਹੈ ਜੋ ਸ੍ਰਿਸ਼ਟੀ ਦਾ ਰਚਨਹਾਰ ਹੈ, ਜੋ ਸਭ ਵਿਚ ਵਿਆਪਕ ਹੈ, ਭੈ ਤੋਂ ਰਹਿਤ ਹੈ, ਵੈਰ-ਰਹਿਤ ਹੈ, ਜਿਸ ਦਾ ਸਰੂਪ ਕਾਲ ਤੋਂ ਪਰੇ ਹੈ, (ਭਾਵ, ਜਿਸ ਦਾ ਸਰੀਰ ਨਾਸ-ਰਹਿਤ ਹੈ), ਜੋ ਜੂਨਾਂ ਵਿਚ ਨਹੀਂ ਆਉਂਦਾ, ਜਿਸ ਦਾ ਪ੍ਰਕਾਸ਼ ਆਪਣੇ ਆਪ ਤੋਂ ਹੋਇਆ ਹੈ ਅਤੇ  ਜੋ ਸਤਿਗੁਰੂ ਦੀ ਕਿਰਪਾ ਨਾਲ ਮਿਲਦਾ ਹੈ।",
+      "ms": "ਵਾਹਿਗੁਰੂ ਕੇਵਲ ਇਕ ਹੈ। ਸੱਚਾ ਹੈ ਉਸ ਦਾ ਨਾਮ, ਰਚਨਹਾਰ ਉਸ ਦੀ ਵਿਅਕਤੀ ਅਤੇ ਅਮਰ ਉਸ ਦਾ ਸਰੂਪ। ਉਹ ਨਿਡਰ, ਕੀਨਾ-ਰਹਿਤ, ਅਜਨਮਾ ਤੇ ਸਵੈ-ਪ੍ਰਕਾਸ਼ਵਾਨ ਹੈ। ਗੁਰਾਂ ਦੀ ਦਯਾ ਦੁਆਰਾ ਉਹ ਪਰਾਪਤ ਹੁੰਦਾ ਹੈ।"
+    },
+    "es": {
+      "sn": "Un sólo Creador Universal, Verdad es Su Nombre. Creativa Su Personalidad. Sin Miedo, sin Venganza. Inmortal, Sin Principio, Sin Fin, Auto Existente. Por la Gracia del Verdadero Guru."
+    }
+  }

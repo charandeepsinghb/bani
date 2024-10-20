@@ -1,19 +1,24 @@
 {
-  "name": "japji-sahib",
+  "name": "bani",
   "version": "1.0.0",
-  "description": "Japji Sahib",
+  "description": "Bani — Gurbani",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server --no-browser --port=8090"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check-format": "prettier . --check",
+    "format": "prettier . --write"
   },
   "repository": {
     "type": "git",
-    "url": "tool-engines"
+    "url": "bani"
   },
   "author": "Charandeep Singh",
   "license": "ISC",
-  "dependencies": {
-    "live-server": "^1.2.2"
+  "devDependencies": {
+    "prettier": "3.3.3",
+    "vite": "^5.4.9"
   }
 }

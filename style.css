@@ -1,22 +1,11 @@
-.configSection {
-    margin-bottom: 10px;
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-button {
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-}
-
-#overlayButtonsSection {
-    position: fixed;
-    top: 132px;
-    width: 99%;
-    height: 156%;
-    display: flex;
-}
-
-#overlayButtonsSection > * {
-    width: 49%;
-    height: 100%;
+.noto-sans-gurmukhi-bani {
+  font-family: "Noto Sans Gurmukhi", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }

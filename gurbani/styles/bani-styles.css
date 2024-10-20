@@ -1,0 +1,11 @@
+#bani {
+  height: 90vh;
+  column-width: 100vw;
+  overflow-y: hidden;
+  /* overflow-x: hidden; */
+  box-sizing: border-box;
+  padding: 20px;
+  column-gap: 40px;
+  column-fill: auto;
+  /* margin: 0; */
+}
