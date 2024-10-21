@@ -9,10 +9,11 @@ export default {
     rollupOptions: {
       input: {
         main: "index.html",
-        gurbanis: "gurbani/index.html",
-        japjisahib: "gurbani/japji-sahib.html",
-        sukhmanisahib: "gurbani/sukhmani-sahib.html"
+        gurbanis: "list.html",
+        japjisahib: "japji-sahib.html",
+        sukhmanisahib: "sukhmani-sahib.html"
       }
-    }
+    },
+    outDir: "gurbani"
   }
 };
