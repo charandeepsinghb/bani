@@ -58,6 +58,8 @@ function update() {
       floatingButton.style.top = `${newTop}px`;
       floatingButton.style.bottom = "auto"; // To avoid overriding bottom CSS
       floatingButton.style.right = "auto"; // To avoid overriding right CSS
+    } else {
+      floatingButton.style.background = "green";
     }
   });
 
