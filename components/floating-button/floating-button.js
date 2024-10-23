@@ -18,11 +18,23 @@ export function addFloatingButton(floatingButtonContainer) {
     });
 }
 
+// Get viewport dimensions
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+
 function setPositionFromLocalStorageIfAvailable(floatingButton) {
   const posX = getLocalStorageItem("floatingButtonX");
   const posY = getLocalStorageItem("floatingButtonY");
 
   if (notNullUndefinedNaNAny(posX, posY)) {
+    // Prevent the button from moving outside the left and right edges
+    if (posX < 0) posX = 0;
+    if (posX + floatingButton.buttonWidth > viewportWidth) posX = viewportWidth - floatingButton.buttonWidth;
+
+    // Prevent the button from moving outside the top and bottom edges
+    if (posY < 0) posY = 0;
+    if (posY + floatingButton.buttonHeight > viewportHeight) posY = viewportHeight - floatingButton.buttonHeight;
+
     floatingButtonPositionLeft = posX;
     floatingButtonPositionTop = posY;
     floatingButton.style.left = `${posX}px`;
@@ -41,7 +53,7 @@ function savePositionToLocalStorage(x, y) {
 }
 
 function initiateFloatingButton() {
-  const floatingButton = document.getElementById("floatingButton");
+  const floatingButton = document.getElementById("floating-button");
 
   setPositionFromLocalStorageIfAvailable(floatingButton);
 
@@ -51,6 +63,7 @@ function initiateFloatingButton() {
   let isMenuClicked = false;
   let isLeftClicked = false;
   let isRightClicked = false;
+  let isFullscreenClicked = false;
 
   let startX, startY, initialLeft, initialTop;
 
@@ -62,11 +75,11 @@ function initiateFloatingButton() {
 
   // Add pointer events for drag functionality
   floatingButton.addEventListener("pointerdown", (e) => {
-
     // Update click statuses
-    isLeftClicked = updateClickStatus(e.target, "leftIcon");
-    isRightClicked = updateClickStatus(e.target, "rightIcon");
-    isMenuClicked = updateClickStatus(e.target, "menuIcon");
+    isLeftClicked = updateClickStatus(e.target, "left-icon");
+    isRightClicked = updateClickStatus(e.target, "right-icon");
+    isMenuClicked = updateClickStatus(e.target, "menu-icon");
+    isFullscreenClicked = updateClickStatus(e.target, "fullscreen-icon");
 
     isClicked = true;
     isDragging = true;
@@ -82,14 +95,11 @@ function initiateFloatingButton() {
     isMenuClicked = false;
     isLeftClicked = false;
     isRightClicked = false;
+    isFullscreenClicked = false;
     isClicked = false;
     if (isDragging) {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
-
-      // Get viewport dimensions
-      const viewportWidth = window.innerWidth;
-      const viewportHeight = window.innerHeight;
 
       // Get button dimensions
       const buttonWidth = floatingButton.offsetWidth;
@@ -126,6 +136,9 @@ function initiateFloatingButton() {
       }
       if (isRightClicked) {
         console.log("right");
+      }
+      if (isFullscreenClicked) {
+        console.log("fulls");
       }
     } else if (isDragging) {
       console.log("dragstop");

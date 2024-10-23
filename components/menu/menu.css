@@ -8,12 +8,15 @@
   z-index: -1;
   border-radius: 50%;
   background-color: rgb(255, 255, 255);
+  border: 1px solid;
   transition:
     width 0.3s,
-    height 0.3s;
+    height 0.3s,
+    opacity 0.3s;
 }
 
 .menuClose {
-  width: 0 !important;
-  height: 0 !important;
+    opacity: 0;
+    width: 0 !important;
+    height: 0 !important;
 }

@@ -1,18 +1,20 @@
 :root {
-  --button-size: 160px;
+  --button-width: 200px;
+  --button-height: 55px;
   --icon-size: 40px;
 }
 
+#menu-container {
+  position: absolute;
+}
+
 /* Styles for the floating button */
-#floatingButton {
+#floating-button {
   bottom: 0;
   right: 0;
-  width: var(--button-size);
-  height: var(--icon-size);
-  /* border: 1px solid; */
-  position: fixed;
-  /* bottom: 20px; */
-  /* right: 20px; */
+  width: var(--button-width);
+  height: var(--button-height);
+  position: absolute;
   cursor: grab;
   z-index: 9999;
   display: flex;
@@ -37,33 +39,17 @@
   font-size: 14px;
   cursor: pointer;
   border: 1px solid;
-  position: absolute;
   background-color: transparent;
   border-radius: var(--icon-size);
-}
-
-#menuIcon {
-  padding: 15px;
-
-  height: var(--icon-size);
+  background-color: white;
 }
 
 .verticalAlignMiddle {
   vertical-align: middle;
 }
 
-/* Left icon */
-#leftIcon {
-  left: 0px;
-}
-
-/* Right icon */
-#rightIcon {
-  right: 0px;
-}
-
 /* Default opacity for inactive button */
-#floatingButton.inactive {
+#floating-button.inactive {
   opacity: 0.4;
 }
 
