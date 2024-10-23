@@ -1,75 +1,79 @@
 :root {
-    --button-size: 160px;
-    --icon-size: 40px;
+  --button-size: 160px;
+  --icon-size: 40px;
 }
 
 /* Styles for the floating button */
 #floatingButton {
-    bottom: 0;
-    right: 0;
-    width: var(--button-size);
-    height: var(--icon-size);
-    /* border: 1px solid; */
-    position: fixed;
-    /* bottom: 20px; */
-    /* right: 20px; */
-    cursor: grab;
-    z-index: 9999;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    font-size: 24px;
-    touch-action: none;
-    transition: opacity 0.3s ease, transform 0.2s;
-    transform: scale(1);
+  bottom: 0;
+  right: 0;
+  width: var(--button-size);
+  height: var(--icon-size);
+  /* border: 1px solid; */
+  position: fixed;
+  /* bottom: 20px; */
+  /* right: 20px; */
+  cursor: grab;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 24px;
+  touch-action: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.2s;
+  transform: scale(1);
 }
 
 /* Icons within the floating button */
 .icon {
-    width: var(--icon-size);
-    height: var(--icon-size);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    border: 1px solid;
-    position: absolute;
-    background-color: transparent;
-    border-radius: var(--icon-size);
+  transition: transform 0.1s;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid;
+  position: absolute;
+  background-color: transparent;
+  border-radius: var(--icon-size);
 }
+
 #menuIcon {
+  padding: 15px;
 
-    padding: 15px;
-
-    height: var(--icon-size);
+  height: var(--icon-size);
 }
 
 .verticalAlignMiddle {
-    vertical-align: middle;
-  }
+  vertical-align: middle;
+}
 
 /* Left icon */
 #leftIcon {
-    left: 0px;
+  left: 0px;
 }
 
 /* Right icon */
 #rightIcon {
-    right: 0px;
+  right: 0px;
 }
 
 /* Default opacity for inactive button */
 #floatingButton.inactive {
-    opacity: 0.3;
+  opacity: 0.4;
 }
 
 /* Style changes when dragging */
-#floatingButton:active {
-    cursor: grabbing;
-    transform: scale(1.05); /* Slightly increase size when dragged */
+.icon:active {
+  cursor: grabbing;
+  transform: scale(1.1); /* Slightly increase size when dragged */
 }
 .prevent-selection {
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}

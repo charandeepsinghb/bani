@@ -1,0 +1,19 @@
+#menu {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  z-index: -1;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  transition:
+    width 0.3s,
+    height 0.3s;
+}
+
+.menuClose {
+  width: 0 !important;
+  height: 0 !important;
+}

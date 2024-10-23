@@ -1,12 +1,16 @@
 import { setLocalStorageItem, getLocalStorageItem } from "../../libs/local-storage-utils";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils";
+import { toggleOpenCloseMenu, menuOpen } from "../menu/menu";
+import { addMenu } from "../menu/menu";
 
 export function addFloatingButton(floatingButtonContainer) {
   fetch("/components/floating-button/floating-button.html")
     .then((data) => {
       data.text().then((t) => {
         floatingButtonContainer.innerHTML = t;
-        update();
+        initiateFloatingButton();
+        const menuContainer = document.getElementById("menu-container");
+        if (menuContainer != null) addMenu(menuContainer);
       });
     })
     .catch((e) => {
@@ -19,13 +23,15 @@ function setPositionFromLocalStorageIfAvailable(floatingButton) {
   const posY = getLocalStorageItem("floatingButtonY");
 
   if (notNullUndefinedNaNAny(posX, posY)) {
+    floatingButtonPositionLeft = posX;
+    floatingButtonPositionTop = posY;
     floatingButton.style.left = `${posX}px`;
     floatingButton.style.top = `${posY}px`;
   }
 }
 
-let floatingButtonPositionLeft;
-let floatingButtonPositionTop;
+let floatingButtonPositionLeft = 0;
+let floatingButtonPositionTop = 0;
 
 function savePositionToLocalStorage(x, y) {
   if (notNullUndefinedNaNAny(x, y)) {
@@ -34,7 +40,7 @@ function savePositionToLocalStorage(x, y) {
   }
 }
 
-function update() {
+function initiateFloatingButton() {
   const floatingButton = document.getElementById("floatingButton");
 
   setPositionFromLocalStorageIfAvailable(floatingButton);
@@ -48,23 +54,20 @@ function update() {
 
   let startX, startY, initialLeft, initialTop;
 
+  // Function to check which icon was clicked and update corresponding flags
+  function updateClickStatus(target, iconId) {
+    const iconClicked = target.closest(`#${iconId}`);
+    return iconClicked !== null;
+  }
+
   // Add pointer events for drag functionality
   floatingButton.addEventListener("pointerdown", (e) => {
-    if (e.target.closest("#leftIcon")) {
-      isLeftClicked = true;
-    } else {
-      isLeftClicked = false;
-    }
-    if (e.target.closest("#rightIcon")) {
-      isRightClicked = true;
-    } else {
-      isRightClicked = false;
-    }
-    if (e.target.closest("#menuIcon")) {
-      isMenuClicked = true;
-    } else {
-      isMenuClicked = false;
-    }
+
+    // Update click statuses
+    isLeftClicked = updateClickStatus(e.target, "leftIcon");
+    isRightClicked = updateClickStatus(e.target, "rightIcon");
+    isMenuClicked = updateClickStatus(e.target, "menuIcon");
+
     isClicked = true;
     isDragging = true;
     floatingButton.classList.remove("inactive"); // Remove opacity on active
@@ -115,7 +118,8 @@ function update() {
   floatingButton.addEventListener("pointerup", (e) => {
     if (isClicked) {
       if (isMenuClicked) {
-        console.log("menu");
+        // console.log("menu");
+        toggleOpenCloseMenu();
       }
       if (isLeftClicked) {
         console.log("left");
@@ -128,7 +132,10 @@ function update() {
       savePositionToLocalStorage(floatingButtonPositionLeft, floatingButtonPositionTop);
     }
     isDragging = false;
-    floatingButton.classList.add("inactive"); // Lower opacity when inactive
+    // console.log(menuOpen)
+    if (!menuOpen) {
+      floatingButton.classList.add("inactive"); // Lower opacity when inactive
+    }
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
   });
 }
