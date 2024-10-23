@@ -5,6 +5,8 @@
 
 /* Styles for the floating button */
 #floatingButton {
+    bottom: 0;
+    right: 0;
     width: var(--button-size);
     height: var(--icon-size);
     /* border: 1px solid; */

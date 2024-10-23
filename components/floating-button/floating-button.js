@@ -1,3 +1,6 @@
+import { setLocalStorageItem, getLocalStorageItem } from "../../libs/local-storage-utils";
+import { notNullUndefinedNaNAny } from "../../libs/type-utils";
+
 export function addFloatingButton(floatingButtonContainer) {
   fetch("/components/floating-button/floating-button.html")
     .then((data) => {
@@ -11,14 +14,58 @@ export function addFloatingButton(floatingButtonContainer) {
     });
 }
 
+function setPositionFromLocalStorageIfAvailable(floatingButton) {
+  const posX = getLocalStorageItem("floatingButtonX");
+  const posY = getLocalStorageItem("floatingButtonY");
+
+  if (notNullUndefinedNaNAny(posX, posY)) {
+    floatingButton.style.left = `${posX}px`;
+    floatingButton.style.top = `${posY}px`;
+  }
+}
+
+let floatingButtonPositionLeft;
+let floatingButtonPositionTop;
+
+function savePositionToLocalStorage(x, y) {
+  if (notNullUndefinedNaNAny(x, y)) {
+    setLocalStorageItem("floatingButtonX", x);
+    setLocalStorageItem("floatingButtonY", y);
+  }
+}
+
 function update() {
   const floatingButton = document.getElementById("floatingButton");
 
+  setPositionFromLocalStorageIfAvailable(floatingButton);
+
   let isDragging = false;
+  let isClicked = false;
+
+  let isMenuClicked = false;
+  let isLeftClicked = false;
+  let isRightClicked = false;
+
   let startX, startY, initialLeft, initialTop;
 
   // Add pointer events for drag functionality
   floatingButton.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("#leftIcon")) {
+      isLeftClicked = true;
+    } else {
+      isLeftClicked = false;
+    }
+    if (e.target.closest("#rightIcon")) {
+      isRightClicked = true;
+    } else {
+      isRightClicked = false;
+    }
+    if (e.target.closest("#menuIcon")) {
+      isMenuClicked = true;
+    } else {
+      isMenuClicked = false;
+    }
+    isClicked = true;
     isDragging = true;
     floatingButton.classList.remove("inactive"); // Remove opacity on active
     startX = e.clientX;
@@ -29,6 +76,10 @@ function update() {
   });
 
   floatingButton.addEventListener("pointermove", (e) => {
+    isMenuClicked = false;
+    isLeftClicked = false;
+    isRightClicked = false;
+    isClicked = false;
     if (isDragging) {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
@@ -42,28 +93,40 @@ function update() {
       const buttonHeight = floatingButton.offsetHeight;
 
       // Calculate the new position, ensuring it stays within the viewport
-      let newLeft = initialLeft + deltaX;
-      let newTop = initialTop + deltaY;
+      floatingButtonPositionLeft = initialLeft + deltaX;
+      floatingButtonPositionTop = initialTop + deltaY;
 
       // Prevent the button from moving outside the left and right edges
-      if (newLeft < 0) newLeft = 0;
-      if (newLeft + buttonWidth > viewportWidth) newLeft = viewportWidth - buttonWidth;
+      if (floatingButtonPositionLeft < 0) floatingButtonPositionLeft = 0;
+      if (floatingButtonPositionLeft + buttonWidth > viewportWidth) floatingButtonPositionLeft = viewportWidth - buttonWidth;
 
       // Prevent the button from moving outside the top and bottom edges
-      if (newTop < 0) newTop = 0;
-      if (newTop + buttonHeight > viewportHeight) newTop = viewportHeight - buttonHeight;
+      if (floatingButtonPositionTop < 0) floatingButtonPositionTop = 0;
+      if (floatingButtonPositionTop + buttonHeight > viewportHeight) floatingButtonPositionTop = viewportHeight - buttonHeight;
 
       // Update button position
-      floatingButton.style.left = `${newLeft}px`;
-      floatingButton.style.top = `${newTop}px`;
+      floatingButton.style.left = `${floatingButtonPositionLeft}px`;
+      floatingButton.style.top = `${floatingButtonPositionTop}px`;
       floatingButton.style.bottom = "auto"; // To avoid overriding bottom CSS
       floatingButton.style.right = "auto"; // To avoid overriding right CSS
-    } else {
-      floatingButton.style.background = "green";
     }
   });
 
   floatingButton.addEventListener("pointerup", (e) => {
+    if (isClicked) {
+      if (isMenuClicked) {
+        console.log("menu");
+      }
+      if (isLeftClicked) {
+        console.log("left");
+      }
+      if (isRightClicked) {
+        console.log("right");
+      }
+    } else if (isDragging) {
+      console.log("dragstop");
+      savePositionToLocalStorage(floatingButtonPositionLeft, floatingButtonPositionTop);
+    }
     isDragging = false;
     floatingButton.classList.add("inactive"); // Lower opacity when inactive
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
