@@ -1,6 +1,4 @@
 :root {
-  --button-width: 200px;
-  --button-height: 55px;
   --icon-size: 40px;
   --floating-button-font-size: 24px;
   --floating-button-icon-font-size: 14px;
@@ -8,20 +6,19 @@
 
 #menu-container {
   position: absolute;
+  left: 50%;
+  top: 50%;
 }
 
 /* Styles for the floating button */
 #floating-button {
-  bottom: 0;
-  right: 0;
-  width: var(--button-width);
-  height: var(--button-width);
+  inset: 0 auto auto 0;
   position: absolute;
   cursor: grab;
+  grid-template-columns: auto auto;
   z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+  display: grid;
+  gap: 10px;
   font-size: var(--floating-button-font-size);
   touch-action: none;
   transition:
@@ -41,13 +38,8 @@
   font-size: var(--floating-button-icon-font-size);
   cursor: pointer;
   border: 1px solid;
-  background-color: transparent;
   border-radius: var(--icon-size);
   background-color: white;
-}
-
-.verticalAlignMiddle {
-  vertical-align: middle;
 }
 
 /* Default opacity for inactive button */

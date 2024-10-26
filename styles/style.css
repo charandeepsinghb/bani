@@ -2,6 +2,7 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 
+  /* Floating button cannot change width, height of the page */
   overflow: hidden;
 }
 

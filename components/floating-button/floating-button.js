@@ -1,102 +1,116 @@
-import { setLocalStorageItem, getLocalStorageItem } from "../../libs/local-storage-utils";
+import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils";
 import { toggleOpenCloseMenu, menuOpen } from "../menu/menu";
 import { addMenu } from "../menu/menu";
-
-export function addFloatingButton(floatingButtonContainer) {
-  fetch("/components/floating-button/floating-button.html")
-    .then((data) => {
-      data.text().then((t) => {
-        floatingButtonContainer.innerHTML = t;
-        initiateFloatingButton();
-        const menuContainer = document.getElementById("menu-container");
-        if (menuContainer != null) addMenu(menuContainer);
-      });
-    })
-    .catch((e) => {
-      console.log(e);
-    });
-}
 
 // Get viewport dimensions
 const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
 
+// Main function to add the floating button to the container
+export function addFloatingButton(floatingButtonContainer) {
+  fetch("/components/floating-button/floating-button.html")
+    .then((response) => response.text())
+    .then((htmlContent) => {
+      floatingButtonContainer.innerHTML = htmlContent;
+      initializeFloatingButton();
+      const menuContainer = document.getElementById("menu-container");
+      if (menuContainer) addMenu(menuContainer);
+    })
+    .catch(console.error);
+}
+
+// Restore the floating button's position from local storage if available
 function setPositionFromLocalStorageIfAvailable(floatingButton) {
-  const posX = getLocalStorageItem("floatingButtonX");
-  const posY = getLocalStorageItem("floatingButtonY");
+  let positionX = getLocalStorageItem(FLOATING_BUTTON_X);
+  let positionY = getLocalStorageItem(FLOATING_BUTTON_Y);
 
-  if (notNullUndefinedNaNAny(posX, posY)) {
-    // Prevent the button from moving outside the left and right edges
-    if (posX < 0) posX = 0;
-    if (posX + floatingButton.buttonWidth > viewportWidth) posX = viewportWidth - floatingButton.buttonWidth;
+  if (notNullUndefinedNaNAny(positionX, positionY)) {
+    positionX = Number.parseFloat(positionX);
+    positionY = Number.parseFloat(positionY);
 
-    // Prevent the button from moving outside the top and bottom edges
-    if (posY < 0) posY = 0;
-    if (posY + floatingButton.buttonHeight > viewportHeight) posY = viewportHeight - floatingButton.buttonHeight;
+    // Get button dimensions
+    const buttonWidth = floatingButton.offsetWidth;
+    const buttonHeight = floatingButton.offsetHeight;
 
-    floatingButtonPositionLeft = posX;
-    floatingButtonPositionTop = posY;
-    floatingButton.style.left = `${posX}px`;
-    floatingButton.style.top = `${posY}px`;
+    // Ensure the button stays within horizontal viewport bounds
+    if (positionX < 0) positionX = 0;
+    if (positionX + buttonWidth > viewportWidth) positionX = viewportWidth - buttonWidth;
+
+    // Ensure the button stays within vertical viewport bounds
+    if (positionY < 0) positionY = 0;
+    if (positionY + buttonHeight > viewportHeight) positionY = viewportHeight - buttonHeight;
+
+    floatingButtonPosX = positionX;
+    floatingButtonPosY = positionY;
+    floatingButton.style.left = `${positionX}px`;
+    floatingButton.style.top = `${positionY}px`;
+    floatingButton.style.bottom = "auto"; // Avoid overriding bottom CSS
+    floatingButton.style.right = "auto";  // Avoid overriding right CSS
   }
 }
 
-let floatingButtonPositionLeft = 0;
-let floatingButtonPositionTop = 0;
+// Track button position coordinates
+let floatingButtonPosX = 0;
+let floatingButtonPosY = 0;
 
-function savePositionToLocalStorage(x, y) {
+// Save the current button position to local storage
+function saveButtonPositionToLocalStorage(x, y) {
   if (notNullUndefinedNaNAny(x, y)) {
-    setLocalStorageItem("floatingButtonX", x);
-    setLocalStorageItem("floatingButtonY", y);
+    setLocalStorageItem(FLOATING_BUTTON_X, x);
+    setLocalStorageItem(FLOATING_BUTTON_Y, y);
   }
 }
 
-function initiateFloatingButton() {
+// Initialize floating button interactions, including drag and click events
+function initializeFloatingButton() {
   const floatingButton = document.getElementById("floating-button");
 
   setPositionFromLocalStorageIfAvailable(floatingButton);
 
   let isDragging = false;
-  let isClicked = false;
+  let isButtonClicked = false;
 
-  let isMenuClicked = false;
-  let isLeftClicked = false;
-  let isRightClicked = false;
-  let isFullscreenClicked = false;
+  // Flags for specific icon clicks
+  let isMenuIconClicked = false;
+  let isLeftIconClicked = false;
+  let isRightIconClicked = false;
+  let isFullscreenIconClicked = false;
 
   let startX, startY, initialLeft, initialTop;
 
-  // Function to check which icon was clicked and update corresponding flags
-  function updateClickStatus(target, iconId) {
-    const iconClicked = target.closest(`#${iconId}`);
-    return iconClicked !== null;
+  // Check if a specific icon was clicked and update respective flags
+  function updateIconClickStatus(target, iconId) {
+    const iconElement = target.closest(`#${iconId}`);
+    return iconElement !== null;
   }
 
-  // Add pointer events for drag functionality
+  // Handle pointer down event for drag and click actions
   floatingButton.addEventListener("pointerdown", (e) => {
-    // Update click statuses
-    isLeftClicked = updateClickStatus(e.target, "left-icon");
-    isRightClicked = updateClickStatus(e.target, "right-icon");
-    isMenuClicked = updateClickStatus(e.target, "menu-icon");
-    isFullscreenClicked = updateClickStatus(e.target, "fullscreen-icon");
+    isLeftIconClicked = updateIconClickStatus(e.target, "left-icon");
+    isRightIconClicked = updateIconClickStatus(e.target, "right-icon");
+    isMenuIconClicked = updateIconClickStatus(e.target, "menu-icon");
+    isFullscreenIconClicked = updateIconClickStatus(e.target, "fullscreen-icon");
 
-    isClicked = true;
+    isButtonClicked = true;
     isDragging = true;
-    floatingButton.classList.remove("inactive"); // Remove opacity on active
+    floatingButton.classList.remove("inactive"); // Make button active
     startX = e.clientX;
     startY = e.clientY;
     initialLeft = floatingButton.offsetLeft;
     initialTop = floatingButton.offsetTop;
-    floatingButton.setPointerCapture(e.pointerId); // Captures events even if pointer leaves the element
+    floatingButton.setPointerCapture(e.pointerId); // Capture pointer events
   });
 
+  // Handle pointer move event for dragging the button
   floatingButton.addEventListener("pointermove", (e) => {
-    isMenuClicked = false;
-    isLeftClicked = false;
-    isRightClicked = false;
-    isFullscreenClicked = false;
-    isClicked = false;
+    // Reset icon click statuses during drag
+    isMenuIconClicked = false;
+    isLeftIconClicked = false;
+    isRightIconClicked = false;
+    isFullscreenIconClicked = false;
+    isButtonClicked = false;
+
     if (isDragging) {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
@@ -105,44 +119,41 @@ function initiateFloatingButton() {
       const buttonWidth = floatingButton.offsetWidth;
       const buttonHeight = floatingButton.offsetHeight;
 
-      // Calculate the new position, ensuring it stays within the viewport
-      floatingButtonPositionLeft = initialLeft + deltaX;
-      floatingButtonPositionTop = initialTop + deltaY;
+      // Calculate and constrain new button position within the viewport
+      floatingButtonPosX = initialLeft + deltaX;
+      floatingButtonPosY = initialTop + deltaY;
 
-      // Prevent the button from moving outside the left and right edges
-      if (floatingButtonPositionLeft < 0) floatingButtonPositionLeft = 0;
-      if (floatingButtonPositionLeft + buttonWidth > viewportWidth) floatingButtonPositionLeft = viewportWidth - buttonWidth;
-
-      // Prevent the button from moving outside the top and bottom edges
-      if (floatingButtonPositionTop < 0) floatingButtonPositionTop = 0;
-      if (floatingButtonPositionTop + buttonHeight > viewportHeight) floatingButtonPositionTop = viewportHeight - buttonHeight;
+      if (floatingButtonPosX < 0) floatingButtonPosX = 0;
+      if (floatingButtonPosX + buttonWidth > viewportWidth) floatingButtonPosX = viewportWidth - buttonWidth;
+      if (floatingButtonPosY < 0) floatingButtonPosY = 0;
+      if (floatingButtonPosY + buttonHeight > viewportHeight) floatingButtonPosY = viewportHeight - buttonHeight;
 
       // Update button position
-      floatingButton.style.left = `${floatingButtonPositionLeft}px`;
-      floatingButton.style.top = `${floatingButtonPositionTop}px`;
-      floatingButton.style.bottom = "auto"; // To avoid overriding bottom CSS
-      floatingButton.style.right = "auto"; // To avoid overriding right CSS
+      floatingButton.style.left = `${floatingButtonPosX}px`;
+      floatingButton.style.top = `${floatingButtonPosY}px`;
+      floatingButton.style.bottom = "auto";
+      floatingButton.style.right = "auto";
     }
   });
 
+  // Handle pointer up event for releasing drag and executing icon click actions
   floatingButton.addEventListener("pointerup", (e) => {
-    if (isClicked) {
-      if (isMenuClicked) {
-        // console.log("menu");
+    if (isButtonClicked) {
+      if (isMenuIconClicked) {
         toggleOpenCloseMenu();
       }
-      if (isLeftClicked) {
-        console.log("left");
+      if (isLeftIconClicked) {
+        console.log("Left icon clicked");
       }
-      if (isRightClicked) {
-        console.log("right");
+      if (isRightIconClicked) {
+        console.log("Right icon clicked");
       }
-      if (isFullscreenClicked) {
-        console.log("fulls");
+      if (isFullscreenIconClicked) {
+        console.log("Fullscreen icon clicked");
       }
     } else if (isDragging) {
-      console.log("dragstop");
-      savePositionToLocalStorage(floatingButtonPositionLeft, floatingButtonPositionTop);
+      console.log("Drag stopped");
+      saveButtonPositionToLocalStorage(floatingButtonPosX, floatingButtonPosY);
     }
     isDragging = false;
     if (!menuOpen) {
