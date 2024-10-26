@@ -1,11 +1,16 @@
+:root {
+  --bani-text-padding: 20px;
+  --bani-text-gap: 40px;
+}
+
 #bani {
   height: 100vh;
   column-width: 100vw;
   overflow-y: hidden;
   /* overflow-x: hidden; */
   box-sizing: border-box;
-  padding: 20px;
-  column-gap: 40px;
+  padding: var(--bani-text-padding);
+  column-gap: var(--bani-text-gap);
   column-fill: auto;
   /* margin: 0; */
 }

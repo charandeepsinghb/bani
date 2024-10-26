@@ -2,6 +2,8 @@
   --button-width: 200px;
   --button-height: 55px;
   --icon-size: 40px;
+  --floating-button-font-size: 24px;
+  --floating-button-icon-font-size: 14px;
 }
 
 #menu-container {
@@ -13,14 +15,14 @@
   bottom: 0;
   right: 0;
   width: var(--button-width);
-  height: var(--button-height);
+  height: var(--button-width);
   position: absolute;
   cursor: grab;
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  font-size: 24px;
+  font-size: var(--floating-button-font-size);
   touch-action: none;
   transition:
     opacity 0.3s ease,
@@ -36,7 +38,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: var(--floating-button-icon-font-size);
   cursor: pointer;
   border: 1px solid;
   background-color: transparent;

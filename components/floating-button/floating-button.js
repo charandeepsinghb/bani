@@ -145,7 +145,6 @@ function initiateFloatingButton() {
       savePositionToLocalStorage(floatingButtonPositionLeft, floatingButtonPositionTop);
     }
     isDragging = false;
-    // console.log(menuOpen)
     if (!menuOpen) {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
     }
