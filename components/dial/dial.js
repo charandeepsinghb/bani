@@ -54,35 +54,52 @@ export function dialPointerUp() {
 
 function initializeDial() {
   const dial = document.getElementById("dial");
-  let isDragging = false;
-  let startAngle = 0;
+let isDragging = false;
+let startAngle = 0;
+let rotation = 0;
 
-  function getAngle(x, y) {
-    return Math.atan2(y, x) * (180 / Math.PI);
-  }
+function getAngle(x, y) {
+  return Math.atan2(y, x) * (180 / Math.PI);
+}
 
-  let rotation = 0;
+function startDrag(e) {
+  isDragging = true;
+  const rect = dial.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
 
-  dial.addEventListener("pointerdown", (e) => {
-    isDragging = true;
-    const rect = dial.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    startAngle = getAngle(e.clientX - centerX, e.clientY - centerY) - rotation;
-  });
+  const clientX = e.clientX || e.touches[0].clientX;
+  const clientY = e.clientY || e.touches[0].clientY;
+  startAngle = getAngle(clientX - centerX, clientY - centerY) - rotation;
+}
 
-  document.addEventListener("pointermove", (e) => {
-    if (isDragging) {
-      const rect = dial.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-      const currentAngle = getAngle(e.clientX - centerX, e.clientY - centerY);
-      rotation = currentAngle - startAngle;
-      dial.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
-    }
-  });
+function rotateDial(e) {
+  if (!isDragging) return;
 
-  document.addEventListener("pointerup", () => {
-    isDragging = false;
-  });
+  const rect = dial.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const clientX = e.clientX || e.touches[0].clientX;
+  const clientY = e.clientY || e.touches[0].clientY;
+  const currentAngle = getAngle(clientX - centerX, clientY - centerY);
+
+  rotation = currentAngle - startAngle;
+  dial.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+}
+
+function endDrag() {
+  isDragging = false;
+}
+
+// Mouse events
+dial.addEventListener("mousedown", startDrag);
+document.addEventListener("mousemove", rotateDial);
+document.addEventListener("mouseup", endDrag);
+
+// Touch events
+dial.addEventListener("touchstart", startDrag);
+document.addEventListener("touchmove", rotateDial);
+document.addEventListener("touchend", endDrag);
+
 }
