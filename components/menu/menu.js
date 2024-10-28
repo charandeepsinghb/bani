@@ -1,3 +1,6 @@
+import { addDial } from "../dial/dial";
+import { setMenuPosition } from "../floating-button/floating-button";
+
 export let menuOpen = false;
 
 export function addMenu(menuContainer) {
@@ -5,6 +8,11 @@ export function addMenu(menuContainer) {
     .then((data) => {
       data.text().then((t) => {
         menuContainer.innerHTML = t;
+
+        menuAddedCallback();
+
+        const dialContainer = document.getElementById("dial-container");
+        if (dialContainer) addDial(dialContainer);
       });
     })
     .catch((e) => {
@@ -12,9 +20,19 @@ export function addMenu(menuContainer) {
     });
 }
 
+let menu;
+
+function menuAddedCallback() {
+  if (!menu) {
+    menu = document.getElementById("menu");
+  }
+  setMenuPosition(menu);
+}
+
 export function toggleOpenCloseMenu() {
-  
-  const menu = document.getElementById("menu");
+  if (!menu) {
+    menu = document.getElementById("menu");
+  }
   if (menuOpen) {
     // menu.style.display = "none";
     menu.classList.add("menuClose");
@@ -24,4 +42,15 @@ export function toggleOpenCloseMenu() {
   }
 
   menuOpen = !menuOpen;
+}
+
+export function changeMenuPosition(posX, posY) {
+  if (!menu) {
+    menu = document.getElementById("menu");
+  }
+
+  menu.style.left = `${posX}px`;
+  menu.style.top = `${posY}px`;
+  menu.style.bottom = "auto";
+  menu.style.right = "auto";
 }

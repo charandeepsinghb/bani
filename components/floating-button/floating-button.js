@@ -1,6 +1,6 @@
 import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils";
-import { toggleOpenCloseMenu, menuOpen } from "../menu/menu";
+import { toggleOpenCloseMenu, menuOpen, changeMenuPosition } from "../menu/menu";
 import { addMenu } from "../menu/menu";
 
 // Get viewport dimensions
@@ -13,11 +13,15 @@ export function addFloatingButton(floatingButtonContainer) {
     .then((response) => response.text())
     .then((htmlContent) => {
       floatingButtonContainer.innerHTML = htmlContent;
-      initializeFloatingButton();
       const menuContainer = document.getElementById("menu-container");
       if (menuContainer) addMenu(menuContainer);
+      initializeFloatingButton();
     })
     .catch(console.error);
+}
+
+export function setMenuPosition(menu) {
+  changeMenuPosition(floatingButtonPosX, floatingButtonPosY);
 }
 
 // Restore the floating button's position from local storage if available
@@ -33,20 +37,7 @@ function setPositionFromLocalStorageIfAvailable(floatingButton) {
     const buttonWidth = floatingButton.offsetWidth;
     const buttonHeight = floatingButton.offsetHeight;
 
-    // Ensure the button stays within horizontal viewport bounds
-    if (positionX < 0) positionX = 0;
-    if (positionX + buttonWidth > viewportWidth) positionX = viewportWidth - buttonWidth;
-
-    // Ensure the button stays within vertical viewport bounds
-    if (positionY < 0) positionY = 0;
-    if (positionY + buttonHeight > viewportHeight) positionY = viewportHeight - buttonHeight;
-
-    floatingButtonPosX = positionX;
-    floatingButtonPosY = positionY;
-    floatingButton.style.left = `${positionX}px`;
-    floatingButton.style.top = `${positionY}px`;
-    floatingButton.style.bottom = "auto"; // Avoid overriding bottom CSS
-    floatingButton.style.right = "auto";  // Avoid overriding right CSS
+    constrainAndSetButtonPosition(floatingButton, positionX, positionY, buttonWidth, buttonHeight);
   }
 }
 
@@ -100,6 +91,8 @@ function initializeFloatingButton() {
     initialLeft = floatingButton.offsetLeft;
     initialTop = floatingButton.offsetTop;
     floatingButton.setPointerCapture(e.pointerId); // Capture pointer events
+
+    // dialPointerDown(e);
   });
 
   // Handle pointer move event for dragging the button
@@ -119,20 +112,13 @@ function initializeFloatingButton() {
       const buttonWidth = floatingButton.offsetWidth;
       const buttonHeight = floatingButton.offsetHeight;
 
-      // Calculate and constrain new button position within the viewport
-      floatingButtonPosX = initialLeft + deltaX;
-      floatingButtonPosY = initialTop + deltaY;
+      // Calculate new button position
+      let posX = initialLeft + deltaX;
+      let posY = initialTop + deltaY;
 
-      if (floatingButtonPosX < 0) floatingButtonPosX = 0;
-      if (floatingButtonPosX + buttonWidth > viewportWidth) floatingButtonPosX = viewportWidth - buttonWidth;
-      if (floatingButtonPosY < 0) floatingButtonPosY = 0;
-      if (floatingButtonPosY + buttonHeight > viewportHeight) floatingButtonPosY = viewportHeight - buttonHeight;
+      constrainAndSetButtonPosition(floatingButton, posX, posY, buttonWidth, buttonHeight);
 
-      // Update button position
-      floatingButton.style.left = `${floatingButtonPosX}px`;
-      floatingButton.style.top = `${floatingButtonPosY}px`;
-      floatingButton.style.bottom = "auto";
-      floatingButton.style.right = "auto";
+      changeMenuPosition(floatingButtonPosX, floatingButtonPosY);
     }
   });
 
@@ -160,5 +146,27 @@ function initializeFloatingButton() {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
     }
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
+
+    // dialPointerUp();
   });
+}
+
+// Function to constrain button position within viewport and set styles
+function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHeight) {
+
+  // Square button so choosing buttonwidth as one unit
+
+  const buttonSizeHalf = buttonWidth / 2;
+
+  if (posX - buttonSizeHalf < 0) posX = buttonSizeHalf;
+  if (posX + buttonSizeHalf > viewportWidth) posX = viewportWidth - buttonSizeHalf;
+  if (posY - buttonSizeHalf < 0) posY = buttonSizeHalf;
+  if (posY + buttonSizeHalf > viewportHeight) posY = viewportHeight - buttonSizeHalf;
+
+  floatingButtonPosX = posX;
+  floatingButtonPosY = posY;
+  button.style.left = `${posX}px`;
+  button.style.top = `${posY}px`;
+  button.style.bottom = "auto"; // Avoid overriding bottom CSS
+  button.style.right = "auto";  // Avoid overriding right CSS
 }

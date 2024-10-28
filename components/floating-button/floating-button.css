@@ -4,12 +4,6 @@
   --floating-button-icon-font-size: 14px;
 }
 
-#menu-container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-}
-
 /* Styles for the floating button */
 #floating-button {
   inset: 0 auto auto 0;
@@ -24,7 +18,7 @@
   transition:
     opacity 0.3s ease,
     transform 0.2s;
-  transform: scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
 /* Icons within the floating button */
