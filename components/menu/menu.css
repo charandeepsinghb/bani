@@ -1,5 +1,5 @@
 :root {
-  --menu-width: 300px;
+  --menu-width: 450px;
 }
 
 .menu {
@@ -13,13 +13,12 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid;
   transition:
-    width 0.3s,
-    height 0.3s,
-    opacity 0.3s;
+    opacity 0.3s,
+    scale 0.3s;
+  transform-origin: top left;
 }
 
 .menuClose {
     opacity: 0;
-    width: 0 !important;
-    height: 0 !important;
+    scale: 0;
 }

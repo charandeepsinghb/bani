@@ -1,4 +1,4 @@
-import { addDial } from "../dial/dial";
+import { addDials } from "../dial/dial";
 import { setMenuPosition } from "../floating-button/floating-button";
 
 export let menuOpen = false;
@@ -12,7 +12,8 @@ export function addMenu(menuContainer) {
         menuAddedCallback();
 
         const dialContainer = document.getElementById("dial-container");
-        if (dialContainer) addDial(dialContainer);
+
+        if (dialContainer) addDials(dialContainer);
       });
     })
     .catch((e) => {
