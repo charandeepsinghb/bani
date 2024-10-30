@@ -22,9 +22,9 @@ function setSize(dial, size) {
 
 function setAllDials(dialContainer) {
   const dialConfigs = [
-    { text: 'DEF', size: 400},
-    { text: 'ABC', size: 300},
-    { text: 'Font size', size: 200}
+    { size: 400, name: 'Column width'},
+    { size: 300, name: 'Line height'},
+    { size: 200, name: 'Font size'}
   ];
 
   let i = 0;
@@ -32,10 +32,6 @@ function setAllDials(dialContainer) {
     initializeDial(dialConfig, dialContainer, i);
     i++;
   }
-}
-
-function addTextToDial(text, dial) {
-  dial.innerHTML = text;
 }
 
 const activeDials = [];
@@ -55,9 +51,7 @@ function initializeDial(dialConfig, dialContainer, i) {
 
   setSize(cloneDial, dialConfig.size);
 
-  addTextToDial(dialConfig.text, cloneDial);
-
-  addDialTemplate(cloneDial, "font-dial");
+  addDialTemplate(cloneDial, dialConfig.name);
 
   let isDragging = false;
   let startAngle = 0;
@@ -108,11 +102,11 @@ function initializeDial(dialConfig, dialContainer, i) {
   document.addEventListener("touchend", endDrag);
 }
 
-function addDialTemplate(dial, templateName) {
-  fetch("/components/dial/" + templateName + ".html")
+function addDialTemplate(dial, dialName) {
+  fetch("/components/dial/" + "dial-template" + ".html")
     .then((data) => {
       data.text().then((t) => {
-        dial.innerHTML = t;
+        dial.innerHTML = t.replaceAll('dial-name-text', dialName);
       });
     })
     .catch((e) => {

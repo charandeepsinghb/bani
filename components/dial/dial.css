@@ -39,3 +39,7 @@
   .dial-texts .bottom {
     transform: rotate(180deg);
   }
+
+  .rotated-dial-texts {
+    position: absolute;
+  }
