@@ -1,3 +1,7 @@
+import { setBaniColumnWidth } from "../../libs/column-width";
+import { increaseDecreaseBaniFontSize } from "../../libs/font-size";
+import { setLineHeightBani } from "../../libs/line-height";
+
 export function addDials(dialContainer) {
   fetch("/components/dial/dial.html")
     .then((data) => {
@@ -21,6 +25,8 @@ function setSize(dial, size) {
 }
 
 function setAllDials(dialContainer) {
+  const baniElement = document.getElementById("bani");
+  
   const dialConfigs = [
     { size: 400, name: 'Column width'},
     { size: 300, name: 'Line height'},
@@ -29,14 +35,34 @@ function setAllDials(dialContainer) {
 
   let i = 0;
   for (const dialConfig of dialConfigs) {
-    initializeDial(dialConfig, dialContainer, i);
+    initializeDial(dialConfig, dialContainer, i, baniElement);
     i++;
+  }
+}
+
+function addRotationEvent(dialName, rotation, baniElement) {
+  console.log(rotation);
+  switch (dialName) {
+    case "Font size":
+      increaseDecreaseBaniFontSize(rotation*0.2, baniElement);
+      break;
+
+    case "Line height":
+      setLineHeightBani(rotation, baniElement);
+      break;
+
+    case "Column width":
+      setBaniColumnWidth(rotation*0.2+20, baniElement);
+      break;
+  
+    default:
+      break;
   }
 }
 
 const activeDials = [];
 
-function initializeDial(dialConfig, dialContainer, i) {
+function initializeDial(dialConfig, dialContainer, i, baniElement) {
   const dial = document.getElementById("dial");
 
   const cloneDial = dial.cloneNode(true);
@@ -85,6 +111,8 @@ function initializeDial(dialConfig, dialContainer, i) {
 
     rotation = currentAngle - startAngle;
     cloneDial.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+
+    addRotationEvent(dialConfig.name, currentAngle, baniElement);
   }
 
   function endDrag() {
