@@ -1,5 +1,5 @@
 :root {
-  --menu-size: 500px
+  --menu-size: 500px;
 }
 
 .menu {
@@ -22,8 +22,8 @@
 }
 
 .menuClose {
-    opacity: 0;
-    scale: 0;
+  opacity: 0;
+  scale: 0;
 }
 
 #reset-icon {
