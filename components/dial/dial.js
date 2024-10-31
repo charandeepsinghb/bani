@@ -26,11 +26,11 @@ function setSize(dial, size) {
 
 function setAllDials(dialContainer) {
   const baniElement = document.getElementById("bani");
-  
+
   const dialConfigs = [
-    { size: 400, name: 'Font size'},
-    { size: 300, name: 'Line height'},
-    { size: 200, name: 'Column width'}
+    { size: 400, name: "Font size" },
+    { size: 300, name: "Line height" },
+    { size: 200, name: "Column width" }
   ];
 
   let i = 0;
@@ -43,7 +43,7 @@ function setAllDials(dialContainer) {
 function addRotationEvent(dialName, rotation, baniElement) {
   switch (dialName) {
     case "Font size":
-      increaseDecreaseBaniFontSize(rotation*0.2, baniElement);
+      increaseDecreaseBaniFontSize(rotation * 0.2, baniElement);
       break;
 
     case "Line height":
@@ -51,9 +51,9 @@ function addRotationEvent(dialName, rotation, baniElement) {
       break;
 
     case "Column width":
-      setBaniColumnWidth(rotation*0.2+20, baniElement);
+      setBaniColumnWidth(rotation * 0.2 + 20, baniElement);
       break;
-  
+
     default:
       break;
   }
@@ -62,7 +62,7 @@ function addRotationEvent(dialName, rotation, baniElement) {
 function addRotationStopEvent(dialName, rotation) {
   switch (dialName) {
     case "Font size":
-      setLocalFontSize(rotation*0.2);
+      setLocalFontSize(rotation * 0.2);
       break;
 
     case "Line height":
@@ -70,9 +70,9 @@ function addRotationStopEvent(dialName, rotation) {
       break;
 
     case "Column width":
-      setLocalColumnWidth(rotation*0.2+20);
+      setLocalColumnWidth(rotation * 0.2 + 20);
       break;
-  
+
     default:
       break;
   }
@@ -155,7 +155,7 @@ function addDialTemplate(dial, dialName) {
   fetch("components/dial/" + "dial-template" + ".html")
     .then((data) => {
       data.text().then((t) => {
-        dial.innerHTML = t.replaceAll('dial-name-text', dialName);
+        dial.innerHTML = t.replaceAll("dial-name-text", dialName);
       });
     })
     .catch((e) => {

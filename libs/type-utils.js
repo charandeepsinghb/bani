@@ -10,4 +10,3 @@ export function notNullUndefinedNaNAny(...values) {
   }
   return true;
 }
-

@@ -153,7 +153,6 @@ function initializeFloatingButton() {
 
 // Function to constrain button position within viewport and set styles
 function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHeight) {
-
   // Square button so choosing buttonwidth as one unit
 
   const buttonSizeHalf = buttonWidth / 2;
@@ -168,5 +167,5 @@ function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHe
   button.style.left = `${posX}px`;
   button.style.top = `${posY}px`;
   button.style.bottom = "auto"; // Avoid overriding bottom CSS
-  button.style.right = "auto";  // Avoid overriding right CSS
+  button.style.right = "auto"; // Avoid overriding right CSS
 }

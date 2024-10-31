@@ -8,11 +8,11 @@ const floatingButtonContainer = document.getElementById("floating-button-contain
 if (floatingButtonContainer != null) addFloatingButton(floatingButtonContainer);
 
 function setPropertiesFromLocal() {
-    const baniElement = document.getElementById("bani");
+  const baniElement = document.getElementById("bani");
 
-    setFromLocalFontSize(baniElement);
-    setFromLocalColumnWidth(baniElement);
-    setFromLocalLineHeight(baniElement);
+  setFromLocalFontSize(baniElement);
+  setFromLocalColumnWidth(baniElement);
+  setFromLocalLineHeight(baniElement);
 }
 
 setPropertiesFromLocal();

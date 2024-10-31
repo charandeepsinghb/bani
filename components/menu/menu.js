@@ -61,7 +61,7 @@ export function changeMenuPosition(posX, posY) {
 function resetAllLocalButton() {
   const resetAllLocal = document.getElementById("reset-icon");
 
-  resetAllLocal.addEventListener("click", ()=>{
+  resetAllLocal.addEventListener("click", () => {
     cleanLocalStoreage();
     location.reload();
   });
