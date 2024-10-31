@@ -1,16 +1,15 @@
 :root {
-  --menu-size: 500px;
+  --floating-button-font-size: 24px;
 }
 
 .menu {
-  width: var(--menu-size);
   position: absolute;
   transform: translate(-50%, -50%);
-  inset: 0 auto auto 0;
+  inset: 50% auto auto 50%;
   z-index: 9997;
-  border-radius: 50%;
-  /* background-color: rgb(255, 255, 255); */
-  /* border: 1px solid; */
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid;
   transition:
     opacity 0.3s,
     scale 0.3s;
@@ -19,6 +18,8 @@
   /* flex for buttons in menu */
   display: flex;
   justify-content: center;
+
+  box-shadow: 4px 5px 11px 2px #0000002e;
 }
 
 .menuClose {
@@ -26,11 +27,85 @@
   scale: 0;
 }
 
-#reset-icon {
-  z-index: 90;
-  position: relative;
+
+/* Buttons container */
+
+.menu-buttons {
+  padding: 10px;
+
+  max-height: 80vh;
+
+  overflow: auto;
 }
 
-#menu-buttons-container {
-  width: 310px;
+.menu-buttons .fontMenu, .menu-buttons .resetMenu, .menu-buttons .toggles {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.menu-buttons .alignTitle {
+  padding: 10px;
+}
+
+.menu-buttons .alignMenu {
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alignMenu .alignItem {
+  display: flex;
+  align-items: flex-start;
+}
+
+.dflex {
+  display: flex;
+}
+
+.fontMenu .addButton, .fontMenu input {
+  margin-right: 10px;
+}
+
+.menuLabel {
+  margin-right: 10px;
+}
+
+.menu-buttons .fontMenu input {
+  border: 1px solid;
+  border-radius: 5px;
+  font-size: var(--floating-button-font-size);
+
+  width: 60px;
+}
+
+.alignSection {
+  margin-top: 15px;
+}
+
+.toggles input {
+  width: 10px;
+}
+
+.toggles .scroll {
+  display: flex;
+  align-items: center;
+}
+
+.toggles .scroll input {
+  width: 24px;
+  height: 24px;
+}
+
+.toggles .scroll label {
+  margin-right: 10px;
+}
+
+@media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
+  .menu-buttons {
+    min-width: 80vw;
+  }
 }

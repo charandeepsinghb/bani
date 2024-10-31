@@ -1,6 +1,5 @@
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
-import { addDials } from "../dial/dial.js";
-import { setMenuPosition } from "../floating-button/floating-button.js";
+// import { addDials } from "../dial/dial.js";
 
 export let menuOpen = false;
 
@@ -12,9 +11,9 @@ export function addMenu(menuContainer) {
 
         menuAddedCallback();
 
-        const dialContainer = document.getElementById("dial-container");
+        // const dialContainer = document.getElementById("dial-container");
 
-        if (dialContainer) addDials(dialContainer);
+        // if (dialContainer) addDials(dialContainer);
       });
     })
     .catch((e) => {
@@ -28,7 +27,6 @@ function menuAddedCallback() {
   if (!menu) {
     menu = document.getElementById("menu");
   }
-  setMenuPosition(menu);
   resetAllLocalButton();
 }
 
@@ -45,17 +43,6 @@ export function toggleOpenCloseMenu() {
   }
 
   menuOpen = !menuOpen;
-}
-
-export function changeMenuPosition(posX, posY) {
-  if (!menu) {
-    menu = document.getElementById("menu");
-  }
-
-  menu.style.left = `${posX}px`;
-  menu.style.top = `${posY}px`;
-  menu.style.bottom = "auto";
-  menu.style.right = "auto";
 }
 
 function resetAllLocalButton() {

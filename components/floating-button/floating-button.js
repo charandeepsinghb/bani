@@ -1,6 +1,6 @@
 import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils.js";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
-import { toggleOpenCloseMenu, menuOpen, changeMenuPosition } from "../menu/menu.js";
+import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
 import { addMenu } from "../menu/menu.js";
 
 // Get viewport dimensions
@@ -18,10 +18,6 @@ export function addFloatingButton(floatingButtonContainer) {
       initializeFloatingButton();
     })
     .catch(console.error);
-}
-
-export function setMenuPosition(menu) {
-  changeMenuPosition(floatingButtonPosX, floatingButtonPosY);
 }
 
 // Restore the floating button's position from local storage if available
@@ -91,8 +87,6 @@ function initializeFloatingButton() {
     initialLeft = floatingButton.offsetLeft;
     initialTop = floatingButton.offsetTop;
     floatingButton.setPointerCapture(e.pointerId); // Capture pointer events
-
-    // dialPointerDown(e);
   });
 
   // Handle pointer move event for dragging the button
@@ -117,8 +111,6 @@ function initializeFloatingButton() {
       let posY = initialTop + deltaY;
 
       constrainAndSetButtonPosition(floatingButton, posX, posY, buttonWidth, buttonHeight);
-
-      changeMenuPosition(floatingButtonPosX, floatingButtonPosY);
     }
   });
 
@@ -146,8 +138,6 @@ function initializeFloatingButton() {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
     }
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
-
-    // dialPointerUp();
   });
 }
 
@@ -157,10 +147,12 @@ function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHe
 
   const buttonSizeHalf = buttonWidth / 2;
 
-  if (posX - buttonSizeHalf < 0) posX = buttonSizeHalf;
-  if (posX + buttonSizeHalf > viewportWidth) posX = viewportWidth - buttonSizeHalf;
-  if (posY - buttonSizeHalf < 0) posY = buttonSizeHalf;
-  if (posY + buttonSizeHalf > viewportHeight) posY = viewportHeight - buttonSizeHalf;
+  const sideThreshold = 10;
+
+  if (posX - buttonSizeHalf - sideThreshold < 0) posX = buttonSizeHalf + sideThreshold;
+  if (posX + buttonSizeHalf + sideThreshold > viewportWidth) posX = viewportWidth - buttonSizeHalf - sideThreshold;
+  if (posY - buttonSizeHalf - sideThreshold < 0) posY = buttonSizeHalf + sideThreshold;
+  if (posY + buttonSizeHalf + sideThreshold > viewportHeight) posY = viewportHeight - buttonSizeHalf - sideThreshold;
 
   floatingButtonPosX = posX;
   floatingButtonPosY = posY;
