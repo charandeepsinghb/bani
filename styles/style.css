@@ -1,9 +1,11 @@
-body {
+main {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 
   /* Floating button cannot change width, height of the page */
   overflow: hidden;
+  overflow-x: hidden;
+  overflow-clip-margin: 1rem;
 }
 
 .noto-sans-gurmukhi-bani {
@@ -16,7 +18,8 @@ body {
 
 @media only screen and (max-aspect-ratio: 0.6/1),
 (max-width: 600px) {
-  body {
-    overflow: hidden;
+  main {
+    overflow-x: hidden;
+    overflow-clip-margin: 1rem;
   }
 }
