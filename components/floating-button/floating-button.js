@@ -9,7 +9,7 @@ const viewportHeight = window.innerHeight;
 
 // Main function to add the floating button to the container
 export function addFloatingButton(floatingButtonContainer) {
-  fetch("/components/floating-button/floating-button.html")
+  fetch("components/floating-button/floating-button.html")
     .then((response) => response.text())
     .then((htmlContent) => {
       floatingButtonContainer.innerHTML = htmlContent;

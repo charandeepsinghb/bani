@@ -3,7 +3,7 @@ import { increaseDecreaseBaniFontSize, setLocalFontSize } from "../../libs/font-
 import { setLineHeightBani, setLocalLineHeight } from "../../libs/line-height";
 
 export function addDials(dialContainer) {
-  fetch("/components/dial/dial.html")
+  fetch("components/dial/dial.html")
     .then((data) => {
       data.text().then((t) => {
         dialContainer.innerHTML = t;
@@ -152,7 +152,7 @@ function initializeDial(dialConfig, dialContainer, i, baniElement) {
 }
 
 function addDialTemplate(dial, dialName) {
-  fetch("/components/dial/" + "dial-template" + ".html")
+  fetch("components/dial/" + "dial-template" + ".html")
     .then((data) => {
       data.text().then((t) => {
         dial.innerHTML = t.replaceAll('dial-name-text', dialName);

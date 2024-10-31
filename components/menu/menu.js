@@ -5,7 +5,7 @@ import { setMenuPosition } from "../floating-button/floating-button";
 export let menuOpen = false;
 
 export function addMenu(menuContainer) {
-  fetch("/components/menu/menu.html")
+  fetch("components/menu/menu.html")
     .then((data) => {
       data.text().then((t) => {
         menuContainer.innerHTML = t;
