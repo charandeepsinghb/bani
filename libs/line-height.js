@@ -1,5 +1,5 @@
-import { getLocalStorageItem, LINE_HEIGHT, setLocalStorageItem } from "./local-storage-utils";
-import { notNullUndefinedNaN } from "./type-utils";
+import { getLocalStorageItem, LINE_HEIGHT, setLocalStorageItem } from "./local-storage-utils.js";
+import { notNullUndefinedNaN } from "./type-utils.js";
 
 export function setLineHeightBani(lineHeight, baniElement) {
   if (lineHeight > 100 || lineHeight < 10) {

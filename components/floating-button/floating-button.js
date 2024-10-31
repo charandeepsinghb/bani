@@ -1,7 +1,7 @@
-import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils";
-import { notNullUndefinedNaNAny } from "../../libs/type-utils";
+import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils.js";
+import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
 import { toggleOpenCloseMenu, menuOpen, changeMenuPosition } from "../menu/menu";
-import { addMenu } from "../menu/menu";
+import { addMenu } from "../menu/menu.js";
 
 // Get viewport dimensions
 const viewportWidth = window.innerWidth;

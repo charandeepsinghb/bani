@@ -1,6 +1,6 @@
-import { setBaniColumnWidth, setLocalColumnWidth } from "../../libs/column-width";
-import { increaseDecreaseBaniFontSize, setLocalFontSize } from "../../libs/font-size";
-import { setLineHeightBani, setLocalLineHeight } from "../../libs/line-height";
+import { setBaniColumnWidth, setLocalColumnWidth } from "../../libs/column-width.js";
+import { increaseDecreaseBaniFontSize, setLocalFontSize } from "../../libs/font-size.js";
+import { setLineHeightBani, setLocalLineHeight } from "../../libs/line-height.js";
 
 export function addDials(dialContainer) {
   fetch("components/dial/dial.html")

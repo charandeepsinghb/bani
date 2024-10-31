@@ -1,5 +1,5 @@
-import { FONT_SIZE, getLocalStorageItem, setLocalStorageItem } from "./local-storage-utils";
-import { notNullUndefinedNaN } from "./type-utils";
+import { FONT_SIZE, getLocalStorageItem, setLocalStorageItem } from "./local-storage-utils.js";
+import { notNullUndefinedNaN } from "./type-utils.js";
 
 export function increaseDecreaseBaniFontSize(fontSize, baniElement) {
   if (fontSize > 100 || fontSize < 1) {

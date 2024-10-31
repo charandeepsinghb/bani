@@ -1,5 +1,5 @@
-import { COLUMN_WIDTH, getLocalStorageItem, setLocalStorageItem } from "./local-storage-utils";
-import { notNullUndefinedNaN } from "./type-utils";
+import { COLUMN_WIDTH, getLocalStorageItem, setLocalStorageItem } from "./local-storage-utils.js";
+import { notNullUndefinedNaN } from "./type-utils.js";
 
 export function setBaniColumnWidth(columnWidth, baniElement) {
     if (columnWidth > 200 || columnWidth < 10) {

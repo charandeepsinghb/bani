@@ -1,7 +1,7 @@
-import { addFloatingButton } from "../components/floating-button/floating-button";
-import { setFromLocalColumnWidth } from "../libs/column-width";
-import { setFromLocalFontSize } from "../libs/font-size";
-import { setFromLocalLineHeight } from "../libs/line-height";
+import { addFloatingButton } from "../components/floating-button/floating-button.js";
+import { setFromLocalColumnWidth } from "../libs/column-width.js";
+import { setFromLocalFontSize } from "../libs/font-size.js";
+import { setFromLocalLineHeight } from "../libs/line-height.js";
 
 const floatingButtonContainer = document.getElementById("floating-button-container");
 

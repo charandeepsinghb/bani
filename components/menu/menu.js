@@ -1,6 +1,6 @@
-import { cleanLocalStoreage } from "../../libs/local-storage-utils";
-import { addDials } from "../dial/dial";
-import { setMenuPosition } from "../floating-button/floating-button";
+import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
+import { addDials } from "../dial/dial.js";
+import { setMenuPosition } from "../floating-button/floating-button.js";
 
 export let menuOpen = false;
 
