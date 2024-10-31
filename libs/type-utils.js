@@ -1,6 +1,6 @@
-/* function notNullUndefinedNaN(value) {
-  return value !== null && value !== undefined && value !== NaN;
-} */
+export function notNullUndefinedNaN(value) {
+  return value !== null && value !== undefined && !isNaN(value) && value !== "undefined";
+}
 
 export function notNullUndefinedNaNAny(...values) {
   for (const v of values) {
@@ -10,3 +10,4 @@ export function notNullUndefinedNaNAny(...values) {
   }
   return true;
 }
+

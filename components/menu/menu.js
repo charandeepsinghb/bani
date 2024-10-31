@@ -1,3 +1,4 @@
+import { cleanLocalStoreage } from "../../libs/local-storage-utils";
 import { addDials } from "../dial/dial";
 import { setMenuPosition } from "../floating-button/floating-button";
 
@@ -28,6 +29,7 @@ function menuAddedCallback() {
     menu = document.getElementById("menu");
   }
   setMenuPosition(menu);
+  resetAllLocalButton();
 }
 
 export function toggleOpenCloseMenu() {
@@ -54,4 +56,13 @@ export function changeMenuPosition(posX, posY) {
   menu.style.top = `${posY}px`;
   menu.style.bottom = "auto";
   menu.style.right = "auto";
+}
+
+function resetAllLocalButton() {
+  const resetAllLocal = document.getElementById("reset-icon");
+
+  resetAllLocal.addEventListener("click", ()=>{
+    cleanLocalStoreage();
+    location.reload();
+  });
 }

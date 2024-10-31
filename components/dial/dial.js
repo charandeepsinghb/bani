@@ -1,6 +1,6 @@
-import { setBaniColumnWidth } from "../../libs/column-width";
-import { increaseDecreaseBaniFontSize } from "../../libs/font-size";
-import { setLineHeightBani } from "../../libs/line-height";
+import { setBaniColumnWidth, setLocalColumnWidth } from "../../libs/column-width";
+import { increaseDecreaseBaniFontSize, setLocalFontSize } from "../../libs/font-size";
+import { setLineHeightBani, setLocalLineHeight } from "../../libs/line-height";
 
 export function addDials(dialContainer) {
   fetch("/components/dial/dial.html")
@@ -28,9 +28,9 @@ function setAllDials(dialContainer) {
   const baniElement = document.getElementById("bani");
   
   const dialConfigs = [
-    { size: 400, name: 'Column width'},
+    { size: 400, name: 'Font size'},
     { size: 300, name: 'Line height'},
-    { size: 200, name: 'Font size'}
+    { size: 200, name: 'Column width'}
   ];
 
   let i = 0;
@@ -41,7 +41,6 @@ function setAllDials(dialContainer) {
 }
 
 function addRotationEvent(dialName, rotation, baniElement) {
-  console.log(rotation);
   switch (dialName) {
     case "Font size":
       increaseDecreaseBaniFontSize(rotation*0.2, baniElement);
@@ -53,6 +52,25 @@ function addRotationEvent(dialName, rotation, baniElement) {
 
     case "Column width":
       setBaniColumnWidth(rotation*0.2+20, baniElement);
+      break;
+  
+    default:
+      break;
+  }
+}
+
+function addRotationStopEvent(dialName, rotation) {
+  switch (dialName) {
+    case "Font size":
+      setLocalFontSize(rotation*0.2);
+      break;
+
+    case "Line height":
+      setLocalLineHeight(rotation);
+      break;
+
+    case "Column width":
+      setLocalColumnWidth(rotation*0.2+20);
       break;
   
     default:
@@ -98,6 +116,8 @@ function initializeDial(dialConfig, dialContainer, i, baniElement) {
     startAngle = getAngle(clientX - centerX, clientY - centerY) - rotation;
   }
 
+  let currentAngle;
+
   function rotateDial(e) {
     if (!isDragging) return;
 
@@ -107,7 +127,7 @@ function initializeDial(dialConfig, dialContainer, i, baniElement) {
 
     const clientX = e.clientX || e.touches[0].clientX;
     const clientY = e.clientY || e.touches[0].clientY;
-    const currentAngle = getAngle(clientX - centerX, clientY - centerY);
+    currentAngle = getAngle(clientX - centerX, clientY - centerY);
 
     rotation = currentAngle - startAngle;
     cloneDial.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
@@ -117,6 +137,7 @@ function initializeDial(dialConfig, dialContainer, i, baniElement) {
 
   function endDrag() {
     isDragging = false;
+    addRotationStopEvent(dialConfig.name, currentAngle);
   }
 
   // Mouse events

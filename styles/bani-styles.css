@@ -2,7 +2,7 @@
   --bani-text-padding: 20px;
   --bani-text-gap: 40px;
   --bani-text-height: 100vh;
-  --bani-text-column-width: 20vw;
+  --bani-text-column-width: 100vw;
 }
 
 #bani {

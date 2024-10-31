@@ -6,7 +6,7 @@
 
 /* Styles for the floating button */
 #floating-button {
-  inset: 0 auto auto 0;
+  inset: 45px auto auto 45px;
   position: absolute;
   cursor: grab;
   grid-template-columns: auto auto;

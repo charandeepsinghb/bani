@@ -8,3 +8,11 @@ export function setLocalStorageItem(name, value) {
 export function getLocalStorageItem(name) {
     return localStorage.getItem(name);
 }
+
+export const FONT_SIZE = "fontSize";
+export const LINE_HEIGHT = "lineHeight";
+export const COLUMN_WIDTH = "columnWidth";
+
+export function cleanLocalStoreage() {
+  localStorage.clear();
+}
