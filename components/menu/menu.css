@@ -38,7 +38,7 @@
   overflow: auto;
 }
 
-.menu-buttons .fontMenu, .menu-buttons .resetMenu, .menu-buttons .toggles {
+.menu-buttons .fontMenu, .menu-buttons .resetMenu, .menu-buttons .scroll {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -59,7 +59,17 @@
 
 .alignMenu .alignItem {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.alignMenu .alignItem:last-child {
+  margin-right: 0px;
+}
+
+.alignItem input {
+  width: 24px;
+  height: 24px;
 }
 
 .dflex {
@@ -93,6 +103,7 @@
 .toggles .scroll {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .toggles .scroll input {

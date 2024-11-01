@@ -1,5 +1,6 @@
 :root {
   --icon-size: 40px;
+  --icon-size-mobile: 60px;
   --floating-button-font-size: 24px;
   --floating-button-icon-font-size: 14px;
 }
@@ -50,4 +51,13 @@
   -ms-user-select: none;
   -webkit-user-select: none;
   user-select: none;
+}
+
+@media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
+  #floating-button .icon {
+    width: var(--icon-size-mobile);
+    height: var(--icon-size-mobile);
+
+    border-radius: var(--icon-size-mobile);
+  }
 }

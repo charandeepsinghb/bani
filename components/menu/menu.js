@@ -1,5 +1,5 @@
+import { increaseDecreaseBaniFontSize } from "../../libs/font-size.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
-// import { addDials } from "../dial/dial.js";
 
 export let menuOpen = false;
 
@@ -10,10 +10,6 @@ export function addMenu(menuContainer) {
         menuContainer.innerHTML = t;
 
         menuAddedCallback();
-
-        // const dialContainer = document.getElementById("dial-container");
-
-        // if (dialContainer) addDials(dialContainer);
       });
     })
     .catch((e) => {
@@ -28,6 +24,7 @@ function menuAddedCallback() {
     menu = document.getElementById("menu");
   }
   resetAllLocalButton();
+  addButtonInputListners();
 }
 
 export function toggleOpenCloseMenu() {
@@ -52,4 +49,8 @@ function resetAllLocalButton() {
     cleanLocalStoreage();
     location.reload();
   });
+}
+
+function addButtonInputListners() {
+  increaseDecreaseBaniFontSize();
 }
