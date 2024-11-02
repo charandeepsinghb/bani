@@ -10,8 +10,6 @@ const BUTTON_HOLD_THRESH = 10;
 
 const INCREASER_DECREASE_VAL = 0.1;
 
-const DEFAULT_LINE_HEIGHT = 1.14;
-
 let baniLineHeight = null;
 
 export function increaseDecreaseBaniLineHeightListners() {
@@ -64,7 +62,7 @@ function decreaseLineHeightListner(lineHeightInput, baniElement) {
       increaesDecreaseLineHeight(-INCREASER_DECREASE_VAL, baniElement, lineHeightInput);
     },
     () => {
-      saveLineHeightToLocal(lineHeightInput.value);
+      saveLineHeightToLocal(baniLineHeight);
     },
     BUTTON_HOLD_THRESH
   );
@@ -87,7 +85,7 @@ export function setlineHeightInputValue() {
   const lineHeight = getLocalStorageItem(LINE_HEIGHT);
 
   if (!notNullUndefinedNaN(lineHeight)) {
-    baniLineHeight = DEFAULT_LINE_HEIGHT;
+    baniLineHeight = null;
     return;
   }
 
@@ -105,7 +103,7 @@ export function setLineHeightFromLocalStorage(baniElement) {
     baniElement.style.lineHeight = baniLineHeight;
     return;
   }
-  baniLineHeight = DEFAULT_LINE_HEIGHT;
+  baniLineHeight = null;
 
   return;
 }
