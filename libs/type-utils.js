@@ -17,3 +17,7 @@ export function isNumberBetween(first, second, num) {
   }
   return false;
 }
+
+export function isStringNotBlank(value) {
+  return value && typeof(value) === 'string' && value.length > 0;
+}

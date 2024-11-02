@@ -1,3 +1,4 @@
+import { alignButtonListners } from "../../libs/align.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
@@ -24,9 +25,7 @@ function menuAddedCallback() {
   if (!menu) {
     menu = document.getElementById("menu");
   }
-  resetAllLocalButton();
-  addButtonInputListners();
-  setFieldValuesFromLocal();
+  initializeMenuButtons();
 }
 
 export function toggleOpenCloseMenu() {
@@ -56,9 +55,19 @@ function resetAllLocalButton() {
 function addButtonInputListners() {
   increaseDecreaseBaniFontSizeListners();
   increaseDecreaseBaniLineHeightListners();
+
+  alignButtonListners();
 }
 
 function setFieldValuesFromLocal() {
   setFontInputValue();
   setlineHeightInputValue();
+}
+
+function initializeMenuButtons() {
+  resetAllLocalButton();
+  addButtonInputListners();
+  setFieldValuesFromLocal();
+
+  // Align init
 }
