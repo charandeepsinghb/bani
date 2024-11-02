@@ -1,5 +1,6 @@
 import { toggleFullScreen } from "../../libs/fullscreen.js";
 import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils.js";
+import { nextButtonClick, previousButtonClick } from "../../libs/nextprev.js";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
 import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
 import { addMenu } from "../menu/menu.js";
@@ -9,14 +10,14 @@ const viewportWidth = window.innerWidth;
 const viewportHeight = window.innerHeight;
 
 // Main function to add the floating button to the container
-export function addFloatingButton(floatingButtonContainer) {
+export function addFloatingButton(floatingButtonContainer, baniElement) {
   fetch("components/floating-button/floating-button.html")
     .then((response) => response.text())
     .then((htmlContent) => {
       floatingButtonContainer.innerHTML = htmlContent;
       const menuContainer = document.getElementById("menu-container");
-      if (menuContainer) addMenu(menuContainer);
-      initializeFloatingButton();
+      if (menuContainer) addMenu(menuContainer, baniElement);
+      initializeFloatingButton(baniElement);
     })
     .catch(console.error);
 }
@@ -51,7 +52,7 @@ function saveButtonPositionToLocalStorage(x, y) {
 }
 
 // Initialize floating button interactions, including drag and click events
-function initializeFloatingButton() {
+function initializeFloatingButton(baniElement) {
   const floatingButton = document.getElementById("floating-button");
 
   setPositionFromLocalStorageIfAvailable(floatingButton);
@@ -122,16 +123,15 @@ function initializeFloatingButton() {
         toggleOpenCloseMenu();
       }
       if (isLeftIconClicked) {
-        console.log("Left icon clicked");
+        previousButtonClick(baniElement);
       }
       if (isRightIconClicked) {
-        console.log("Right icon clicked");
+        nextButtonClick(baniElement);
       }
       if (isFullscreenIconClicked) {
         toggleFullScreen();
       }
     } else if (isDragging) {
-      console.log("Drag stopped");
       saveButtonPositionToLocalStorage(floatingButtonPosX, floatingButtonPosY);
     }
     isDragging = false;

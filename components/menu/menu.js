@@ -2,16 +2,17 @@ import { alignButtonListners } from "../../libs/align.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
+import { scrollCheckInitialize } from "../../libs/scroll.js";
 
 export let menuOpen = false;
 
-export function addMenu(menuContainer) {
+export function addMenu(menuContainer, baniElement) {
   fetch("components/menu/menu.html")
     .then((data) => {
       data.text().then((t) => {
         menuContainer.innerHTML = t;
 
-        menuAddedCallback();
+        menuAddedCallback(baniElement);
       });
     })
     .catch((e) => {
@@ -21,11 +22,11 @@ export function addMenu(menuContainer) {
 
 let menu;
 
-function menuAddedCallback() {
+function menuAddedCallback(baniElement) {
   if (!menu) {
     menu = document.getElementById("menu");
   }
-  initializeMenuButtons();
+  initializeMenuButtons(baniElement);
 }
 
 export function toggleOpenCloseMenu() {
@@ -52,11 +53,13 @@ function resetAllLocalButton() {
   });
 }
 
-function addButtonInputListners() {
+function addButtonInputListners(baniElement) {
   increaseDecreaseBaniFontSizeListners();
   increaseDecreaseBaniLineHeightListners();
 
   alignButtonListners();
+
+  scrollCheckInitialize(baniElement);
 }
 
 function setFieldValuesFromLocal() {
@@ -64,10 +67,8 @@ function setFieldValuesFromLocal() {
   setlineHeightInputValue();
 }
 
-function initializeMenuButtons() {
+function initializeMenuButtons(baniElement) {
   resetAllLocalButton();
-  addButtonInputListners();
+  addButtonInputListners(baniElement);
   setFieldValuesFromLocal();
-
-  // Align init
 }

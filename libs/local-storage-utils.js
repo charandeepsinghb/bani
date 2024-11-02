@@ -17,6 +17,7 @@ export const FONT_SIZE = "fontSize";
 export const LINE_HEIGHT = "lineHeight";
 export const COLUMN_WIDTH = "columnWidth";
 export const ALIGN = "align";
+export const SCROLL = "scroll";
 
 export function cleanLocalStoreage() {
   localStorage.clear();
