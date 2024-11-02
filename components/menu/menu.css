@@ -11,8 +11,8 @@
   background-color: rgb(255, 255, 255);
   border: 1px solid;
   transition:
-    opacity 0.3s,
-    scale 0.3s;
+    opacity 0.1s,
+    scale 0.1s;
   transform-origin: top left;
 
   /* flex for buttons in menu */
@@ -27,7 +27,6 @@
   scale: 0;
 }
 
-
 /* Buttons container */
 
 .menu-buttons {
@@ -38,7 +37,9 @@
   overflow: auto;
 }
 
-.menu-buttons .fontMenu, .menu-buttons .resetMenu, .menu-buttons .scroll {
+.menu-buttons .fontMenu,
+.menu-buttons .resetMenu,
+.menu-buttons .scroll {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +77,8 @@
   display: flex;
 }
 
-.fontMenu .addButton, .fontMenu input {
+.fontMenu .addButton,
+.fontMenu input {
   margin-right: 10px;
 }
 
@@ -89,7 +91,11 @@
   border-radius: 5px;
   font-size: var(--floating-button-font-size);
 
-  width: 60px;
+  width: 80px;
+}
+
+.toggles .scrollLabel {
+  width: 100%;
 }
 
 .alignSection {

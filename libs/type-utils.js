@@ -10,3 +10,10 @@ export function notNullUndefinedNaNAny(...values) {
   }
   return true;
 }
+
+export function isNumberBetween(first, second, num) {
+  if (num >= first && num <= second) {
+    return true;
+  }
+  return false;
+}

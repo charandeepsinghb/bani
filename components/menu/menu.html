@@ -1,27 +1,13 @@
 <div id="menu" class="menu menuClose">
   <div id="menu-buttons-container" class="menu-buttons">
-
     <div class="fontMenu">
       <label class="menuLabel">Font size</label>
       <div class="dflex">
         <button id="font-increase" class="icon addButton">
           <span class="material-symbols-outlined">add</span>
         </button>
-        <input type="number">
+        <input id="font-input" type="number" />
         <button id="font-decrease" class="icon">
-          <span class="material-symbols-outlined">remove</span>
-        </button>
-      </div>
-    </div>
-    
-    <div class="fontMenu">
-      <label class="menuLabel">Column width</label>
-      <div class="dflex">
-        <button class="icon addButton">
-          <span class="material-symbols-outlined">add</span>
-        </button>
-        <input type="number">
-        <button class="icon">
           <span class="material-symbols-outlined">remove</span>
         </button>
       </div>
@@ -33,7 +19,20 @@
         <button class="icon addButton">
           <span class="material-symbols-outlined">add</span>
         </button>
-        <input type="number">
+        <input type="number" />
+        <button class="icon">
+          <span class="material-symbols-outlined">remove</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="fontMenu">
+      <label class="menuLabel">Column width</label>
+      <div class="dflex">
+        <button class="icon addButton">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+        <input type="number" />
         <button class="icon">
           <span class="material-symbols-outlined">remove</span>
         </button>
@@ -43,17 +42,13 @@
     <div class="alignSection">
       <label class="alignTitle">Alignment</label>
       <div class="alignMenu">
-        <div class="alignItem"><label for="leftAlign">Left</label>
-        <input type="radio" name="alignInput" id="leftAlign"></div>
-  
-        <div class="alignItem"><label for="middleAlign">Right</label>
-        <input type="radio" name="alignInput" id="middleAlign"></div>
-  
-        <div class="alignItem"><label for="rightAlign">Middle</label>
-        <input type="radio" name="alignInput" id="rightAlign"></div>
-  
-        <div class="alignItem"><label for="justifyAlign">Justify</label>
-        <input type="radio" name="alignInput" id="justifyAlign"></div>
+        <div class="alignItem"><label for="leftAlign">Left</label> <input type="radio" name="alignInput" id="leftAlign" /></div>
+
+        <div class="alignItem"><label for="middleAlign">Right</label> <input type="radio" name="alignInput" id="middleAlign" /></div>
+
+        <div class="alignItem"><label for="rightAlign">Middle</label> <input type="radio" name="alignInput" id="rightAlign" /></div>
+
+        <div class="alignItem"><label for="justifyAlign">Justify</label> <input type="radio" name="alignInput" id="justifyAlign" /></div>
       </div>
     </div>
 
@@ -66,8 +61,8 @@
 
     <div class="toggles">
       <div class="scroll">
-        <label for="scroll">Scroll</label>
-        <input type="checkbox" name="scroll" id="scroll">
+        <label for="scroll" class="scrollLabel">Scroll</label>
+        <input type="checkbox" name="scroll" id="scroll" />
       </div>
     </div>
   </div>

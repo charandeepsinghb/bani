@@ -1,4 +1,4 @@
-import { increaseDecreaseBaniFontSize } from "../../libs/font-size.js";
+import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
 
 export let menuOpen = false;
@@ -25,6 +25,7 @@ function menuAddedCallback() {
   }
   resetAllLocalButton();
   addButtonInputListners();
+  setFieldValuesFromLocal();
 }
 
 export function toggleOpenCloseMenu() {
@@ -52,5 +53,9 @@ function resetAllLocalButton() {
 }
 
 function addButtonInputListners() {
-  increaseDecreaseBaniFontSize();
+  increaseDecreaseBaniFontSizeListners();
+}
+
+function setFieldValuesFromLocal() {
+  setFontInputValue();
 }
