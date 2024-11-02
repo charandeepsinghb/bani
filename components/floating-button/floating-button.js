@@ -1,3 +1,4 @@
+import { toggleFullScreen } from "../../libs/fullscreen.js";
 import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils.js";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
 import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
@@ -127,7 +128,7 @@ function initializeFloatingButton() {
         console.log("Right icon clicked");
       }
       if (isFullscreenIconClicked) {
-        console.log("Fullscreen icon clicked");
+        toggleFullScreen();
       }
     } else if (isDragging) {
       console.log("Drag stopped");
