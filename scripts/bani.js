@@ -1,7 +1,7 @@
 import { addFloatingButton } from "../components/floating-button/floating-button.js";
 import { setFromLocalColumnWidth } from "../libs/column-width.js";
 import { setFontSizeFromLocalStorage } from "../libs/font-size.js";
-import { setFromLocalLineHeight } from "../libs/line-height.js";
+import { setLineHeightFromLocalStorage } from "../libs/line-height.js";
 
 const floatingButtonContainer = document.getElementById("floating-button-container");
 
@@ -12,7 +12,7 @@ function setPropertiesFromLocal() {
 
   setFontSizeFromLocalStorage(baniElement);
   setFromLocalColumnWidth(baniElement);
-  setFromLocalLineHeight(baniElement);
+  setLineHeightFromLocalStorage(baniElement);
 }
 
 setPropertiesFromLocal();

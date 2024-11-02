@@ -1,5 +1,5 @@
 export function notNullUndefinedNaN(value) {
-  return value !== null && value !== undefined && !isNaN(value) && value !== "undefined";
+  return value !== null && value !== undefined && !isNaN(value) && value !== "undefined" && value !== '';
 }
 
 export function notNullUndefinedNaNAny(...values) {

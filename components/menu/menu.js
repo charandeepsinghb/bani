@@ -1,4 +1,5 @@
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
+import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
 
 export let menuOpen = false;
@@ -54,8 +55,10 @@ function resetAllLocalButton() {
 
 function addButtonInputListners() {
   increaseDecreaseBaniFontSizeListners();
+  increaseDecreaseBaniLineHeightListners();
 }
 
 function setFieldValuesFromLocal() {
   setFontInputValue();
+  setlineHeightInputValue();
 }

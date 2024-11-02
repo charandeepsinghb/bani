@@ -10,13 +10,6 @@ const BUTTON_HOLD_THRESH = 10;
 
 const INCREASER_DECREASE_VAL = 0.2;
 
-export function setBaniFontSize(fontSize, baniElement) {
-  if (fontSize > 100 || fontSize < 1) {
-    return;
-  }
-  baniElement.style.fontSize = fontSize + "px";
-}
-
 export function increaseDecreaseBaniFontSizeListners() {
   const fontInput = document.getElementById("font-input");
   const baniElement = document.getElementById("bani");
@@ -28,8 +21,8 @@ export function increaseDecreaseBaniFontSizeListners() {
 }
 
 function inputChangeListner(fontInput, baniElement) {
-  fontInput.addEventListener("change", (e) => {
-    if (notNullUndefinedNaN(e.target.value)) {
+  fontInput.addEventListener("change", (e)=>{
+    if (notNullUndefinedNaN(e.target.value) && isNumberBetween(MIN_SIZE, MAX_SIZE, e.target.value)) {
       // update
       baniElement.style.fontSize = e.target.value + "px";
       // save
