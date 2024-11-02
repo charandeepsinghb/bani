@@ -1,12 +1,10 @@
 :root {
   --bani-text-padding: 20px;
   --bani-text-gap: 40px;
-  --bani-text-height: 100vh;
   --bani-text-column-width: 100vw;
 }
 
 #bani {
-  height: var(--bani-text-height);
   column-width: var(--bani-text-column-width);
   overflow-y: hidden;
   box-sizing: border-box;
@@ -32,5 +30,40 @@
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   #bani {
     height: 90vh;
+  }
+}
+
+
+/* Device height queries */
+
+/* Small height devices (e.g., small phones) */
+@media (max-height: 500px) {
+  /* Styles for devices with a height up to 500px */
+  #bani {
+    height: 500px;
+  }
+}
+
+/* Medium height devices */
+@media (min-height: 501px) and (max-height: 800px) {
+  /* Styles for devices with a height between 501px and 800px */
+  #bani {
+    height: 700px;
+  }
+}
+
+/* Large height devices (e.g., tablets in landscape mode or larger phones) */
+@media (min-height: 801px) and (max-height: 1200px) {
+  /* Styles for devices with a height between 801px and 1200px */
+  #bani {
+    height: 1100px;
+  }
+}
+
+/* Extra large height devices (e.g., desktops or large tablets) */
+@media (min-height: 1201px) {
+  /* Styles for devices with a height above 1200px */
+  #bani {
+    height: 1200px;
   }
 }

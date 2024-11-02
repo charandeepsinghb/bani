@@ -7,12 +7,17 @@ const floatingButtonContainer = document.getElementById("floating-button-contain
 
 if (floatingButtonContainer != null) addFloatingButton(floatingButtonContainer);
 
-function setPropertiesFromLocal() {
-  const baniElement = document.getElementById("bani");
+const baniElement = document.getElementById("bani");
 
+function setPropertiesFromLocal() {
   setFontSizeFromLocalStorage(baniElement);
   setFromLocalColumnWidth(baniElement);
   setLineHeightFromLocalStorage(baniElement);
 }
 
+function setHeightWidthForFixed() {
+  baniElement.style.height = (window.innerHeight) + "px";
+}
+
+setHeightWidthForFixed();
 setPropertiesFromLocal();
