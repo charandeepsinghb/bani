@@ -1,14 +1,25 @@
-let currentShabadStart = parseInt(localStorage.getItem('currentShabadStart')) || 1;
+import { isParaStyleEnabled } from "./para.js";
+import { getBaniName } from "./which-bani.js";
+
+let currentShabadStart = 1;
 let currentShabadEnd = currentShabadStart;
 
 let baniElementForFullScreen;
 
+let showBaniClass = "d-block";
+let baniName;
+
 export function initializeBaniShow(baniElement) {
   // Set starting point from saved value, or default to 1 if not found
-  currentShabadStart = parseInt(localStorage.getItem('currentShabadStart')) || 1;
+  baniName = getBaniName(baniElement);
+  currentShabadStart = parseInt(localStorage.getItem('currentShabadStart_' + baniName)) || 1;
   currentShabadEnd = currentShabadStart;
 
   baniElementForFullScreen = baniElement;
+
+  if (isParaStyleEnabled(baniElement)) {
+    showBaniClass = "d-inline";
+  }
   
   showBaniShabads(baniElement);
 }
@@ -34,10 +45,10 @@ export function showPrev(baniElement) {
       break;
     }
 
-    shabadElement.classList.add("d-block");
+    shabadElement.classList.add(showBaniClass);
 
     if (baniElement.getBoundingClientRect().height > window.innerHeight) {
-      shabadElement.classList.remove("d-block");
+      shabadElement.classList.remove(showBaniClass);
       currentShabadStart++;
       break;
     }
@@ -49,7 +60,7 @@ export function showPrev(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart', currentShabadStart);
+  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
   console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
@@ -62,7 +73,7 @@ function hideCurrentPrev() {
   while (i <= endIndex) {
     const shabad = document.getElementById("shabad_" + i);
     if (shabad) {
-      shabad.classList.remove("d-block");
+      shabad.classList.remove(showBaniClass);
     }
 
     if (i - currentShabadStart > threshLimit) {
@@ -80,7 +91,7 @@ function hideCurrentNext() {
   while (i <= currentShabadEnd) {
     const shabad = document.getElementById("shabad_" + i);
     if (shabad) {
-      shabad.classList.remove("d-block");
+      shabad.classList.remove(showBaniClass);
     }
 
     if (i - currentShabadStart > threshLimit) {
@@ -109,10 +120,10 @@ export function showNext(baniElement) {
       break;
     }
 
-    shabadElement.classList.add("d-block");
+    shabadElement.classList.add(showBaniClass);
 
     if (baniElement.getBoundingClientRect().height > window.innerHeight) {
-      shabadElement.classList.remove("d-block");
+      shabadElement.classList.remove(showBaniClass);
       currentShabadEnd--;
       break;
     }
@@ -125,7 +136,7 @@ export function showNext(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart', currentShabadStart);
+  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
   console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
@@ -144,10 +155,10 @@ function showBaniShabads(baniElement) {
       break;
     }
 
-    shabadElement.classList.add("d-block");
+    shabadElement.classList.add(showBaniClass);
 
     if (baniElement.getBoundingClientRect().height > window.innerHeight) {
-      shabadElement.classList.remove("d-block");
+      shabadElement.classList.remove(showBaniClass);
       currentShabadEnd--;
       break;
     }
@@ -160,7 +171,7 @@ function showBaniShabads(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart', currentShabadStart);
+  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
   console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
@@ -190,7 +201,7 @@ function hideCurrentShabads() {
   while (i <= currentShabadEnd) {
     const shabad = document.getElementById("shabad_" + i);
     if (shabad) {
-      shabad.classList.remove("d-block");
+      shabad.classList.remove(showBaniClass);
     }
     i++;
 

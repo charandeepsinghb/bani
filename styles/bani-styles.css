@@ -13,14 +13,8 @@
   /* column-fill: auto; */
 }
 
-.shabad,
-.eng,
-.pun {
-  margin-bottom: 5px;
-}
-
-.shabad-and-meaning {
-  margin-bottom: 20px;
+.shabad {
+  margin-bottom: 16px;
 }
 
 .para {
@@ -30,7 +24,8 @@
 /* 
   For new scroll method
 */
-.hide-shabad .shabad {
+
+.hide-shabad .gurmukhi, .hide-shabad .en, .hide-shabad .pu {
   display: none;
 }
 
@@ -48,4 +43,12 @@
 
 .gurmukhi, .en {
   margin-bottom: 8px;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+.para-gurmukhi, .para-en, .para-pu {
+  margin-bottom: 12px;
 }
