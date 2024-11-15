@@ -21,12 +21,17 @@ function scrollCheckedEventAdd(baniElement, scrollCheckbox) {
   });
 }
 
+/**
+ * 
+ * @param {HTMLElement} baniElement 
+ * @param {*} scrollCheck 
+ */
 function changeScroll(baniElement, scrollCheck) {
-  if (scrollCheck === 'true') {
-    baniElement.style.overflowX = 'auto';
-  } else if (scrollCheck === 'false') {
-    baniElement.style.overflowX = 'hidden';
-  }
+  // if (scrollCheck === 'true') {
+  //   baniElement.classList.remove("hide-shabad");
+  // } else if (scrollCheck === 'false') {
+  //   baniElement.classList.add("hide-shabad");
+  // }
 }
 
 function setScrollCheckbox(scrollCheckbox, scrollCheck) {

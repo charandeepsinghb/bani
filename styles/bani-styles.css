@@ -5,12 +5,12 @@
 }
 
 #bani {
-  column-width: var(--bani-text-column-width);
-  overflow-y: hidden;
+  /* column-width: var(--bani-text-column-width); */
+  /* overflow-y: hidden; */
   box-sizing: border-box;
   padding: var(--bani-text-padding);
-  column-gap: var(--bani-text-gap);
-  column-fill: auto;
+  /* column-gap: var(--bani-text-gap); */
+  /* column-fill: auto; */
 }
 
 .shabad,
@@ -27,43 +27,25 @@
   margin-bottom: 30px;
 }
 
-@media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
-  #bani {
-    height: 90vh;
-  }
+/* 
+  For new scroll method
+*/
+.hide-shabad .shabad {
+  display: none;
 }
 
-
-/* Device height queries */
-
-/* Small height devices (e.g., small phones) */
-@media (max-height: 500px) {
-  /* Styles for devices with a height up to 500px */
-  #bani {
-    height: 500px;
-  }
+.d-block {
+  display: block !important;
 }
 
-/* Medium height devices */
-@media (min-height: 501px) and (max-height: 800px) {
-  /* Styles for devices with a height between 501px and 800px */
-  #bani {
-    height: 700px;
-  }
+.hide-shabad-en .en {
+  display: none;
 }
 
-/* Large height devices (e.g., tablets in landscape mode or larger phones) */
-@media (min-height: 801px) and (max-height: 1200px) {
-  /* Styles for devices with a height between 801px and 1200px */
-  #bani {
-    height: 1100px;
-  }
+.hide-shabad-pu .pu {
+  display: none;
 }
 
-/* Extra large height devices (e.g., desktops or large tablets) */
-@media (min-height: 1201px) {
-  /* Styles for devices with a height above 1200px */
-  #bani {
-    height: 1200px;
-  }
+.gurmukhi, .en {
+  margin-bottom: 8px;
 }

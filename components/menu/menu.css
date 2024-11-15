@@ -39,7 +39,7 @@
 
 .menu-buttons .fontMenu,
 .menu-buttons .resetMenu,
-.menu-buttons .scroll {
+.menu-buttons .checkType {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,18 +106,18 @@
   width: 10px;
 }
 
-.toggles .scroll {
+.toggles .checkType {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.toggles .scroll input {
+.toggles .checkType input {
   width: 24px;
   height: 24px;
 }
 
-.toggles .scroll label {
+.toggles .checkType label {
   margin-right: 10px;
 }
 

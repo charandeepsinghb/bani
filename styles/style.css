@@ -3,14 +3,21 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 
   /* Floating button cannot change width, height of the page */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .root {
-  overflow: hidden;
-  overflow-x: hidden;
+  /* overflow: hidden;
+  overflow-x: hidden; */
 }
-
+#floating-button-container {
+  position: fixed;
+}
+#menu-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
 .noto-sans-gurmukhi-bani {
   font-family: "Noto Sans Gurmukhi", sans-serif;
   font-optical-sizing: auto;
@@ -19,11 +26,11 @@ body {
 }
 
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
-  body {
+  /* body {
     overflow-x: hidden;
   }
   .root {
     overflow: hidden;
     overflow-x: hidden;
-  }
+  } */
 }

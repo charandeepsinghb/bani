@@ -1,7 +1,10 @@
 import { alignButtonListners } from "../../libs/align.js";
+import { englishCheckInitialize } from "../../libs/english.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
+import { initializeBaniShow } from "../../libs/insert-bani.js";
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
+import { punjabiCheckInitialize } from "../../libs/punjabi.js";
 import { scrollCheckInitialize } from "../../libs/scroll.js";
 
 export let menuOpen = false;
@@ -59,16 +62,20 @@ function addButtonInputListners(baniElement) {
 
   alignButtonListners();
 
-  scrollCheckInitialize(baniElement);
+  // scrollCheckInitialize(baniElement);
+  punjabiCheckInitialize(baniElement);
+  englishCheckInitialize(baniElement);
 }
 
-function setFieldValuesFromLocal() {
+function setFieldValuesFromLocal(baniElement) {
   setFontInputValue();
   setlineHeightInputValue();
+
+  initializeBaniShow(baniElement);
 }
 
 function initializeMenuButtons(baniElement) {
   resetAllLocalButton();
   addButtonInputListners(baniElement);
-  setFieldValuesFromLocal();
+  setFieldValuesFromLocal(baniElement);
 }

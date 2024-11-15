@@ -20,7 +20,7 @@ function setHeightWidthForFixed() {
   baniElement.style.height = (window.innerHeight) + "px";
 }
 
-setHeightWidthForFixed();
+// setHeightWidthForFixed();
 setPropertiesFromLocal();
 
 keyPressInitialize(baniElement);

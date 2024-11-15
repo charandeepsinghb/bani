@@ -18,6 +18,8 @@ export const LINE_HEIGHT = "lineHeight";
 export const COLUMN_WIDTH = "columnWidth";
 export const ALIGN = "align";
 export const SCROLL = "scroll";
+export const PUNJABI = "english";
+export const ENGLISH = "punjabi";
 
 export function cleanLocalStoreage() {
   localStorage.clear();
