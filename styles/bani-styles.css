@@ -1,11 +1,11 @@
 :root {
   --bani-text-padding: 20px;
   --bani-text-gap: 40px;
-  /* --bani-text-column-width: 100vw; */
+  /* --bani-text-word-spacing: 100vw; */
 }
 
 #bani {
-  /* column-width: var(--bani-text-column-width); */
+  /* word-spacing: var(--bani-text-word-spacing); */
   /* overflow-y: hidden; */
   box-sizing: border-box;
   padding: var(--bani-text-padding);

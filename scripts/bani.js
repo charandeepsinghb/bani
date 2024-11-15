@@ -1,5 +1,5 @@
 import { addFloatingButton } from "../components/floating-button/floating-button.js";
-import { setFromLocalColumnWidth } from "../libs/column-width.js";
+import { setFromLocalColumnWidth } from "../libs/word-spacing.js";
 import { setFontSizeFromLocalStorage } from "../libs/font-size.js";
 import { keyPressInitialize } from "../libs/keypress.js";
 import { setLineHeightFromLocalStorage } from "../libs/line-height.js";

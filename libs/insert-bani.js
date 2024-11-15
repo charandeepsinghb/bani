@@ -183,10 +183,14 @@ export function resetShabadsSize(from) {
   if (!baniElementForReuse) {
     return;
   }
-
   hideCurrentShabads();
+
+  if (from) {
+    currentShabadStart = from;
+  }
   // Reset currentShabadEnd to start from the current position
   currentShabadEnd = currentShabadStart;
+
 
   // Call showBaniShabads to adjust based on the new screen size
   showBaniShabads(baniElementForReuse);

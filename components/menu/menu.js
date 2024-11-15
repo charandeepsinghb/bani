@@ -1,7 +1,7 @@
 import { alignButtonListners } from "../../libs/align.js";
 import { englishCheckInitialize } from "../../libs/english.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
-import { initializeBaniShow } from "../../libs/insert-bani.js";
+import { initializeBaniShow, resetShabadsSize } from "../../libs/insert-bani.js";
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
 import { punjabiCheckInitialize } from "../../libs/punjabi.js";
@@ -56,6 +56,14 @@ function resetAllLocalButton() {
   });
 }
 
+function restartButton() {
+  const restartBani = document.getElementById("restart-icon");
+
+  restartBani.addEventListener("click", () => {
+    resetShabadsSize(1);
+  });
+}
+
 function addButtonInputListners(baniElement) {
   increaseDecreaseBaniFontSizeListners();
   increaseDecreaseBaniLineHeightListners();
@@ -76,6 +84,7 @@ function setFieldValuesFromLocal(baniElement) {
 
 function initializeMenuButtons(baniElement) {
   resetAllLocalButton();
+  restartButton();
   addButtonInputListners(baniElement);
   setFieldValuesFromLocal(baniElement);
 }
