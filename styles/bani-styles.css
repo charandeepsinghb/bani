@@ -29,16 +29,16 @@
   display: none;
 }
 
-.d-block {
-  display: block !important;
+.hide-shabad .d-block {
+  display: block;
 }
 
 .hide-shabad-en .en {
-  display: none;
+  display: none !important;
 }
 
 .hide-shabad-pu .pu {
-  display: none;
+  display: none !important;
 }
 
 .gurmukhi, .en {
