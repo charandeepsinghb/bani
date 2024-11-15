@@ -4,7 +4,7 @@ import { getBaniName } from "./which-bani.js";
 let currentShabadStart = 1;
 let currentShabadEnd = currentShabadStart;
 
-let baniElementForFullScreen;
+let baniElementForReuse;
 
 let showBaniClass = "d-block";
 let baniName;
@@ -15,7 +15,7 @@ export function initializeBaniShow(baniElement) {
   currentShabadStart = parseInt(localStorage.getItem('currentShabadStart_' + baniName)) || 1;
   currentShabadEnd = currentShabadStart;
 
-  baniElementForFullScreen = baniElement;
+  baniElementForReuse = baniElement;
 
   if (isParaStyleEnabled(baniElement)) {
     showBaniClass = "d-inline";
@@ -179,8 +179,8 @@ function showBaniShabads(baniElement) {
 /**
  * 
  */
-export function resetShabadsSize() {
-  if (!baniElementForFullScreen) {
+export function resetShabadsSize(from) {
+  if (!baniElementForReuse) {
     return;
   }
 
@@ -189,7 +189,7 @@ export function resetShabadsSize() {
   currentShabadEnd = currentShabadStart;
 
   // Call showBaniShabads to adjust based on the new screen size
-  showBaniShabads(baniElementForFullScreen);
+  showBaniShabads(baniElementForReuse);
 }
 
 

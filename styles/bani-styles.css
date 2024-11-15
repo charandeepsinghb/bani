@@ -1,7 +1,7 @@
 :root {
   --bani-text-padding: 20px;
   --bani-text-gap: 40px;
-  --bani-text-column-width: 100vw;
+  /* --bani-text-column-width: 100vw; */
 }
 
 #bani {
@@ -51,4 +51,12 @@
 
 .para-gurmukhi, .para-en, .para-pu {
   margin-bottom: 12px;
+}
+
+.para:first-child {
+  margin-top: 30px;
+}
+
+.para-en, .para-pu, .shabad .en, .shabad .pu {
+  opacity: 0.74;
 }
