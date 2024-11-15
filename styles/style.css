@@ -27,6 +27,10 @@ body {
   font-variation-settings: "wdth" 100;
 }
 
+#list-bani li {
+  margin-bottom: 30px;
+}
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   /* body {
     overflow-x: hidden;
