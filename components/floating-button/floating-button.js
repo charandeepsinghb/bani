@@ -116,9 +116,20 @@ function initializeFloatingButton(baniElement) {
     }
   });
 
+  const DRAG_THRESHOLD = 5; // Define a small threshold for movement
+
   // Handle pointer up event for releasing drag and executing icon click actions
   floatingButton.addEventListener("pointerup", (e) => {
-    if (isButtonClicked) {
+    const endX = e.clientX;
+    const endY = e.clientY;
+
+    // Calculate the distance moved
+    const moveX = Math.abs(endX - startX);
+    const moveY = Math.abs(endY - startY);
+
+    const isWithinThreshold = moveX <= DRAG_THRESHOLD && moveY <= DRAG_THRESHOLD;
+
+    if (isButtonClicked && isWithinThreshold) {
       if (isMenuIconClicked) {
         toggleOpenCloseMenu();
       }
@@ -134,6 +145,7 @@ function initializeFloatingButton(baniElement) {
     } else if (isDragging) {
       saveButtonPositionToLocalStorage(floatingButtonPosX, floatingButtonPosY);
     }
+
     isDragging = false;
     if (!menuOpen) {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
