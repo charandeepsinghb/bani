@@ -8,12 +8,11 @@ export default {
   build: {
     rollupOptions: {
       input: {
-        main: "index.html",
-        gurbanis: "list.html",
-        japjisahib: "japji-sahib.html",
-        sukhmanisahib: "sukhmani-sahib.html"
+        main: "scripts/bani.js"
+      },
+      output: {
+        entryFileNames: "[name].js"
       }
-    },
-    outDir: "gurbani"
+    }
   }
 };
