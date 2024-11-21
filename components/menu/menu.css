@@ -121,6 +121,10 @@
   margin-right: 10px;
 }
 
+/* Color sections styling */
+
+
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   .menu-buttons {
     min-width: 80vw;

@@ -41,7 +41,7 @@
   display: none !important;
 }
 
-.gurmukhi, .en {
+.en {
   margin-bottom: 8px;
 }
 
@@ -49,7 +49,7 @@
   display: inline !important;
 }
 
-.para-gurmukhi, .para-en, .para-pu {
+.para-en, .para-pu {
   margin-bottom: 12px;
 }
 
@@ -59,4 +59,12 @@
 
 .para-en, .para-pu, .shabad .en, .shabad .pu {
   opacity: 0.74;
+}
+
+.gurmukhi {
+  margin-bottom: 5px;
+}
+
+.para-gurmukhi {
+  margin-bottom: 8px;
 }
