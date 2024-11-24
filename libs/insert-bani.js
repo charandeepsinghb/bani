@@ -26,7 +26,7 @@ export function initializeBaniShow(baniElement) {
 
 export function showPrev(baniElement) {
   if (currentShabadStart <= 1) {
-    console.log("No more previous elements to show.");
+    // console.log("No more previous elements to show.");
     return;
   }
 
@@ -62,7 +62,7 @@ export function showPrev(baniElement) {
   // Save currentShabadStart to localStorage
   localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
-  console.log("Current range:", currentShabadStart, currentShabadEnd);
+  // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
 
 function hideCurrentPrev() {
@@ -104,7 +104,7 @@ function hideCurrentNext() {
 export function showNext(baniElement) {
   const nextShabadElement = document.getElementById("shabad_" + (currentShabadEnd + 1));
   if (!nextShabadElement) {
-    console.log("No more next elements to show.");
+    // console.log("No more next elements to show.");
     return;
   }
 
@@ -138,7 +138,7 @@ export function showNext(baniElement) {
   // Save currentShabadStart to localStorage
   localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
-  console.log("Current range:", currentShabadStart, currentShabadEnd);
+  // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
 
 /**
@@ -173,7 +173,7 @@ function showBaniShabads(baniElement) {
   // Save currentShabadStart to localStorage
   localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
 
-  console.log("Current range:", currentShabadStart, currentShabadEnd);
+  // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
 
 /**

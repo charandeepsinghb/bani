@@ -5,7 +5,7 @@ import { initializeBaniShow, resetShabadsSize } from "../../libs/insert-bani.js"
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
 import { punjabiCheckInitialize } from "../../libs/punjabi.js";
-import { scrollCheckInitialize } from "../../libs/scroll.js";
+// import { scrollCheckInitialize } from "../../libs/scroll.js";
 
 export let menuOpen = false;
 

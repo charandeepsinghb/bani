@@ -6,8 +6,8 @@ import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
 import { addMenu } from "../menu/menu.js";
 
 // Get viewport dimensions
-const viewportWidth = window.innerWidth;
-const viewportHeight = window.innerHeight;
+let viewportWidth = window.innerWidth;
+let viewportHeight = window.innerHeight;
 
 // Main function to add the floating button to the container
 export function addFloatingButton(floatingButtonContainer, baniElement) {
@@ -89,34 +89,38 @@ function initializeFloatingButton(baniElement) {
     initialLeft = floatingButton.offsetLeft;
     initialTop = floatingButton.offsetTop;
     floatingButton.setPointerCapture(e.pointerId); // Capture pointer events
+
   });
 
-  // Handle pointer move event for dragging the button
   floatingButton.addEventListener("pointermove", (e) => {
-    // Reset icon click statuses during drag
-    isMenuIconClicked = false;
-    isLeftIconClicked = false;
-    isRightIconClicked = false;
-    isFullscreenIconClicked = false;
-    isButtonClicked = false;
-
     if (isDragging) {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
-
-      // Get button dimensions
-      const buttonWidth = floatingButton.offsetWidth;
-      const buttonHeight = floatingButton.offsetHeight;
-
-      // Calculate new button position
-      let posX = initialLeft + deltaX;
-      let posY = initialTop + deltaY;
-
-      constrainAndSetButtonPosition(floatingButton, posX, posY, buttonWidth, buttonHeight);
+  
+      // Only consider dragging if movement exceeds the threshold
+      const isAboveThreshold = Math.abs(deltaX) > DRAG_THRESHOLD || Math.abs(deltaY) > DRAG_THRESHOLD;
+      if (isAboveThreshold) {
+        // Get button dimensions
+        const buttonWidth = floatingButton.offsetWidth;
+        const buttonHeight = floatingButton.offsetHeight;
+  
+        // Calculate new button position
+        let posX = initialLeft + deltaX;
+        let posY = initialTop + deltaY;
+  
+        constrainAndSetButtonPosition(floatingButton, posX, posY, buttonWidth, buttonHeight);
+  
+        // Reset click-related flags during drag
+        isMenuIconClicked = false;
+        isLeftIconClicked = false;
+        isRightIconClicked = false;
+        isFullscreenIconClicked = false;
+        isButtonClicked = false;
+      }
     }
   });
 
-  const DRAG_THRESHOLD = 5; // Define a small threshold for movement
+  const DRAG_THRESHOLD = 15; // Define a small threshold for movement
 
   // Handle pointer up event for releasing drag and executing icon click actions
   floatingButton.addEventListener("pointerup", (e) => {
@@ -151,11 +155,15 @@ function initializeFloatingButton(baniElement) {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
     }
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
+
   });
 }
 
 // Function to constrain button position within viewport and set styles
 function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHeight) {
+
+  viewportWidth = window.innerWidth;
+  viewportHeight = window.innerHeight;
   // Square button so choosing buttonwidth as one unit
 
   const buttonSizeHalf = buttonWidth / 2;
@@ -173,4 +181,19 @@ function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHe
   button.style.top = `${posY}px`;
   button.style.bottom = "auto"; // Avoid overriding bottom CSS
   button.style.right = "auto"; // Avoid overriding right CSS
+}
+
+// Function to adjust the button's position if the screen size changes
+export function adjustFloatingButtonPosition() {
+  const floatingButton = document.getElementById("floating-button");
+  if (!floatingButton) return;
+
+  // Get current position and button dimensions
+  const currentPosX = floatingButton.offsetLeft;
+  const currentPosY = floatingButton.offsetTop;
+  const buttonWidth = floatingButton.offsetWidth;
+  const buttonHeight = floatingButton.offsetHeight;
+
+  // Adjust the position to ensure the button stays within bounds
+  constrainAndSetButtonPosition(floatingButton, currentPosX, currentPosY, buttonWidth, buttonHeight);
 }

@@ -1,3 +1,4 @@
+import { toggleFullScreen } from "./fullscreen.js";
 import { nextButtonClick, previousButtonClick } from "./nextprev.js";
 
 export function keyPressInitialize(baniElement) {
@@ -13,6 +14,10 @@ function addLeftRightArrowEvents(baniElement) {
     // Right navigation actions
     else if (e.key === "ArrowRight" || e.key === "D" || e.key === "d") {
       nextButtonClick(baniElement);
+    }
+    // Right navigation actions
+    else if (e.key === "F" || e.key === "f") {
+      toggleFullScreen();
     }
   });
 }
