@@ -8,7 +8,7 @@ const MAX_SIZE = 200;
 
 const BUTTON_HOLD_THRESH = 1;
 
-const INCREASER_DECREASE_VAL = 0.01;
+const INCREASER_DECREASE_VAL = 0.04;
 
 export function increaseDecreaseBaniFontSizeListners() {
   const fontInput = document.getElementById("font-input");
