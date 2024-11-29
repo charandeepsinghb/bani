@@ -3,12 +3,12 @@ import { updateNumberInputValue } from "./fields.js";
 import { buttonHoldListner } from "./listners.js";
 import { isNumberBetween, notNullUndefinedNaN } from "./type-utils.js";
 
-const MIN_SIZE = 0.8;
+const MIN_SIZE = 1;
 const MAX_SIZE = 10;
 
 const BUTTON_HOLD_THRESH = 10;
 
-const INCREASER_DECREASE_VAL = 0.1;
+const INCREASER_DECREASE_VAL = 0.01;
 
 let baniLineHeight = null;
 
@@ -70,7 +70,12 @@ function decreaseLineHeightListner(lineHeightInput, baniElement) {
 
 function increaesDecreaseLineHeight(increaseDecreaseValue, baniElement, lineHeightInput) {
   
-  const newLineHeight = baniLineHeight + increaseDecreaseValue;
+  let newLineHeight;
+  if (baniLineHeight) {
+    newLineHeight = baniLineHeight + increaseDecreaseValue;
+  } else {
+    newLineHeight = MIN_SIZE + increaseDecreaseValue;
+  }
   if (!isNumberBetween(MIN_SIZE, MAX_SIZE, newLineHeight)) {
     return;
   }

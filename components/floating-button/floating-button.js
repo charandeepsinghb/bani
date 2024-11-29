@@ -1,6 +1,7 @@
 import { toggleFullScreen } from "../../libs/fullscreen.js";
 import { setLocalStorageItem, getLocalStorageItem, FLOATING_BUTTON_X, FLOATING_BUTTON_Y } from "../../libs/local-storage-utils.js";
 import { nextButtonClick, previousButtonClick } from "../../libs/nextprev.js";
+import { addResizeListner } from "../../libs/resize.js";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
 import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
 import { addMenu } from "../menu/menu.js";
@@ -157,6 +158,8 @@ function initializeFloatingButton(baniElement) {
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
 
   });
+
+  addResizeListner();
 }
 
 // Function to constrain button position within viewport and set styles
