@@ -4,6 +4,9 @@ body {
 
   /* Floating button cannot change width, height of the page */
   /* overflow: hidden; */
+
+  color: var(--font-color);
+  background-color: var(--background-color);
 }
 
 .root {
@@ -29,6 +32,29 @@ body {
 
 #list-bani li {
   margin-bottom: 30px;
+}
+
+/* Scrollbar */
+
+/* For Webkit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 5px; /* Thin scrollbar */
+  height: 5px; /* Thin scrollbar for horizontal scroll */
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color); /* Background of the track */
+  border-radius: 10px; /* Rounded corners for the track */
+  margin: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c3c3c3; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded scrollbar thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #808080; /* Darker color when hovered */
 }
 
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {

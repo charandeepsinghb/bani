@@ -1,5 +1,8 @@
 import { alignButtonListners } from "../../libs/align.js";
+import { backgroundColorInitialize } from "../../libs/background-color.js";
+import { darkModeCheckInitialize } from "../../libs/dark-colors-mode.js";
 import { englishCheckInitialize } from "../../libs/english.js";
+import { fontColorInitialize } from "../../libs/font-color.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
 import { initializeBaniShow, resetShabadsSize } from "../../libs/insert-bani.js";
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
@@ -73,6 +76,9 @@ function addButtonInputListners(baniElement) {
   // scrollCheckInitialize(baniElement);
   punjabiCheckInitialize(baniElement);
   englishCheckInitialize(baniElement);
+  darkModeCheckInitialize();
+  fontColorInitialize();
+  backgroundColorInitialize();
 }
 
 function setFieldValuesFromLocal(baniElement) {

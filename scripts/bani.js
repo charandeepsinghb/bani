@@ -3,24 +3,50 @@ import { setFromLocalColumnWidth } from "../libs/word-spacing.js";
 import { setFontSizeFromLocalStorage } from "../libs/font-size.js";
 import { keyPressInitialize } from "../libs/keypress.js";
 import { setLineHeightFromLocalStorage } from "../libs/line-height.js";
+import { setDarkModeCheckFromLocalGlobal } from "../libs/dark-colors-mode.js";
+import { setFontColorFromLocalGlobal } from "../libs/font-color.js";
+import { setBackgroundColorFromLocalGlobal } from "../libs/background-color.js";
 
-const baniElement = document.getElementById("bani");
-
-const floatingButtonContainer = document.getElementById("floating-button-container");
-
-if (floatingButtonContainer != null) addFloatingButton(floatingButtonContainer, baniElement);
-
-function setPropertiesFromLocal() {
-  setFontSizeFromLocalStorage(baniElement);
-  setFromLocalColumnWidth(baniElement);
-  setLineHeightFromLocalStorage(baniElement);
+function onDomReady(callback) {
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    // If the DOM is already ready, execute the callback immediately
+    callback();
+  } else if (document.addEventListener) {
+    // Modern browsers: Use DOMContentLoaded
+    document.addEventListener('DOMContentLoaded', callback);
+  } else if (document.attachEvent) {
+    // Old IE (IE8 and below): Use onreadystatechange
+    document.attachEvent('onreadystatechange', function () {
+      if (document.readyState === 'complete') {
+        callback();
+      }
+    });
+  }
 }
 
-function setHeightWidthForFixed() {
-  baniElement.style.height = (window.innerHeight) + "px";
+function initializeBaniApp() {
+  const baniElement = document.getElementById("bani");
+  
+  const floatingButtonContainer = document.getElementById("floating-button-container");
+  
+  if (floatingButtonContainer != null) addFloatingButton(floatingButtonContainer, baniElement);
+  
+  function setPropertiesFromLocal() {
+    setFontSizeFromLocalStorage(baniElement);
+    setFromLocalColumnWidth(baniElement);
+    setLineHeightFromLocalStorage(baniElement);
+  }
+  
+  setPropertiesFromLocal();
+  
+  keyPressInitialize(baniElement);
 }
 
-// setHeightWidthForFixed();
-setPropertiesFromLocal();
+// Start all
+onDomReady(initializeBaniApp);
 
-keyPressInitialize(baniElement);
+// Functions which load immediatly after js starts
+
+setDarkModeCheckFromLocalGlobal();
+setFontColorFromLocalGlobal();
+setBackgroundColorFromLocalGlobal();

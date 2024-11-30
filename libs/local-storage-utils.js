@@ -20,6 +20,9 @@ export const ALIGN = "align";
 export const SCROLL = "scroll";
 export const PUNJABI = "english";
 export const ENGLISH = "punjabi";
+export const DARK_MODE = "darkMode";
+export const FONT_COLOR = "fontColor";
+export const BACKGROUND_COLOR = "backgroundColor";
 
 export function cleanLocalStoreage() {
   localStorage.clear();

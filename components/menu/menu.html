@@ -1,5 +1,13 @@
 <div id="menu" class="menu menuClose prevent-selection">
   <div id="menu-buttons-container" class="menu-buttons">
+
+    <div class="toggles">
+      <div class="checkType">
+        <label for="dark-mode" class="scrollLabel">Dark Mode</label>
+        <input type="checkbox" name="dark-mode" id="dark-mode" />
+      </div>
+    </div>
+
     <div class="fontMenu">
       <label class="menuLabel">Font size</label>
       <div class="dflex">
@@ -10,6 +18,23 @@
         <button id="font-decrease" class="icon">
           <span class="material-symbols-outlined">remove</span>
         </button>
+      </div>
+    </div>
+    
+    <div class="color-menu">
+      <label class="menuLabel">Font color</label>
+      <div class="dflex color-icon-container">
+        <button id="font-reset-icon" class="icon">
+          <span class="material-symbols-outlined">reset_settings</span></button>
+        <input class="ml-20" type="color" name="font-color" id="font-color">
+      </div>
+    </div>
+    <div class="color-menu">
+      <label class="menuLabel">Background color</label>
+      <div class="dflex color-icon-container">
+        <button id="background-reset-icon" class="icon">
+          <span class="material-symbols-outlined">reset_settings</span></button>
+        <input class="ml-20" type="color" name="background-color" id="background-color">
       </div>
     </div>
 
