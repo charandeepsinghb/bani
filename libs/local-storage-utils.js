@@ -15,6 +15,7 @@ export function getLocalStorageItem(name) {
 
 export const FONT_SIZE = "fontSize";
 export const LINE_HEIGHT = "lineHeight";
+export const WORD_SPACING = "wordSpacing";
 export const COLUMN_WIDTH = "columnWidth";
 export const ALIGN = "align";
 export const SCROLL = "scroll";

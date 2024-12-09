@@ -8,6 +8,7 @@ import { initializeBaniShow, resetShabadsSize } from "../../libs/insert-bani.js"
 import { increaseDecreaseBaniLineHeightListners, setlineHeightInputValue } from "../../libs/line-height.js";
 import { cleanLocalStoreage } from "../../libs/local-storage-utils.js";
 import { punjabiCheckInitialize } from "../../libs/punjabi.js";
+import { increaseDecreaseBaniWordSpacingListners, setwordSpacingInputValue } from "../../libs/word-spacing.js";
 // import { scrollCheckInitialize } from "../../libs/scroll.js";
 
 export let menuOpen = false;
@@ -70,6 +71,7 @@ function restartButton() {
 function addButtonInputListners(baniElement) {
   increaseDecreaseBaniFontSizeListners();
   increaseDecreaseBaniLineHeightListners();
+  increaseDecreaseBaniWordSpacingListners();
 
   alignButtonListners();
 
@@ -84,6 +86,7 @@ function addButtonInputListners(baniElement) {
 function setFieldValuesFromLocal(baniElement) {
   setFontInputValue();
   setlineHeightInputValue();
+  setwordSpacingInputValue();
 
   initializeBaniShow(baniElement);
 }
