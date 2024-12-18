@@ -57,6 +57,14 @@ body {
   background: #808080; /* Darker color when hovered */
 }
 
+/* Bani list styling */
+#list-bani a {
+  color: var(--font-color);
+}
+#list-bani {
+  margin-top: 30px;
+}
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   /* body {
     overflow-x: hidden;

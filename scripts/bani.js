@@ -26,6 +26,10 @@ function onDomReady(callback) {
 
 function initializeBaniApp() {
   const baniElement = document.getElementById("bani");
+
+  if (!baniElement) {
+    return;
+  }
   
   const floatingButtonContainer = document.getElementById("floating-button-container");
   
