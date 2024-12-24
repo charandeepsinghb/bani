@@ -51,6 +51,6 @@ onDomReady(initializeBaniApp);
 
 // Functions which load immediatly after js starts
 
+setBackgroundColorFromLocalGlobal();
 setDarkModeCheckFromLocalGlobal();
 setFontColorFromLocalGlobal();
-setBackgroundColorFromLocalGlobal();

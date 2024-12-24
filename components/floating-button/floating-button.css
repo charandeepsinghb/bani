@@ -42,7 +42,7 @@
 
 /* Default opacity for inactive button */
 #floating-button.inactive {
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 /* Style changes when dragging */
