@@ -69,13 +69,15 @@ const BLACK = '#000000';
 
 function toggleDarkMode(isOn) {
   if (isOn) {
-    document.documentElement.style.setProperty('--font-color', DARK_TEXT_COLOR);
-    document.documentElement.style.setProperty('--background-color', DARK_BACKGROUND_COLOR);
+    // document.documentElement.style.setProperty('--font-color', DARK_TEXT_COLOR);
+    // document.documentElement.style.setProperty('--background-color', DARK_BACKGROUND_COLOR);
+    document.body.classList.add("dark-mode");
     return;
   }
 
-  document.documentElement.style.setProperty('--font-color', BLACK);
-  document.documentElement.style.setProperty('--background-color', WHITE);
+  // document.documentElement.style.setProperty('--font-color', BLACK);
+  // document.documentElement.style.setProperty('--background-color', WHITE);
+  document.body.classList.remove("dark-mode");
 }
 
 /*********************** Theme *************************/

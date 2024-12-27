@@ -26,6 +26,11 @@
   background-color: var(--background-color);
 }
 
+.dark-mode .menu {
+  color: var(--dark-font-color);
+  background-color: var(--dark-background-color);
+}
+
 .menuClose {
   opacity: 0;
   scale: 0;

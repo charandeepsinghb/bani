@@ -14,11 +14,11 @@
 }
 
 .shabad {
-  margin-bottom: 16px;
+  margin-bottom: 0.8rem;
 }
 
 .para {
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
 }
 
 /* 
@@ -42,7 +42,7 @@
 }
 
 .en {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .d-inline {
@@ -50,7 +50,7 @@
 }
 
 .para-en, .para-pu {
-  margin-bottom: 12px;
+  margin-bottom: 0.5rem;
 }
 
 .para:first-child {
@@ -62,9 +62,9 @@
 }
 
 .gurmukhi {
-  margin-bottom: 5px;
+  margin-bottom: 0.5rem;
 }
 
 .para-gurmukhi {
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 }

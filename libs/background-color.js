@@ -44,8 +44,8 @@ function resetBackgroundColorListner(backgroundColorbox) {
 
   backgroundResetIcon.addEventListener("click", ()=>{
     document.documentElement.style.setProperty('--background-color', WHITE);
-    removeLocalStorageItem(BACKGROUND_COLOR);
     setBackgroundColorbox(backgroundColorbox, WHITE);
+    setLocalStorageItem(BACKGROUND_COLOR, WHITE);
   });
 }
 

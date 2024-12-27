@@ -44,8 +44,8 @@ function resetFontColorListner(fontColorbox) {
 
   fontResetIcon.addEventListener("click", ()=>{
     document.documentElement.style.setProperty('--font-color', BLACK);
-    removeLocalStorageItem(FONT_COLOR);
     setFontColorbox(fontColorbox, BLACK);
+    setLocalStorageItem(FONT_COLOR, BLACK);
   });
 }
 
