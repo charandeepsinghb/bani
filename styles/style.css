@@ -1,4 +1,6 @@
 :root {
+  --font-color: #000000;
+  --background-color: #ffffff;
   --dark-background-color: #121212;
   --dark-font-color: #E0E0E0;
 }
