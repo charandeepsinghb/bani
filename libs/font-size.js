@@ -21,7 +21,7 @@ export function increaseDecreaseBaniFontSizeListners() {
 }
 
 function inputChangeListner(fontInput, baniElement) {
-  fontInput.addEventListener("change", (e)=>{
+  fontInput.addEventListener("change", (e) => {
     if (notNullUndefinedNaN(e.target.value) && isNumberBetween(MIN_SIZE, MAX_SIZE, e.target.value)) {
       // update
       baniElement.style.fontSize = e.target.value + "px";

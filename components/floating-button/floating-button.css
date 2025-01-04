@@ -34,7 +34,7 @@
   cursor: pointer;
   border: 1px solid;
   border-radius: var(--icon-size);
-  background-color: white
+  background-color: white;
   /* background-color: var(--background-color);
   border-color: var(--font-color);
   color: var(--font-color) */

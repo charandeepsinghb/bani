@@ -28,14 +28,13 @@ function inputChangeListner(wordSpacingInput, baniElement) {
     if (newWordSpacing) {
       newWordSpacing = Number.parseFloat(newWordSpacing);
     }
-    if (notNullUndefinedNaN(newWordSpacing) 
-        && isNumberBetween(MIN_SIZE, MAX_SIZE, newWordSpacing)) {
+    if (notNullUndefinedNaN(newWordSpacing) && isNumberBetween(MIN_SIZE, MAX_SIZE, newWordSpacing)) {
       baniElement.style.wordSpacing = newWordSpacing + "px";
       baniWordSpacing = Number.parseFloat(newWordSpacing);
       saveWordSpacingToLocal(baniWordSpacing);
     } else {
       baniWordSpacing = null;
-      baniElement.style.wordSpacing = 'normal';
+      baniElement.style.wordSpacing = "normal";
       removeLocalStorageItem(WORD_SPACING);
     }
   });
@@ -72,7 +71,6 @@ function decreaseWordSpacingListner(wordSpacingInput, baniElement) {
 }
 
 function increaesDecreaseWordSpacing(increaseDecreaseValue, baniElement, wordSpacingInput) {
-  
   let newWordSpacing;
   if (baniWordSpacing) {
     newWordSpacing = baniWordSpacing + increaseDecreaseValue;

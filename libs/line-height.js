@@ -25,14 +25,13 @@ export function increaseDecreaseBaniLineHeightListners() {
 function inputChangeListner(lineHeightInput, baniElement) {
   lineHeightInput.addEventListener("change", (e) => {
     const newLineHeight = e.target.value;
-    if (notNullUndefinedNaN(newLineHeight) 
-        && isNumberBetween(MIN_SIZE, MAX_SIZE, newLineHeight)) {
+    if (notNullUndefinedNaN(newLineHeight) && isNumberBetween(MIN_SIZE, MAX_SIZE, newLineHeight)) {
       baniElement.style.lineHeight = newLineHeight;
       baniLineHeight = Number.parseFloat(newLineHeight);
       saveLineHeightToLocal(baniLineHeight);
     } else {
       baniLineHeight = null;
-      baniElement.style.lineHeight = 'normal';
+      baniElement.style.lineHeight = "normal";
       removeLocalStorageItem(LINE_HEIGHT);
     }
   });
@@ -69,7 +68,6 @@ function decreaseLineHeightListner(lineHeightInput, baniElement) {
 }
 
 function increaesDecreaseLineHeight(increaseDecreaseValue, baniElement, lineHeightInput) {
-  
   let newLineHeight;
   if (baniLineHeight) {
     newLineHeight = baniLineHeight + increaseDecreaseValue;

@@ -1,124 +1,113 @@
 <div id="menu" class="menu menuClose prevent-selection">
   <div id="menu-buttons-container" class="menu-buttons">
+    <div class="half-menu">
+      <div class="menu-item toggles">
+        <div class="checkType">
+          <label for="dark-mode" class="scrollLabel">Dark Mode</label>
+          <input type="checkbox" name="dark-mode" id="dark-mode" />
+        </div>
+      </div>
 
-    <div class="toggles">
-      <div class="checkType">
-        <label for="dark-mode" class="scrollLabel">Dark Mode</label>
-        <input type="checkbox" name="dark-mode" id="dark-mode" />
+      <div class="menu-item fontMenu">
+        <label class="menuLabel">Font size</label>
+        <div class="dflex">
+          <button id="font-increase" class="icon addButton">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+          <input id="font-input" type="number" />
+          <button id="font-decrease" class="icon">
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-item color-menu">
+        <label class="menuLabel">Font color</label>
+        <div class="dflex color-icon-container">
+          <button id="font-reset-icon" class="icon">
+            <span class="material-symbols-outlined">reset_settings</span>
+          </button>
+          <input class="ml-20" type="color" name="font-color" id="font-color" />
+        </div>
+      </div>
+      <div class="menu-item color-menu">
+        <label class="menuLabel">Background color</label>
+        <div class="dflex color-icon-container">
+          <button id="background-reset-icon" class="icon">
+            <span class="material-symbols-outlined">reset_settings</span>
+          </button>
+          <input class="ml-20" type="color" name="background-color" id="background-color" />
+        </div>
+      </div>
+
+      <div class="menu-item fontMenu">
+        <label class="menuLabel">Line Height</label>
+        <div class="dflex">
+          <button id="line-height-increase" class="icon addButton">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+          <input id="line-height-input" type="number" />
+          <button id="line-height-decrease" class="icon">
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="menu-item fontMenu">
+        <label class="menuLabel">Word Spacing</label>
+        <div class="dflex">
+          <button id="word-spacing-increase" class="icon addButton">
+            <span class="material-symbols-outlined">add</span>
+          </button>
+          <input id="word-spacing-input" type="number" />
+          <button id="word-spacing-decrease" class="icon">
+            <span class="material-symbols-outlined">remove</span>
+          </button>
+        </div>
       </div>
     </div>
+    <div class="menu-divider"></div>
+    <div class="half-menu">
+      <div class="menu-item alignSection">
+        <label class="alignTitle">Alignment</label>
+        <div class="alignMenu">
+          <div class="alignItem"><label for="leftAlign">Left</label> <input type="radio" name="alignInput" id="leftAlign" /></div>
 
-    <div class="fontMenu">
-      <label class="menuLabel">Font size</label>
-      <div class="dflex">
-        <button id="font-increase" class="icon addButton">
-          <span class="material-symbols-outlined">add</span>
+          <div class="alignItem"><label for="middleAlign">Middle</label> <input type="radio" name="alignInput" id="middleAlign" /></div>
+
+          <div class="alignItem"><label for="rightAlign">Right</label> <input type="radio" name="alignInput" id="rightAlign" /></div>
+
+          <div class="alignItem"><label for="justifyAlign">Justify</label> <input type="radio" name="alignInput" id="justifyAlign" /></div>
+        </div>
+      </div>
+
+      <div class="menu-item resetMenu">
+        <label class="menuLabel" for="restart-icon">Restart</label>
+        <button id="restart-icon" class="icon">
+          <span class="material-symbols-outlined">restart_alt</span>
         </button>
-        <input id="font-input" type="number" />
-        <button id="font-decrease" class="icon">
-          <span class="material-symbols-outlined">remove</span>
+      </div>
+
+      <div class="menu-item toggles">
+        <div class="checkType">
+          <label for="english" class="scrollLabel">English</label>
+          <input type="checkbox" name="english" id="english" />
+        </div>
+      </div>
+
+      <div class="menu-item toggles">
+        <div class="checkType">
+          <label for="punjabi" class="scrollLabel">Punjabi</label>
+          <input type="checkbox" name="punjabi" id="punjabi" />
+        </div>
+      </div>
+
+      <div class="menu-item resetMenu">
+        <label class="menuLabel" for="reset-icon">Reset</label>
+        <button id="reset-icon" class="icon">
+          <span class="material-symbols-outlined">reset_settings</span>
         </button>
       </div>
     </div>
-    
-    <div class="color-menu">
-      <label class="menuLabel">Font color</label>
-      <div class="dflex color-icon-container">
-        <button id="font-reset-icon" class="icon">
-          <span class="material-symbols-outlined">reset_settings</span></button>
-        <input class="ml-20" type="color" name="font-color" id="font-color">
-      </div>
-    </div>
-    <div class="color-menu">
-      <label class="menuLabel">Background color</label>
-      <div class="dflex color-icon-container">
-        <button id="background-reset-icon" class="icon">
-          <span class="material-symbols-outlined">reset_settings</span></button>
-        <input class="ml-20" type="color" name="background-color" id="background-color">
-      </div>
-    </div>
-
-    <div class="fontMenu">
-      <label class="menuLabel">Line Height</label>
-      <div class="dflex">
-        <button id="line-height-increase" class="icon addButton">
-          <span class="material-symbols-outlined">add</span>
-        </button>
-        <input id="line-height-input" type="number" />
-        <button id="line-height-decrease" class="icon">
-          <span class="material-symbols-outlined">remove</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="fontMenu">
-      <label class="menuLabel">Word Spacing</label>
-      <div class="dflex">
-        <button id="word-spacing-increase" class="icon addButton">
-          <span class="material-symbols-outlined">add</span>
-        </button>
-        <input id="word-spacing-input" type="number" />
-        <button id="word-spacing-decrease" class="icon">
-          <span class="material-symbols-outlined">remove</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="alignSection">
-      <label class="alignTitle">Alignment</label>
-      <div class="alignMenu">
-        <div class="alignItem"><label for="leftAlign">Left</label> <input type="radio" name="alignInput" id="leftAlign" /></div>
-
-        <div class="alignItem"><label for="middleAlign">Middle</label> <input type="radio" name="alignInput" id="middleAlign" /></div>
-
-        <div class="alignItem"><label for="rightAlign">Right</label> <input type="radio" name="alignInput" id="rightAlign" /></div>
-
-        <div class="alignItem"><label for="justifyAlign">Justify</label> <input type="radio" name="alignInput" id="justifyAlign" /></div>
-      </div>
-    </div>
-
-    <div class="resetMenu">
-      <label class="menuLabel" for="restart-icon">Restart</label>
-      <button id="restart-icon" class="icon">
-        <span class="material-symbols-outlined">restart_alt</span></button>
-    </div>
-<!-- 
-    <div class="toggles">
-      <div class="scroll">
-        <label for="scroll" class="scrollLabel">Scroll</label>
-        <input type="checkbox" name="scroll" id="scroll" />
-      </div>
-    </div> -->
-
-    <div class="toggles">
-      <div class="checkType">
-        <label for="english" class="scrollLabel">English</label>
-        <input type="checkbox" name="english" id="english" />
-      </div>
-    </div>
-    
-    <div class="toggles">
-      <div class="checkType">
-        <label for="punjabi" class="scrollLabel">Punjabi</label>
-        <input type="checkbox" name="punjabi" id="punjabi" />
-      </div>
-    </div>
-    
-    <div class="color-sections-container">
-      <div class="color-section">
-
-      </div>
-      <div class="background-color-section">
-        
-      </div>
-    </div>
-
-    <div class="resetMenu">
-      <label class="menuLabel" for="reset-icon">Reset</label>
-      <button id="reset-icon" class="icon">
-        <span class="material-symbols-outlined">reset_settings</span>
-      </button>
-    </div>
-    
   </div>
 </div>

@@ -25,7 +25,9 @@
   For new scroll method
 */
 
-.hide-shabad .gurmukhi, .hide-shabad .en, .hide-shabad .pu {
+.hide-shabad .gurmukhi,
+.hide-shabad .en,
+.hide-shabad .pu {
   display: none;
 }
 
@@ -49,7 +51,8 @@
   display: inline !important;
 }
 
-.para-en, .para-pu {
+.para-en,
+.para-pu {
   margin-bottom: 0.5rem;
 }
 
@@ -57,12 +60,15 @@
   margin-top: 30px;
 }
 
-.para-en, .para-pu, .shabad .en, .shabad .pu {
+.para-en,
+.para-pu,
+.shabad .en,
+.shabad .pu {
   opacity: 0.74;
 }
 
 .gurmukhi {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.1rem;
 }
 
 .para-gurmukhi {

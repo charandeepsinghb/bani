@@ -49,32 +49,31 @@ function saveAlignment(value) {
 }
 
 function setAlignMentByValue(leftAlignRadioButton, middleAlignRadioButton, rightAlignRadioButton, justifyAlignRadioButton, value, baniElement) {
-  
   switch (value) {
     case "start":
       baniElement.style.textAlign = value;
       leftAlignRadioButton.checked = true;
-      
+
       break;
-  
+
     case "end":
       baniElement.style.textAlign = value;
       rightAlignRadioButton.checked = true;
-      
+
       break;
-  
+
     case "center":
       baniElement.style.textAlign = value;
       middleAlignRadioButton.checked = true;
-      
+
       break;
-  
+
     case "justify":
       baniElement.style.textAlign = value;
       justifyAlignRadioButton.checked = true;
-      
+
       break;
-  
+
     default:
       break;
   }

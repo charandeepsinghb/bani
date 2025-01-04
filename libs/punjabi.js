@@ -4,14 +4,14 @@ import { isStringNotBlank } from "./type-utils.js";
 
 export function punjabiCheckInitialize(baniElement) {
   const punjabiCheckbox = document.getElementById("punjabi");
-  
+
   setPunjabiCheckFromLocal(baniElement, punjabiCheckbox);
 
   punjabiCheckedEventAdd(baniElement, punjabiCheckbox);
 }
 
 function punjabiCheckedEventAdd(baniElement, punjabiCheckbox) {
-  punjabiCheckbox.addEventListener("change", (e)=>{
+  punjabiCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
       changePunjabi(baniElement, "true");
       setLocalStorageItem(PUNJABI, "true");
@@ -24,22 +24,22 @@ function punjabiCheckedEventAdd(baniElement, punjabiCheckbox) {
 }
 
 /**
- * 
- * @param {HTMLElement} baniElement 
- * @param {*} punjabiCheck 
+ *
+ * @param {HTMLElement} baniElement
+ * @param {*} punjabiCheck
  */
 function changePunjabi(baniElement, punjabiCheck) {
-  if (punjabiCheck === 'true') {
+  if (punjabiCheck === "true") {
     baniElement.classList.remove("hide-shabad-pu");
-  } else if (punjabiCheck === 'false') {
+  } else if (punjabiCheck === "false") {
     baniElement.classList.add("hide-shabad-pu");
   }
 }
 
 function setPunjabiCheckbox(punjabiCheckbox, punjabiCheck) {
-  if (punjabiCheck === 'true') {
+  if (punjabiCheck === "true") {
     punjabiCheckbox.checked = true;
-  } else if (punjabiCheck === 'false') {
+  } else if (punjabiCheck === "false") {
     punjabiCheckbox.checked = false;
   }
 }

@@ -3,7 +3,7 @@ import { isStringNotBlank } from "./type-utils.js";
 
 export function backgroundColorInitialize() {
   const backgroundColorbox = document.getElementById("background-color");
-  
+
   setBackgroundColorFromLocal(backgroundColorbox);
 
   backgroundColoredEventAdd(backgroundColorbox);
@@ -12,17 +12,17 @@ export function backgroundColorInitialize() {
 }
 
 function backgroundColoredEventAdd(backgroundColorbox) {
-  backgroundColorbox.addEventListener("change", (e)=>{
+  backgroundColorbox.addEventListener("change", (e) => {
     changeBackgroundColor(e.target.value);
     setLocalStorageItem(BACKGROUND_COLOR, e.target.value);
   });
 }
 
 function changeBackgroundColor(backgroundColor) {
-  document.documentElement.style.setProperty('--background-color', backgroundColor);
+  document.documentElement.style.setProperty("--background-color", backgroundColor);
 }
 
-function setBackgroundColorbox(backgroundColorbox, backgroundColor) {  
+function setBackgroundColorbox(backgroundColorbox, backgroundColor) {
   backgroundColorbox.value = backgroundColor;
 }
 
@@ -32,18 +32,18 @@ function setBackgroundColorFromLocal(backgroundColorbox) {
   if (!isStringNotBlank(backgroundColor)) {
     return;
   }
-  
+
   setBackgroundColorbox(backgroundColorbox, backgroundColor);
 }
 
-const WHITE = '#ffffff';
-const BLACK = '#000000';
+const WHITE = "#ffffff";
+const BLACK = "#000000";
 
 function resetBackgroundColorListner(backgroundColorbox) {
   const backgroundResetIcon = document.getElementById("background-reset-icon");
 
-  backgroundResetIcon.addEventListener("click", ()=>{
-    document.documentElement.style.setProperty('--background-color', WHITE);
+  backgroundResetIcon.addEventListener("click", () => {
+    document.documentElement.style.setProperty("--background-color", WHITE);
     setBackgroundColorbox(backgroundColorbox, WHITE);
     setLocalStorageItem(BACKGROUND_COLOR, WHITE);
   });

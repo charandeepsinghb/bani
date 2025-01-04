@@ -1,5 +1,5 @@
 export function notNullUndefinedNaN(value) {
-  return value !== null && value !== undefined && !isNaN(value) && value !== "undefined" && value !== '';
+  return value !== null && value !== undefined && !isNaN(value) && value !== "undefined" && value !== "";
 }
 
 export function notNullUndefinedNaNAny(...values) {
@@ -19,5 +19,5 @@ export function isNumberBetween(first, second, num) {
 }
 
 export function isStringNotBlank(value) {
-  return value && typeof(value) === 'string' && value.length > 0;
+  return value && typeof value === "string" && value.length > 0;
 }

@@ -1,15 +1,15 @@
-let baniName = '';
+let baniName = "";
 
 /**
- * 
- * @param {HTMLElement} baniElement 
- * @returns 
+ *
+ * @param {HTMLElement} baniElement
+ * @returns
  */
 export function getBaniName(baniElement) {
-    if (baniName != '') {
-        return baniName;
-    }
-
-    baniName = baniElement.getAttribute("data-bani-name") || '';
+  if (baniName != "") {
     return baniName;
+  }
+
+  baniName = baniElement.getAttribute("data-bani-name") || "";
+  return baniName;
 }

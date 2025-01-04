@@ -3,14 +3,14 @@ import { isStringNotBlank } from "./type-utils.js";
 
 export function scrollCheckInitialize(baniElement) {
   const scrollCheckbox = document.getElementById("scroll");
-  
+
   setScrollCheckFromLocal(baniElement, scrollCheckbox);
 
   scrollCheckedEventAdd(baniElement, scrollCheckbox);
 }
 
 function scrollCheckedEventAdd(baniElement, scrollCheckbox) {
-  scrollCheckbox.addEventListener("change", (e)=>{
+  scrollCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
       changeScroll(baniElement, "true");
       setLocalStorageItem(SCROLL, "true");
@@ -22,9 +22,9 @@ function scrollCheckedEventAdd(baniElement, scrollCheckbox) {
 }
 
 /**
- * 
- * @param {HTMLElement} baniElement 
- * @param {*} scrollCheck 
+ *
+ * @param {HTMLElement} baniElement
+ * @param {*} scrollCheck
  */
 function changeScroll(baniElement, scrollCheck) {
   // if (scrollCheck === 'true') {
@@ -35,9 +35,9 @@ function changeScroll(baniElement, scrollCheck) {
 }
 
 function setScrollCheckbox(scrollCheckbox, scrollCheck) {
-  if (scrollCheck === 'true') {
+  if (scrollCheck === "true") {
     scrollCheckbox.checked = true;
-  } else if (scrollCheck === 'false') {
+  } else if (scrollCheck === "false") {
     scrollCheckbox.checked = false;
   }
 }

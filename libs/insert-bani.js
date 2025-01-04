@@ -12,7 +12,7 @@ let baniName;
 export function initializeBaniShow(baniElement) {
   // Set starting point from saved value, or default to 1 if not found
   baniName = getBaniName(baniElement);
-  currentShabadStart = parseInt(localStorage.getItem('currentShabadStart_' + baniName)) || 1;
+  currentShabadStart = parseInt(localStorage.getItem("currentShabadStart_" + baniName)) || 1;
   currentShabadEnd = currentShabadStart;
 
   baniElementForReuse = baniElement;
@@ -20,7 +20,7 @@ export function initializeBaniShow(baniElement) {
   if (isParaStyleEnabled(baniElement)) {
     showBaniClass = "d-inline";
   }
-  
+
   showBaniShabads(baniElement);
 }
 
@@ -60,7 +60,7 @@ export function showPrev(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
+  localStorage.setItem("currentShabadStart_" + baniName, currentShabadStart);
 
   // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
@@ -136,7 +136,7 @@ export function showNext(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
+  localStorage.setItem("currentShabadStart_" + baniName, currentShabadStart);
 
   // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
@@ -171,13 +171,13 @@ function showBaniShabads(baniElement) {
   }
 
   // Save currentShabadStart to localStorage
-  localStorage.setItem('currentShabadStart_' + baniName, currentShabadStart);
+  localStorage.setItem("currentShabadStart_" + baniName, currentShabadStart);
 
   // console.log("Current range:", currentShabadStart, currentShabadEnd);
 }
 
 /**
- * 
+ *
  */
 export function resetShabadsSize(from) {
   if (!baniElementForReuse) {
@@ -191,11 +191,9 @@ export function resetShabadsSize(from) {
   // Reset currentShabadEnd to start from the current position
   currentShabadEnd = currentShabadStart;
 
-
   // Call showBaniShabads to adjust based on the new screen size
   showBaniShabads(baniElementForReuse);
 }
-
 
 function hideCurrentShabads() {
   let i = currentShabadStart;

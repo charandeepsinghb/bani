@@ -90,27 +90,26 @@ function initializeFloatingButton(baniElement) {
     initialLeft = floatingButton.offsetLeft;
     initialTop = floatingButton.offsetTop;
     floatingButton.setPointerCapture(e.pointerId); // Capture pointer events
-
   });
 
   floatingButton.addEventListener("pointermove", (e) => {
     if (isDragging) {
       const deltaX = e.clientX - startX;
       const deltaY = e.clientY - startY;
-  
+
       // Only consider dragging if movement exceeds the threshold
       const isAboveThreshold = Math.abs(deltaX) > DRAG_THRESHOLD || Math.abs(deltaY) > DRAG_THRESHOLD;
       if (isAboveThreshold) {
         // Get button dimensions
         const buttonWidth = floatingButton.offsetWidth;
         const buttonHeight = floatingButton.offsetHeight;
-  
+
         // Calculate new button position
         let posX = initialLeft + deltaX;
         let posY = initialTop + deltaY;
-  
+
         constrainAndSetButtonPosition(floatingButton, posX, posY, buttonWidth, buttonHeight);
-  
+
         // Reset click-related flags during drag
         isMenuIconClicked = false;
         isLeftIconClicked = false;
@@ -156,7 +155,6 @@ function initializeFloatingButton(baniElement) {
       floatingButton.classList.add("inactive"); // Lower opacity when inactive
     }
     floatingButton.releasePointerCapture(e.pointerId); // Release capture
-
   });
 
   addResizeListner();
@@ -164,7 +162,6 @@ function initializeFloatingButton(baniElement) {
 
 // Function to constrain button position within viewport and set styles
 function constrainAndSetButtonPosition(button, posX, posY, buttonWidth, buttonHeight) {
-
   viewportWidth = window.innerWidth;
   viewportHeight = window.innerHeight;
   // Square button so choosing buttonwidth as one unit

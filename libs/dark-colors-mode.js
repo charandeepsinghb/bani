@@ -3,14 +3,14 @@ import { isStringNotBlank } from "./type-utils.js";
 
 export function darkModeCheckInitialize() {
   const darkModeCheckbox = document.getElementById("dark-mode");
-  
+
   setDarkModeCheckFromLocal(darkModeCheckbox);
 
   darkModeCheckedEventAdd(darkModeCheckbox);
 }
 
 function darkModeCheckedEventAdd(darkModeCheckbox) {
-  darkModeCheckbox.addEventListener("change", (e)=>{
+  darkModeCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
       changeDarkMode("true");
       setLocalStorageItem(DARK_MODE, "true");
@@ -22,21 +22,21 @@ function darkModeCheckedEventAdd(darkModeCheckbox) {
 }
 
 /**
- * 
- * @param {*} darkModeCheck 
+ *
+ * @param {*} darkModeCheck
  */
 function changeDarkMode(darkModeCheck) {
-  if (darkModeCheck === 'true') {
+  if (darkModeCheck === "true") {
     toggleDarkMode(true);
-  } else if (darkModeCheck === 'false') {
+  } else if (darkModeCheck === "false") {
     toggleDarkMode(false);
   }
 }
 
 function setDarkModeCheckbox(darkModeCheckbox, darkModeCheck) {
-  if (darkModeCheck === 'true') {
+  if (darkModeCheck === "true") {
     darkModeCheckbox.checked = true;
-  } else if (darkModeCheck === 'false') {
+  } else if (darkModeCheck === "false") {
     darkModeCheckbox.checked = false;
   }
 }
@@ -61,11 +61,11 @@ export function setDarkModeCheckFromLocalGlobal() {
 
 /*********************** Color themes *************************/
 
-const DARK_BACKGROUND_COLOR = '#121212';
-const DARK_TEXT_COLOR = '#E0E0E0';
+const DARK_BACKGROUND_COLOR = "#121212";
+const DARK_TEXT_COLOR = "#E0E0E0";
 
-const WHITE = '#ffffff';
-const BLACK = '#000000';
+const WHITE = "#ffffff";
+const BLACK = "#000000";
 
 function toggleDarkMode(isOn) {
   if (isOn) {
@@ -85,14 +85,13 @@ function toggleDarkMode(isOn) {
 const darkThemeMq = window.matchMedia("(prefers-color-scheme: dark)");
 
 // Theme change event listener
-darkThemeMq.addEventListener("change", e => {
+darkThemeMq.addEventListener("change", (e) => {
   const darkModeCheckbox = document.getElementById("dark-mode");
   if (e.matches) {
     toggleDarkMode(true);
-    setDarkModeCheckbox(darkModeCheckbox, 'true');
+    setDarkModeCheckbox(darkModeCheckbox, "true");
   } else {
     toggleDarkMode(false);
-    setDarkModeCheckbox(darkModeCheckbox, 'false');
+    setDarkModeCheckbox(darkModeCheckbox, "false");
   }
 });
-
