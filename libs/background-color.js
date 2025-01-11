@@ -1,20 +1,32 @@
-import { getLocalStorageItem, BACKGROUND_COLOR, setLocalStorageItem, removeLocalStorageItem } from "./local-storage-utils.js";
+import { getLocalStorageItem, BACKGROUND_COLOR, setLocalStorageItem, BACKGROUND_COLOR_SECOND } from "./local-storage-utils.js";
 import { isStringNotBlank } from "./type-utils.js";
 
 export function backgroundColorInitialize() {
   const backgroundColorbox = document.getElementById("background-color");
+  const backgroundColorboxSecond = document.getElementById("background-color-picker-2");
 
-  setBackgroundColorFromLocal(backgroundColorbox);
+  setBackgroundColorFromLocal(backgroundColorbox, BACKGROUND_COLOR);
+  setBackgroundColorFromLocal(backgroundColorboxSecond, BACKGROUND_COLOR_SECOND);
 
-  backgroundColoredEventAdd(backgroundColorbox);
+  backgroundColoredEventAdd(backgroundColorbox, BACKGROUND_COLOR);
+  backgroundColoredEventAdd(backgroundColorboxSecond, BACKGROUND_COLOR_SECOND);
 
   resetBackgroundColorListner(backgroundColorbox);
+
+  clickPickerToChangeColorEvent(backgroundColorbox);
+  clickPickerToChangeColorEvent(backgroundColorboxSecond);
 }
 
-function backgroundColoredEventAdd(backgroundColorbox) {
+function clickPickerToChangeColorEvent(backgroundColorbox) {
+  backgroundColorbox.addEventListener("click", (e) => {
+    changeBackgroundColor(e.target.value);
+  });
+}
+
+function backgroundColoredEventAdd(backgroundColorbox, localItemName) {
   backgroundColorbox.addEventListener("change", (e) => {
     changeBackgroundColor(e.target.value);
-    setLocalStorageItem(BACKGROUND_COLOR, e.target.value);
+    setLocalStorageItem(localItemName, e.target.value);
   });
 }
 
@@ -26,8 +38,8 @@ function setBackgroundColorbox(backgroundColorbox, backgroundColor) {
   backgroundColorbox.value = backgroundColor;
 }
 
-function setBackgroundColorFromLocal(backgroundColorbox) {
-  let backgroundColor = getLocalStorageItem(BACKGROUND_COLOR);
+function setBackgroundColorFromLocal(backgroundColorbox, localItemName) {
+  let backgroundColor = getLocalStorageItem(localItemName);
 
   if (!isStringNotBlank(backgroundColor)) {
     return;

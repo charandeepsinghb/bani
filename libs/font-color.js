@@ -1,20 +1,32 @@
-import { getLocalStorageItem, FONT_COLOR, setLocalStorageItem, removeLocalStorageItem } from "./local-storage-utils.js";
+import { getLocalStorageItem, FONT_COLOR, setLocalStorageItem, removeLocalStorageItem, FONT_COLOR_SECOND } from "./local-storage-utils.js";
 import { isStringNotBlank } from "./type-utils.js";
 
 export function fontColorInitialize() {
   const fontColorbox = document.getElementById("font-color");
+  const fontColorboxSecond = document.getElementById("font-color-picker-2");
 
-  setFontColorFromLocal(fontColorbox);
+  setFontColorFromLocal(fontColorbox, FONT_COLOR);
+  setFontColorFromLocal(fontColorboxSecond, FONT_COLOR_SECOND);
 
-  fontColoredEventAdd(fontColorbox);
+  fontColoredEventAdd(fontColorbox, FONT_COLOR);
+  fontColoredEventAdd(fontColorboxSecond, FONT_COLOR_SECOND);
 
   resetFontColorListner(fontColorbox);
+
+  clickPickerToChangeColorEvent(fontColorbox);
+  clickPickerToChangeColorEvent(fontColorboxSecond);
 }
 
-function fontColoredEventAdd(fontColorbox) {
+function clickPickerToChangeColorEvent(fontColorbox) {
+  fontColorbox.addEventListener("click", (e) => {
+    changeFontColor(e.target.value);
+  });
+}
+
+function fontColoredEventAdd(fontColorbox, localItemName) {
   fontColorbox.addEventListener("change", (e) => {
     changeFontColor(e.target.value);
-    setLocalStorageItem(FONT_COLOR, e.target.value);
+    setLocalStorageItem(localItemName, e.target.value);
   });
 }
 
@@ -26,8 +38,8 @@ function setFontColorbox(fontColorbox, fontColor) {
   fontColorbox.value = fontColor;
 }
 
-function setFontColorFromLocal(fontColorbox) {
-  let fontColor = getLocalStorageItem(FONT_COLOR);
+function setFontColorFromLocal(fontColorbox, localItemName) {
+  let fontColor = getLocalStorageItem(localItemName);
 
   if (!isStringNotBlank(fontColor)) {
     return;

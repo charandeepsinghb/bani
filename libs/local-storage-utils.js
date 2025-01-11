@@ -23,7 +23,9 @@ export const PUNJABI = "english";
 export const ENGLISH = "punjabi";
 export const DARK_MODE = "darkMode";
 export const FONT_COLOR = "fontColor";
+export const FONT_COLOR_SECOND = "fontColorSecond";
 export const BACKGROUND_COLOR = "backgroundColor";
+export const BACKGROUND_COLOR_SECOND = "backgroundColorSecond";
 
 export function cleanLocalStoreage() {
   localStorage.clear();
