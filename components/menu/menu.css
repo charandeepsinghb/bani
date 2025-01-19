@@ -169,6 +169,11 @@
   min-width: 300px;
 }
 
+.resetMenu .menuLabel, .checkType .scrollLabel {
+  width: 100%;
+  padding: 6px 0;
+}
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   .menu-buttons {
     min-width: 80vw;
