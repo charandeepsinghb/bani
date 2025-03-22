@@ -88,6 +88,11 @@
   display: flex;
 }
 
+.dfcol {
+  display: flex;
+  flex-direction: column;
+}
+
 .fontMenu .addButton,
 .fontMenu input {
   margin-right: 10px;
@@ -173,10 +178,28 @@
   padding: 6px 0;
 }
 
+.menu-item.bookMarkSec {
+  padding: 10px;
+}
+.bookmark-label {
+  margin-bottom: 10px;
+}
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   .menu-buttons {
     min-width: 80vw;
   }
+}
+
+.bookmark {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+.bookmark:last-child {
+  padding-bottom: 0px;
 }
 
 @media only screen and (min-width: 800px) {
@@ -191,3 +214,4 @@
     margin: 20px;
   }
 }
+

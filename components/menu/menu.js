@@ -1,5 +1,6 @@
 import { alignButtonListners } from "../../libs/align.js";
 import { backgroundColorInitialize } from "../../libs/background-color.js";
+import { bookmarkInitialize } from "../../libs/bookmarks.js";
 import { darkModeCheckInitialize } from "../../libs/dark-colors-mode.js";
 import { englishCheckInitialize } from "../../libs/english.js";
 import { fontColorInitialize } from "../../libs/font-color.js";
@@ -81,6 +82,8 @@ function addButtonInputListners(baniElement) {
   darkModeCheckInitialize();
   fontColorInitialize();
   backgroundColorInitialize();
+
+  bookmarkInitialize(baniElement);
 }
 
 function setFieldValuesFromLocal(baniElement) {

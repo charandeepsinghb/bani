@@ -1,7 +1,7 @@
 import { addFloatingButton } from "../components/floating-button/floating-button.js";
 import { setWordSpacingFromLocalStorage } from "../libs/word-spacing.js";
 import { setFontSizeFromLocalStorage } from "../libs/font-size.js";
-import { keyPressInitialize } from "../libs/keypress.js";
+import { keyPressInitialize } from "../libs/keypresss.js";
 import { setLineHeightFromLocalStorage } from "../libs/line-height.js";
 import { setDarkModeCheckFromLocalGlobal } from "../libs/dark-colors-mode.js";
 import { setFontColorFromLocalGlobal } from "../libs/font-color.js";

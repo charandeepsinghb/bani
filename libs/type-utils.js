@@ -21,3 +21,7 @@ export function isNumberBetween(first, second, num) {
 export function isStringNotBlank(value) {
   return value && typeof value === "string" && value.length > 0;
 }
+
+export function isArrayEmpty(array) {
+  return !array || array.length == 0;
+}
