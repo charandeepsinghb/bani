@@ -31,6 +31,10 @@
   background-color: var(--dark-background-color);
 }
 
+.dark-mode .bookm-container a {
+  color: #9696ff;
+}
+
 .menuClose {
   opacity: 0;
   scale: 0;
