@@ -17,13 +17,12 @@ export function bookmarkInitialize(baniElement) {
   const baniName = getBaniName(baniElement);
 
   bookmarksFromLocal = getBookmarksFromLocal(baniElement, baniName);
-  showLoadBookmarks(bookmarkContainer);
+  showLoadBookmarks(bookmarkContainer, baniName);
   enableAddBookmarkListner(bookmarkCheckbox, baniElement);
   saveBookmarkListner(baniElement, bookmarkContainer, baniName);
   deleteBookmarkButtonsListner(baniName);
   bookmarkJumpListners();
 }
-
 
 function getBookmarksFromLocal(baniElement, baniName) {
   const bookmarksFromLocalString = getLocalStorageItem(BOOKMARKS);
@@ -35,7 +34,17 @@ function getBookmarksFromLocal(baniElement, baniName) {
    */
   const allBookmarks = JSON.parse(bookmarksFromLocalString);
 
-  const currentBaniBookmarks = allBookmarks.filter((val)=>{
+  return allBookmarks;
+}
+
+/**
+ * Show all bookmarks in menu on load
+ *
+ * @param {HTMLElement} bookmarkContainer
+ * @returns
+ */
+function showLoadBookmarks(bookmarkContainer, baniName) {
+  const currentBaniBookmarks = bookmarksFromLocal.filter((val) => {
     if (val.baniName == baniName) {
       return true;
     } else {
@@ -43,21 +52,12 @@ function getBookmarksFromLocal(baniElement, baniName) {
     }
   });
 
-  return currentBaniBookmarks;
-}
-
-/**
- * Show all bookmarks in menu on load
- * 
- * @param {HTMLElement} bookmarkContainer 
- * @returns 
- */
-function showLoadBookmarks(bookmarkContainer) {
-  if (isArrayEmpty(bookmarksFromLocal)) {
+  if (isArrayEmpty(currentBaniBookmarks)) {
     return;
   }
-  let dataToAppend = '';
-  for (const bookmarkLocalObject of bookmarksFromLocal) {
+
+  let dataToAppend = "";
+  for (const bookmarkLocalObject of currentBaniBookmarks) {
     const singleBookmark = getSingleBookmarkBodyFromNameAndNumber(bookmarkLocalObject.shabadPre, bookmarkLocalObject.shabadId);
     dataToAppend += singleBookmark;
   }
@@ -77,15 +77,15 @@ function getSingleBookmarkBodyFromNameAndNumber(shabadPre, shabadId) {
 
 /**
  * Function used to add bookmarks on click or longpress of pankti
- * 
- * @param {Event} event 
+ *
+ * @param {Event} event
  */
 function addBookmark(event, bookmarkContainer, baniElement, baniName) {
   /**
    * @type {HTMLElement}
    */
-  const baniPanktiElement = event.target.closest('.gurmukhi');
-  if (!enableBookmarks || !baniPanktiElement?.classList.contains('gurmukhi')) {
+  const baniPanktiElement = event.target.closest(".gurmukhi");
+  if (!enableBookmarks || !baniPanktiElement?.classList.contains("gurmukhi")) {
     return;
   }
 
@@ -100,11 +100,11 @@ function addBookmark(event, bookmarkContainer, baniElement, baniName) {
 }
 
 function prepareBookmarkObject(baniPanktiElement, baniElement, baniName) {
-  const idOfElement = baniPanktiElement.getAttribute('id');
-  const shabadId = Number.parseInt(idOfElement.replace('shabad_', ''));
+  const idOfElement = baniPanktiElement.getAttribute("id");
+  const shabadId = Number.parseInt(idOfElement.replace("shabad_", ""));
 
   for (const bookmarkLocalObject of bookmarksFromLocal) {
-    if (bookmarkLocalObject?.shabadId == shabadId) {
+    if (bookmarkLocalObject?.shabadId == shabadId && bookmarkLocalObject?.baniName == baniName) {
       return;
     }
   }
@@ -131,42 +131,40 @@ function saveBookmarkToLocal(bookmarkObject) {
 }
 
 /**
- * 
- * @param {HTMLElement} bookmarkContainer 
- * @param {Object} bookmarkObject 
+ *
+ * @param {HTMLElement} bookmarkContainer
+ * @param {Object} bookmarkObject
  */
 function addBookmarkToUI(bookmarkContainer, bookmarkObject) {
   const singleBookmark = getSingleBookmarkBodyFromNameAndNumber(bookmarkObject.shabadPre, bookmarkObject.shabadId);
 
-  bookmarkContainer.insertAdjacentHTML(
-    'beforeend',
-    singleBookmark
-  );
+  bookmarkContainer.insertAdjacentHTML("beforeend", singleBookmark);
 }
 
 function saveBookmarkListner(baniElement, bookmarkContainer, baniName) {
-  longPress(baniElement,
+  longPress(
+    baniElement,
     (e) => {
-      addBookmark(e, bookmarkContainer, baniElement, baniName)
+      addBookmark(e, bookmarkContainer, baniElement, baniName);
     },
     500
-  )
+  );
 }
 
 /**
  * Enable disable bookmark feature
- * 
- * @param {HTMLInputElement} bookmarkCheckbox 
- * @param {HTMLElement} baniElement 
+ *
+ * @param {HTMLInputElement} bookmarkCheckbox
+ * @param {HTMLElement} baniElement
  */
 function enableAddBookmarkListner(bookmarkCheckbox, baniElement) {
   bookmarkCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
       enableBookmarks = true;
-      baniElement.classList.add('prevent-selection');
+      baniElement.classList.add("prevent-selection");
     } else {
       enableBookmarks = false;
-      baniElement.classList.remove('prevent-selection');
+      baniElement.classList.remove("prevent-selection");
     }
   });
 }
@@ -191,11 +189,11 @@ function longPress(element, callback, duration = 500) {
 }
 
 function deleteBookmarkButtonsListner(baniName) {
-  const buttons = document.getElementsByClassName('bookmark-delete');
+  const buttons = document.getElementsByClassName("bookmark-delete");
 
   for (const button of buttons) {
-    button.addEventListener('click', (e)=>{
-      const shabadId = Number(e.target.getAttribute('data-shabadid'));
+    button.addEventListener("click", (e) => {
+      const shabadId = Number(e.target.getAttribute("data-shabadid"));
       deleteSingleBookmarkFromLocal(shabadId, baniName);
       deleteSingleBookmarkFromUI(shabadId);
     });
@@ -205,16 +203,16 @@ function deleteBookmarkButtonsListner(baniName) {
 function deleteSingleBookmarkListner(baniName, shabadId) {
   const deleteButton = document.getElementById("bookmark-delete_" + shabadId);
 
-  deleteButton.addEventListener('click', (e)=>{
-    const shabadId = Number(e.target.getAttribute('data-shabadid'));
+  deleteButton.addEventListener("click", (e) => {
+    const shabadId = Number(e.target.getAttribute("data-shabadid"));
     deleteSingleBookmarkFromLocal(shabadId, baniName);
     deleteSingleBookmarkFromUI(shabadId);
   });
 }
 
 function deleteSingleBookmarkFromLocal(shabadId, baniName) {
-  bookmarksFromLocal = bookmarksFromLocal.filter((val)=>val.baniName == baniName && val.shabadId != shabadId);
-  
+  bookmarksFromLocal = bookmarksFromLocal.filter((val) => (val.baniName == baniName && val.shabadId != shabadId) || val.baniName != baniName);
+
   const bookmarksStringForSaving = JSON.stringify(bookmarksFromLocal);
 
   setLocalStorageItem(BOOKMARKS, bookmarksStringForSaving);
@@ -243,9 +241,9 @@ function bookmarkJumpSingleListner(shabadId) {
 }
 
 function bookmarkJumpListner(bookmarkLink) {
-  bookmarkLink.addEventListener('click', (e)=>{
-    const shabadId = e.target.getAttribute('data-shabadid');
-    jumpToBookmark(shabadId)
+  bookmarkLink.addEventListener("click", (e) => {
+    const shabadId = e.target.getAttribute("data-shabadid");
+    jumpToBookmark(shabadId);
   });
 }
 
