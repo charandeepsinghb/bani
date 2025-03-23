@@ -18,7 +18,7 @@ export function bookmarkInitialize(baniElement) {
 
   bookmarksFromLocal = getBookmarksFromLocal(baniElement, baniName);
   showLoadBookmarks(bookmarkContainer);
-  enableAddBookmarkListner(bookmarkCheckbox);
+  enableAddBookmarkListner(bookmarkCheckbox, baniElement);
   saveBookmarkListner(baniElement, bookmarkContainer, baniName);
   deleteBookmarkButtonsListner(baniName);
   bookmarkJumpListners();
@@ -153,12 +153,20 @@ function saveBookmarkListner(baniElement, bookmarkContainer, baniName) {
   )
 }
 
-function enableAddBookmarkListner(bookmarkCheckbox) {
+/**
+ * Enable disable bookmark feature
+ * 
+ * @param {HTMLInputElement} bookmarkCheckbox 
+ * @param {HTMLElement} baniElement 
+ */
+function enableAddBookmarkListner(bookmarkCheckbox, baniElement) {
   bookmarkCheckbox.addEventListener("change", (e) => {
     if (e.target.checked) {
       enableBookmarks = true;
+      baniElement.classList.add('prevent-selection');
     } else {
       enableBookmarks = false;
+      baniElement.classList.remove('prevent-selection');
     }
   });
 }
