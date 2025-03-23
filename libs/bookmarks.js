@@ -1,5 +1,6 @@
 import { resetShabadsSize } from "./insert-bani.js";
 import { BOOKMARKS, getLocalStorageItem, setLocalStorageItem } from "./local-storage-utils.js";
+import { showToast } from "./toasts.js";
 import { isArrayEmpty, isStringNotBlank } from "./type-utils.js";
 import { getBaniName } from "./which-bani.js";
 
@@ -97,6 +98,7 @@ function addBookmark(event, bookmarkContainer, baniElement, baniName) {
   deleteSingleBookmarkListner(baniName, bookmarkObject.shabadId);
   bookmarkJumpSingleListner(bookmarkObject.shabadId);
   saveBookmarkToLocal(bookmarkObject);
+  showToast("Bookmark Added", 800);
 }
 
 function prepareBookmarkObject(baniPanktiElement, baniElement, baniName) {
