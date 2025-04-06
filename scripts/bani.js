@@ -6,6 +6,7 @@ import { setLineHeightFromLocalStorage } from "../libs/line-height.js";
 import { setDarkModeCheckFromLocalGlobal } from "../libs/dark-colors-mode.js";
 import { setFontColorFromLocalGlobal } from "../libs/font-color.js";
 import { setBackgroundColorFromLocalGlobal } from "../libs/background-color.js";
+import { swipeInitialize } from "../libs/swipe.js";
 
 function onDomReady(callback) {
   if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -44,6 +45,7 @@ function initializeBaniApp() {
   setPropertiesFromLocal();
 
   keyPressInitialize(baniElement);
+  swipeInitialize(baniElement);
 }
 
 // Start all
