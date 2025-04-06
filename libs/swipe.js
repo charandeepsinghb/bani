@@ -45,12 +45,18 @@ function enableSwipeOnElement(element, callback) {
   });
 }
 
+export const swipeState = {
+  enabled: true
+};
+
 export function swipeInitialize(baniElement) {
   enableSwipeOnElement(baniElement, (direction) => {
-    if (direction === "left") {
-      nextButtonClick(baniElement);
-    } else if (direction === "right") {
-      previousButtonClick(baniElement);
+    if (swipeState.enabled) {
+      if (direction === "left") {
+        nextButtonClick(baniElement);
+      } else if (direction === "right") {
+        previousButtonClick(baniElement);
+      }
     }
   });
 }

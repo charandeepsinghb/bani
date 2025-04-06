@@ -3,6 +3,7 @@ import { backgroundColorInitialize } from "../../libs/background-color.js";
 import { bookmarkInitialize } from "../../libs/bookmarks.js";
 import { darkModeCheckInitialize } from "../../libs/dark-colors-mode.js";
 import { englishCheckInitialize } from "../../libs/english.js";
+import { enableSwipeCheckInitialize } from "../../libs/enable-swipe.js";
 import { fontColorInitialize } from "../../libs/font-color.js";
 import { increaseDecreaseBaniFontSizeListners, setFontInputValue } from "../../libs/font-size.js";
 import { initializeBaniShow, resetShabadsSize } from "../../libs/insert-bani.js";
@@ -79,6 +80,7 @@ function addButtonInputListners(baniElement) {
   // scrollCheckInitialize(baniElement);
   punjabiCheckInitialize(baniElement);
   englishCheckInitialize(baniElement);
+  enableSwipeCheckInitialize();
   darkModeCheckInitialize();
   fontColorInitialize();
   backgroundColorInitialize();
