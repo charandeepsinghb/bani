@@ -9,7 +9,8 @@ function enableSwipeOnElement(element, callback) {
   const allowedTime = 500; // Maximum time for swipe
   let startTime = 0;
 
-  element.style.touchAction = "none"; // Prevents browser's default touch handling
+  // Removed due to scrolling not working
+  // element.style.touchAction = "none"; // Prevents browser's default touch handling
 
   element.addEventListener("pointerdown", function (e) {
     if (e.pointerType === "touch" || e.pointerType === "pen") {
