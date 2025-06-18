@@ -3,27 +3,41 @@ import { nextButtonClick, previousButtonClick } from "./nextprev";
 function enableSwipeOnElement(element, callback) {
   let startX = 0;
   let startY = 0;
-  let isTouching = false;
-  const threshold = 50; // Minimum X movement in px
-  const restraint = 100; // Maximum Y deviation allowed
-  const allowedTime = 500; // Maximum time for swipe
+  let isSwiping = false;
+  const threshold = 50;
+  const restraint = 100;
+  const allowedTime = 500;
   let startTime = 0;
 
-  // Removed due to scrolling not working
-  // element.style.touchAction = "none"; // Prevents browser's default touch handling
+  element.style.touchAction = "pan-y"; // Preserve vertical scrolling
 
   element.addEventListener("pointerdown", function (e) {
-    if (e.pointerType === "touch" || e.pointerType === "pen") {
-      isTouching = true;
-      startX = e.clientX;
-      startY = e.clientY;
-      startTime = Date.now();
-    }
+    if (e.pointerType !== "touch" && e.pointerType !== "pen") return;
+    startX = e.clientX;
+    startY = e.clientY;
+    startTime = Date.now();
+    isSwiping = true;
   });
 
+  element.addEventListener(
+    "pointermove",
+    function (e) {
+      if (!isSwiping) return;
+
+      const distX = e.clientX - startX;
+      const distY = e.clientY - startY;
+
+      if (Math.abs(distX) > Math.abs(distY)) {
+        // If swiping horizontally, prevent default vertical scroll
+        e.preventDefault();
+      }
+    },
+    { passive: false }
+  ); // passive: false is needed to call e.preventDefault()
+
   element.addEventListener("pointerup", function (e) {
-    if (!isTouching) return;
-    isTouching = false;
+    if (!isSwiping) return;
+    isSwiping = false;
 
     const distX = e.clientX - startX;
     const distY = e.clientY - startY;
@@ -31,18 +45,13 @@ function enableSwipeOnElement(element, callback) {
 
     if (elapsedTime <= allowedTime && Math.abs(distY) <= restraint) {
       if (Math.abs(distX) >= threshold) {
-        if (distX < 0) {
-          callback("left");
-        } else {
-          callback("right");
-        }
+        callback(distX > 0 ? "right" : "left");
       }
     }
   });
 
-  // Optional: cancel tracking on lost pointer
   element.addEventListener("pointercancel", () => {
-    isTouching = false;
+    isSwiping = false;
   });
 }
 
