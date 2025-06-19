@@ -45,6 +45,10 @@
   opacity: 0.3;
 }
 
+#floating-button:not(.inactive) .floating-button-icon {
+  box-shadow: 2px 3px 7px 1px #00000026;
+}
+
 /* Style changes when dragging */
 .icon:active {
   cursor: grabbing;
