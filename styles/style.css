@@ -59,7 +59,7 @@ body.dark-mode .list-bani a {
   font-family: "Noto Sans Gurmukhi";
   font-style: normal;
   font-weight: 400;
-  src: url(/assets/fonts/noto-sans-gurmukhi-v28-gurmukhi_latin_latin-ext-regular.woff2) format("woff2");
+  src: url(../assets/fonts/noto-sans-gurmukhi-v28-gurmukhi_latin_latin-ext-regular.woff2) format("woff2");
 }
 
 .noto-sans-gurmukhi-bani {
@@ -74,7 +74,7 @@ body.dark-mode .list-bani a {
   font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 400;
-  src: url(/assets/MaterialSymbolsOutlined[FILL\,GRAD\,opsz\,wght].woff2) format("woff2");
+  src: url(../assets/MaterialSymbolsOutlined[FILL\,GRAD\,opsz\,wght].woff2) format("woff2");
 }
 
 .material-symbols-outlined {
