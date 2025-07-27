@@ -90,8 +90,22 @@ darkThemeMq.addEventListener("change", (e) => {
   if (e.matches) {
     toggleDarkMode(true);
     setDarkModeCheckbox(darkModeCheckbox, "true");
+    androidDarkModeOn();
   } else {
     toggleDarkMode(false);
     setDarkModeCheckbox(darkModeCheckbox, "false");
+    androidDarkModeOff();
   }
 });
+
+function androidDarkModeOn() {
+  if (AndroidInterface) {
+    AndroidInterface.setStatusBarIconsLight(false);
+  }
+}
+
+function androidDarkModeOff() {
+  if (AndroidInterface) {
+    AndroidInterface.setStatusBarIconsLight(true);
+  }
+}

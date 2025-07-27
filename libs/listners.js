@@ -6,14 +6,12 @@ export function buttonHoldListner(element, startCallback, stopCallback, time) {
       startCallback();
     }, time);
   });
-  element.addEventListener("pointerup", (e) => {
-    continuousEmitterStop(() => {
-      stopCallback();
-    });
-  });
-  element.addEventListener("pointerleave", (e) => {
-    continuousEmitterStop(() => {
-      stopCallback();
-    });
-  });
+
+  const stopFn = () => {
+    continuousEmitterStop(stopCallback);
+  };
+
+  element.addEventListener("pointerup", stopFn);
+  element.addEventListener("pointerleave", stopFn);
+  element.addEventListener("pointercancel", stopFn);
 }

@@ -2,15 +2,26 @@ import { adjustFloatingButtonPosition } from "../components/floating-button/floa
 import { resetShabadsSize } from "./insert-bani.js";
 
 export function toggleFullScreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().then(() => {
-      resetShabadsSize();
-      adjustFloatingButtonPosition();
-    });
-  } else if (document.exitFullscreen) {
-    document.exitFullscreen().then(() => {
-      resetShabadsSize();
-      adjustFloatingButtonPosition();
-    });
+  try {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().then(() => {
+        resetShabadsSize();
+        adjustFloatingButtonPosition();
+      });
+    } else if (document.exitFullscreen) {
+      document.exitFullscreen().then(() => {
+        resetShabadsSize();
+        adjustFloatingButtonPosition();
+      });
+    }
+  } catch (e) {
+    console.warn("Full screen not possible!");
+  }
+  androidFullScreenToggle();
+}
+
+function androidFullScreenToggle() {
+  if (AndroidInterface) {
+    AndroidInterface.toggleFullscreen();
   }
 }
