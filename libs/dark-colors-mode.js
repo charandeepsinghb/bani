@@ -99,13 +99,21 @@ darkThemeMq.addEventListener("change", (e) => {
 });
 
 function androidDarkModeOn() {
-  if (AndroidInterface) {
-    AndroidInterface.setStatusBarIconsLight(false);
+  try {
+    if (AndroidInterface) {
+      AndroidInterface.setStatusBarIconsLight(false);
+    }
+  } catch (e) {
+    console.warn("AndroidInterface.setStatusBarIconsLight false Error!");
   }
 }
 
 function androidDarkModeOff() {
-  if (AndroidInterface) {
-    AndroidInterface.setStatusBarIconsLight(true);
+  try {
+    if (AndroidInterface) {
+      AndroidInterface.setStatusBarIconsLight(true);
+    }
+  } catch (e) {
+    console.warn("AndroidInterface.setStatusBarIconsLight true Error!");
   }
 }

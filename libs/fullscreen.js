@@ -21,7 +21,11 @@ export function toggleFullScreen() {
 }
 
 function androidFullScreenToggle() {
-  if (AndroidInterface) {
-    AndroidInterface.toggleFullscreen();
+  try {
+    if (AndroidInterface) {
+      AndroidInterface.toggleFullscreen();
+    }
+  } catch (e) {
+    console.warn("AndroidInterface.toggleFullscreen Error!");
   }
 }
