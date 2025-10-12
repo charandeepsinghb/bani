@@ -122,6 +122,10 @@ body.dark-mode .list-bani a {
   user-select: none;
 }
 
+.hidden {
+  opacity: 0 !important;
+}
+
 @media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
   /* body {
     overflow-x: hidden;

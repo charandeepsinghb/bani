@@ -5,6 +5,7 @@ import { addResizeListner } from "../../libs/resize.js";
 import { notNullUndefinedNaNAny } from "../../libs/type-utils.js";
 import { toggleOpenCloseMenu, menuOpen } from "../menu/menu.js";
 import { addMenu } from "../menu/menu.js";
+import { resetInactivityTimer } from "../../libs/controls-activity.js";
 
 // Get viewport dimensions
 let viewportWidth = window.innerWidth;
@@ -19,6 +20,7 @@ export function addFloatingButton(floatingButtonContainer, baniElement) {
       const menuContainer = document.getElementById("menu-container");
       if (menuContainer) addMenu(menuContainer, baniElement);
       initializeFloatingButton(baniElement);
+      resetInactivityTimer();
     })
     .catch(console.error);
 }
