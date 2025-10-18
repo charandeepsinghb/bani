@@ -9,7 +9,7 @@
   /* overflow-y: hidden; */
   box-sizing: border-box;
   padding: var(--bani-text-padding);
-  padding-top: 26px;
+  /* padding-top: 28px; */
   /* column-gap: var(--bani-text-gap); */
   /* column-fill: auto; */
 }
@@ -74,4 +74,16 @@
 
 .para-gurmukhi {
   margin-bottom: 0.5rem;
+}
+
+
+@media only screen and (max-aspect-ratio: 0.6/1), (max-width: 600px) {
+  .bani-container {
+    padding-top: 28px;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  /* .bani-container {
+  } */
 }
