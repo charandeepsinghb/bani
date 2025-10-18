@@ -4,16 +4,16 @@ let inactivityTimer;
 const INACTIVITY_LIMIT = 5 * 1000; // 5 seconds (change as needed)
 
 function hideInactiveUI() {
-  const section = document.querySelector('.hide-on-inactive');
+  const section = document.querySelector(".hide-on-inactive");
   if (section) {
-    section.classList.add('hidden');
+    section.classList.add("hidden");
   }
 }
 
 function showActiveUI() {
-  const section = document.querySelector('.hide-on-inactive');
+  const section = document.querySelector(".hide-on-inactive");
   if (section) {
-    section.classList.remove('hidden');
+    section.classList.remove("hidden");
   }
 }
 
@@ -24,6 +24,6 @@ export function resetInactivityTimer() {
 }
 
 // Listen to user activity
-['mousemove', 'mousedown', 'keypress', 'keydown', 'touchstart', 'scroll'].forEach(event => {
+["mousemove", "mousedown", "keypress", "keydown", "touchstart", "scroll"].forEach((event) => {
   window.addEventListener(event, resetInactivityTimer);
 });

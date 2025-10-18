@@ -4,11 +4,12 @@
   /* --bani-text-word-spacing: 100vw; */
 }
 
-#bani {
+.bani-container {
   /* word-spacing: var(--bani-text-word-spacing); */
   /* overflow-y: hidden; */
   box-sizing: border-box;
   padding: var(--bani-text-padding);
+  padding-top: 26px;
   /* column-gap: var(--bani-text-gap); */
   /* column-fill: auto; */
 }
