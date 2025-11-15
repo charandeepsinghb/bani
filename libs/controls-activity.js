@@ -1,7 +1,7 @@
 // userInactivityListener.js
 
 let inactivityTimer;
-const INACTIVITY_LIMIT = 5 * 1000; // 5 seconds (change as needed)
+const INACTIVITY_LIMIT = 4 * 1000; // 5 seconds (change as needed)
 
 function hideInactiveUI() {
   const section = document.querySelector(".hide-on-inactive");
