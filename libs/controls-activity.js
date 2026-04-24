@@ -24,6 +24,6 @@ export function resetInactivityTimer() {
 }
 
 // Listen to user activity
-["mousemove", "mousedown", "keypress", "keydown", "touchstart", "scroll"].forEach((event) => {
+["mousedown", "keypress", "keydown", "touchstart", "scroll"].forEach((event) => {
   window.addEventListener(event, resetInactivityTimer);
 });
